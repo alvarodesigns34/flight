@@ -67,7 +67,7 @@ export class FlightRenderer {
   this.studioScene.environment=this.studioEnvironment.texture;this.studioScene.environmentIntensity=.5;
   skyHDR.mapping=THREE.EquirectangularReflectionMapping;this.flightScene.background=skyHDR;this.flightScene.backgroundRotation.y=1.15;this.flightScene.backgroundIntensity=.8;this.flightScene.environment=this.flightEnvironment.texture;this.flightScene.environmentIntensity=.4;
   grass.colorSpace=rock.colorSpace=THREE.SRGBColorSpace;
-  this.landscape=new Landscape(this.flightScene,{grass,rock,normal,rough});this.waterReflect=this.landscape.water.onBeforeRender;
+  this.landscape=new Landscape(this.flightScene,{grass,rock,normal,rough});
   this.setQuality(this.quality);this.setTab(this.tab);
  }
  partsForModel(){for(const name of ['Port_wing','Starboard_wing','Port_tail','Starboard_tail','gear'])this.parts[name]=this.model.getObjectByName(name);}
@@ -86,7 +86,7 @@ export class FlightRenderer {
  setQuality(quality){
   this.quality=quality;this.renderer.setPixelRatio(Math.min(devicePixelRatio,quality==='ultra'?2:quality==='high'?1.5:1));
   this.renderer.shadowMap.enabled=quality!=='light'||this.tab==='model';
-  if(this.landscape){this.landscape.water.onBeforeRender=quality==='ultra'?this.waterReflect:()=>{};this.landscape.sun.shadow.mapSize.set(quality==='ultra'?2048:1024,quality==='ultra'?2048:1024);}
+  if(this.landscape){this.landscape.sun.shadow.mapSize.set(quality==='ultra'?2048:1024,quality==='ultra'?2048:1024);}
   if(this.highModel)this.highModel.traverse(o=>{if(o.isMesh&&o.material.name.includes('glass')){o.material.transmission=quality==='ultra'?1:0;o.material.transparent=quality!=='ultra';o.material.opacity=quality==='ultra'?1:.20;o.material.depthWrite=quality==='ultra';o.material.needsUpdate=true;}});
   // The inspection tab always keeps the full geometry. Effects follow the user's quality setting.
   if(this.gallery)this.gallery.traverse(o=>{if(o.isMesh&&o.material.name.includes('glass')){o.material.transmission=quality==='ultra'?1:0;o.material.opacity=quality==='ultra'?1:.20;o.material.transparent=quality!=='ultra';o.material.depthWrite=quality==='ultra';}});

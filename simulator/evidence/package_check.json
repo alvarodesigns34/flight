@@ -12,5 +12,5 @@
   },
   "archive_hashes_rechecked_after_visual_water_fix": true,
   "browser_checkpoint": "87a6da596557eb09f9f7753aebc44e79cfdcf00c",
-  "browser_scope": "Extracted package browser test passed before the water-shader-only visual refinement; final Ultra shader also checked on the published website."
+  "browser_scope": "Extracted package browser test passed for 87a6da596557eb09f9f7753aebc44e79cfdcf00c; the final archive hashes were rechecked after a water-shader-only visual refinement. Public Ultra verification is recorded separately."
 }

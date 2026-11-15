@@ -35,3 +35,5 @@ Comprobaciones: 17 pruebas Node y 2 Python pasan; entrega estática original de 
 Entrega 0.2: Pages y ambas ejecuciones de CI pasaron para `87a6da596557eb09f9f7753aebc44e79cfdcf00c`. El paquete offline se extrajo y verificó por hashes (33 archivos), y su servidor/browser pasó inicio y pausa. La comprobación pública confirmó ambos modos y la descarga nativa original.
 
 La inspección final de Ultra detectó una reflectancia base del agua excesiva heredada del shader de ejemplo (30%). Se corrigió a la relación de Fresnel aire/agua para IOR 1/1,333 (aproximadamente 2,04%) y se hicieron periódicas las normales para evitar costuras visibles. No cambia la geometría del avión ni la dinámica de vuelo.
+
+El acabado final del mar utiliza un material físico dieléctrico con IOR 1,333 y reflexiones del HDR prefiltradas. Se retiró el shader planar de ejemplo que generaba patrones de reflexión demasiado repetitivos. Este cambio reduce pasadas de render y mantiene las normales de onda animadas.

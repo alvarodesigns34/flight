@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import {Water} from 'three/addons/objects/Water.js';
 import {mergeGeometries} from 'three/addons/utils/BufferGeometryUtils.js';
 import {terrainHeight,noise2,fbm,WATER_HEIGHT} from './terrain.mjs';
 const C=x=>new THREE.Color(x);
@@ -52,14 +51,12 @@ export class Landscape {
    const dx=(h(x+1,z)-h(x-1,z))*.7,dz=(h(x,z+1)-h(x,z-1))*.7,i=(z*256+x)*4;
    d.data[i]=128+dx*100;d.data[i+1]=128+dz*100;d.data[i+2]=245;d.data[i+3]=255;
   }ctx.putImageData(d,0,0);const normals=texture(c,false);normals.wrapS=normals.wrapT=THREE.RepeatWrapping;
-  this.water=new Water(new THREE.PlaneGeometry(180000,180000),{textureWidth:512,textureHeight:512,waterNormals:normals,sunDirection:new THREE.Vector3(-.4,.8,.5),sunColor:0xfff1d9,waterColor:0x22575e,distortionScale:2.6,fog:true});
-  // Fresnel reflectance for air/water (IOR 1 / 1.333), rather than the
-  // artistic 30% base reflectance of the upstream Water example.
-  const waterR0=((1.333-1)/(1.333+1))**2;
-  this.water.material.fragmentShader=this.water.material.fragmentShader.replace('float rf0 = 0.3;',`float rf0 = ${waterR0.toFixed(8)};`);
-  this.water.rotation.x=-Math.PI/2;this.water.position.y=WATER_HEIGHT;this.group.add(this.water);
-  const calmNormals=normals.clone();calmNormals.needsUpdate=true;calmNormals.repeat.set(4500,4500);
-  this.waterFallback=new THREE.Mesh(new THREE.PlaneGeometry(180000,180000),new THREE.MeshStandardMaterial({color:'#245765',metalness:.35,roughness:.23,normalMap:calmNormals,normalScale:new THREE.Vector2(.45,.45)}));this.waterFallback.rotation.x=-Math.PI/2;this.waterFallback.position.y=WATER_HEIGHT;this.group.add(this.waterFallback);
+  normals.repeat.set(4500,4500);
+  // Dielectric water: Three's physical BRDF derives the approximately 2.04%
+  // normal-incidence Fresnel term from IOR 1.333. Prefiltered HDR reflections
+  // avoid the aliasing and mirror artifacts of the old planar-water shader.
+  this.water=new THREE.Mesh(new THREE.PlaneGeometry(180000,180000),new THREE.MeshPhysicalMaterial({color:'#17495b',metalness:0,ior:1.333,roughness:.16,normalMap:normals,normalScale:new THREE.Vector2(.45,.45),envMapIntensity:1}));
+  this.water.rotation.x=-Math.PI/2;this.water.position.y=WATER_HEIGHT;this.water.receiveShadow=true;this.group.add(this.water);
  }
  airport(){
   const rng=seeded(84),c=canvas(512,4096),ctx=c.getContext('2d');ctx.fillStyle='#363a3a';ctx.fillRect(0,0,512,4096);
@@ -104,7 +101,7 @@ export class Landscape {
  }
  setLight(mode){this.daylight=mode;this.sun.color.set(mode==='sunset'?'#ffbe7c':'#fff3dd');this.sun.intensity=mode==='sunset'?1.9:2.5;this.ambient.intensity=mode==='sunset'?.38:.5;}
  update(position,dt,quality){
-  this.time+=dt;this.water.material.uniforms.time.value=this.time*.65;this.water.visible=quality==='ultra';this.waterFallback.visible=quality!=='ultra';this.waterFallback.material.normalMap.offset.set(this.time*.012,this.time*.006);
+  this.time+=dt;this.water.material.normalMap.offset.set(this.time*.012,this.time*.006);this.water.material.roughness=quality==='ultra'?.16:quality==='high'?.22:.28;
   if(this.landShader)this.landShader.uniforms.landTime.value=this.time;
   this.sun.position.copy(position).add(new THREE.Vector3(-1800,this.daylight==='sunset'?1100:3600,2400));this.sun.target.position.copy(position);this.sun.target.updateMatrixWorld();
   this.sun.castShadow=quality!=='light';
