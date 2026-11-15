@@ -1,6 +1,6 @@
 {
-  "source_commit": "6e505d66c7bc5688614cb1d69056e6b7f666e520",
-  "verified_files": 33,
+  "source_commit": "d02b68f25f784af32e34bae3ec4cf8f203643ded",
+  "verified_files": 46,
   "zip_integrity": true,
   "standalone_server": true,
   "http_asset_hashes_match": true,
@@ -8,6 +8,8 @@
     "ready": true,
     "started": true,
     "paused": true,
+    "originalInspector": true,
+    "evolvedInspector": true,
     "errors": []
   }
 }

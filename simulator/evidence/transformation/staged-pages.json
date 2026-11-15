@@ -1,0 +1,91 @@
+{
+  "checked_at": "2026-11-15T16:33:36.749Z",
+  "url": "http://127.0.0.1:5194/flight/?quality=light",
+  "source_commit": "d02b68f25f784af32e34bae3ec4cf8f203643ded",
+  "runtime_files": 22,
+  "checks": [
+    "Pages subdirectory asset loading",
+    "WebGL aircraft ready",
+    "start flight",
+    "pause flight",
+    "wing configuration control",
+    "original-model tab",
+    "full original geometry in public inspector"
+  ],
+  "runtime": {
+    "ready": true,
+    "time": 0.974999999999999,
+    "running": false,
+    "camera": "orbit",
+    "tab": "model",
+    "airspeed": 114.99999944918349,
+    "altitude": 800.0000187287447,
+    "angles": [
+      0,
+      0.07826756370529594,
+      0
+    ],
+    "controls": {
+      "elevator": 0.018123034805601658,
+      "aileron": 0,
+      "rudder": 0,
+      "throttle": 0.1962009399549724,
+      "sweep": 0.6,
+      "flaps": 0,
+      "gear": 0,
+      "brake": 0
+    },
+    "appliedControls": {
+      "elevator": 0.018123034805601658,
+      "aileron": 0,
+      "rudder": 0,
+      "throttle": 0.1962009399549724,
+      "sweep": 0,
+      "flaps": 0,
+      "gear": 0,
+      "brake": 0
+    },
+    "physicsCpuMs": 0,
+    "droppedTime": 19.299200000000006,
+    "position": [
+      -1487.8750001180986,
+      -9200,
+      -800.0000187287447
+    ],
+    "contacts": [
+      {
+        "index": 0,
+        "compression": 0,
+        "load": 0
+      }
+    ],
+    "meshCount": 83,
+    "triangles": 1361587,
+    "quality": "light",
+    "renderedFrames": 10,
+    "originalTriangles": 1316961,
+    "originalObjects": 1832,
+    "originalSimplified": false,
+    "evolvedTriangles": 1341681,
+    "modelVersion": "original",
+    "assetLoading": false,
+    "originalLoaded": true,
+    "actualOriginalTriangles": 1316961,
+    "treeCount": 4500,
+    "vegetationChunks": 122,
+    "terrainTriangles": 131072,
+    "rigidBatching": true,
+    "rigidBatchStats": {
+      "sourceMeshBatches": 135,
+      "multiDrawBatches": 33
+    },
+    "cpuSubmitMs": 740.1999999992549,
+    "calls": 83,
+    "textures": 78,
+    "geometries": 147,
+    "gpuMs": null
+  },
+  "errors": [],
+  "failedRequests": [],
+  "httpErrors": []
+}

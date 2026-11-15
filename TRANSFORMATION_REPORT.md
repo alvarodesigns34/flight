@@ -88,7 +88,7 @@ Las capturas Ultra adicionales 13–18 se revisan por separado. Las tomas dirigi
 
 ## Publicación y paquete
 
-La publicación utiliza GitHub Actions y rutas relativas bajo `/flight/`. Los recursos sin comprimir quedan como fuentes verificables en Git; Pages y el paquete incluyen las versiones comprimidas y ambos nativos descargables. Los recursos de ejecución, licencias y HDR son locales; el vuelo no depende de servicios externos. La evidencia pública de esta fase y el manifiesto del ZIP se completan con el commit concreto de entrega. La PR queda abierta, sin fusión automática.
+La publicación utiliza GitHub Actions y rutas relativas bajo `/flight/`. Los recursos sin comprimir quedan como fuentes verificables en Git; Pages y el paquete incluyen las versiones comprimidas y ambos nativos descargables. Los recursos de ejecución, licencias y HDR son locales; el vuelo no depende de servicios externos. El checkpoint funcional y fuente del ZIP es `d02b68f25f784af32e34bae3ec4cf8f203643ded`. El paquete ocupa 78.954.478 bytes, contiene 46 archivos verificados y tiene SHA-256 `672ea86a201347e2ce72f9bf72b2ffdc8ad4d7695e9b043d6d5aea0cb503d817`. Se ha extraído, arrancado y probado en navegador con vuelo, pausa y ambos inspectores. La publicación Actions de ese mismo checkpoint terminó correctamente: [ejecución 43736343783](https://github.com/alvarodesigns34/flight/actions/runs/43736343783). La comprobación pública carga el vuelo en Ultra, abre el original íntegro y confirma el commit exacto, sin errores de JavaScript, shaders o HTTP. Los dos nativos descargados de Pages coinciden por SHA-256 con sus fuentes; los 22 archivos de ejecución públicos coinciden con los del ZIP. Registros en `PAGES_DEPLOYMENT.json` y `simulator/evidence/transformation/public-pages.json`. La PR queda abierta, sin fusión automática.
 
 ## Límites y prioridades siguientes
 
@@ -103,3 +103,9 @@ Las prioridades útiles son una revisión artística manual de cabina y superfic
 - [Blender: Render Baking](https://docs.blender.org/manual/en/4.3/render/cycles/baking.html): horneado para material/oclusión. El proceso real usa Blender oficial 4.3.2, Cycles CPU y un nodo AO emitido, no una textura de sombra inventada.
 - [JSBSim: marcos de referencia](https://jsbsim-team.github.io/jsbsim-reference-manual/user/concepts/frames-of-reference/) y [ecuaciones](https://jsbsim-team.github.io/jsbsim-reference-manual/formulation/equations-of-motion/): referencia general de dinámica; sin tablas o calibración de la aeronave militar.
 - Los HDR y mapas fotográficos mantienen sus fuentes y licencia CC0 en `simulator/assets/environment/ATTRIBUTIONS.json`. Three.js y meshoptimizer conservan sus licencias MIT.
+
+## Commits de implementación
+
+- `832e1a9947a9fd3ced27a60857f2a0e3397a37a9`: evolución de geometría, render, entorno, controles, física y evidencias.
+- `d02b68f25f784af32e34bae3ec4cf8f203643ded`: regresión y corrección del artefacto Pages; checkpoint común de web y paquete.
+- La entrega de ZIP, verificación pública y documentación posterior se registra en los commits de la [PR #1](https://github.com/alvarodesigns34/flight/pull/1/commits); no cambia los archivos de ejecución de ese checkpoint.

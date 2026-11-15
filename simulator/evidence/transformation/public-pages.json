@@ -1,0 +1,91 @@
+{
+  "checked_at": "2026-11-15T16:42:39.208Z",
+  "url": "https://alvarodesigns34.github.io/flight/?quality=light&verify=d02b68f25f784af32e34bae3ec4cf8f203643ded",
+  "source_commit": "d02b68f25f784af32e34bae3ec4cf8f203643ded",
+  "runtime_files": 22,
+  "checks": [
+    "Pages subdirectory asset loading",
+    "WebGL aircraft ready",
+    "start flight",
+    "pause flight",
+    "wing configuration control",
+    "original-model tab",
+    "full original geometry in public inspector"
+  ],
+  "runtime": {
+    "ready": true,
+    "time": 0.8166666666666662,
+    "running": false,
+    "camera": "orbit",
+    "tab": "model",
+    "airspeed": 114.99999971010227,
+    "altitude": 800.0000111693348,
+    "angles": [
+      0,
+      0.07826749504752652,
+      0
+    ],
+    "controls": {
+      "elevator": 0.018123034805601658,
+      "aileron": 0,
+      "rudder": 0,
+      "throttle": 0.1962009399549724,
+      "sweep": 0.6,
+      "flaps": 0,
+      "gear": 0,
+      "brake": 0
+    },
+    "appliedControls": {
+      "elevator": 0.018123034805601658,
+      "aileron": 0,
+      "rudder": 0,
+      "throttle": 0.1962009399549724,
+      "sweep": 0,
+      "flaps": 0,
+      "gear": 0,
+      "brake": 0
+    },
+    "physicsCpuMs": 0,
+    "droppedTime": 9.366200000000001,
+    "position": [
+      -1506.0833333865505,
+      -9200,
+      -800.0000111693348
+    ],
+    "contacts": [
+      {
+        "index": 0,
+        "compression": 0,
+        "load": 0
+      }
+    ],
+    "meshCount": 232,
+    "triangles": 3906263,
+    "quality": "ultra",
+    "renderedFrames": 11,
+    "originalTriangles": 1316961,
+    "originalObjects": 1832,
+    "originalSimplified": false,
+    "evolvedTriangles": 1341681,
+    "modelVersion": "original",
+    "assetLoading": false,
+    "originalLoaded": true,
+    "actualOriginalTriangles": 1316961,
+    "treeCount": 4500,
+    "vegetationChunks": 122,
+    "terrainTriangles": 131072,
+    "rigidBatching": true,
+    "rigidBatchStats": {
+      "sourceMeshBatches": 135,
+      "multiDrawBatches": 33
+    },
+    "cpuSubmitMs": 2143.89999999851,
+    "calls": 232,
+    "textures": 82,
+    "geometries": 147,
+    "gpuMs": null
+  },
+  "errors": [],
+  "failedRequests": [],
+  "httpErrors": []
+}

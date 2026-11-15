@@ -30,12 +30,15 @@ with tempfile.TemporaryDirectory(prefix='tomcat-package-') as tmp:
 import {chromium} from '@playwright/test';
 const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',headless:true,args:['--no-sandbox','--enable-unsafe-swiftshader','--use-angle=swiftshader']});
 const page=await browser.newPage({viewport:{width:960,height:700}}),errors=[];
+page.setDefaultTimeout(240000);
 page.on('pageerror',e=>errors.push(e.message));
 await page.goto('http://127.0.0.1:5174/?quality=light');await page.waitForFunction(()=>window.flightLab?.ready,{},{timeout:240000});
 await page.locator('#play').click();await page.waitForFunction(()=>window.flightLab?.time>.3);
 await page.locator('#play').click();await page.waitForFunction(()=>!window.flightLab.running);
+await page.locator('#tab-model').click();await page.waitForFunction(()=>window.flightLab.originalLoaded&&window.flightLab.actualOriginalTriangles===1316961&&document.getElementById('asset-progress').hidden,{},{timeout:240000});
+await page.locator('#model-version').selectOption('evolved');await page.waitForFunction(()=>window.flightLab.modelVersion==='evolved'&&document.getElementById('asset-progress').hidden);
 if(errors.length)throw new Error(JSON.stringify(errors));
-console.log(JSON.stringify({ready:true,started:true,paused:true,errors}));await browser.close();
+console.log(JSON.stringify({ready:true,started:true,paused:true,originalInspector:true,evolvedInspector:true,errors}));await browser.close();
 """
         run=subprocess.run(['node','--input-type=module','-e',script],cwd=ROOT,text=True,capture_output=True,timeout=360)
         assert run.returncode==0,run.stderr
