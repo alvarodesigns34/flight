@@ -1,0 +1,11 @@
+{
+  "camera": "10_STRUCTURE_CUTAWAY",
+  "width": 1400,
+  "samples": 40,
+  "seconds": 136.51,
+  "hidden_static_cutaway": [
+    "Port_dorsal_engine_access_cover",
+    "Starboard_dorsal_engine_access_cover"
+  ],
+  "hidden_stage": []
+}

@@ -1,0 +1,50 @@
+{
+  "seconds": 3.7790145874023438,
+  "components": [
+    {
+      "component": "fuselage",
+      "seconds": 0.324
+    },
+    {
+      "component": "wings",
+      "seconds": 0.036
+    },
+    {
+      "component": "stabilizers",
+      "seconds": 0.034
+    },
+    {
+      "component": "intakes",
+      "seconds": 0.033
+    },
+    {
+      "component": "cockpit",
+      "seconds": 0.064
+    },
+    {
+      "component": "canopy",
+      "seconds": 0.065
+    },
+    {
+      "component": "gear",
+      "seconds": 0.126
+    },
+    {
+      "component": "engines",
+      "seconds": 0.199
+    },
+    {
+      "component": "detail",
+      "seconds": 0.109
+    },
+    {
+      "component": "studio",
+      "seconds": 0.002
+    }
+  ],
+  "cleanup": {
+    "welded_vertices": 20740,
+    "removed_loose_vertices": 31733
+  },
+  "technical_pass": true
+}

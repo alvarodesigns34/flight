@@ -1,0 +1,10 @@
+{
+  "camera": "07_COCKPIT_CUTAWAY",
+  "width": 1400,
+  "samples": 40,
+  "seconds": 106.64,
+  "hidden_static_cutaway": [
+    "Canopy_transparent_shell"
+  ],
+  "hidden_stage": []
+}

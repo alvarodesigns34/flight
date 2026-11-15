@@ -1,0 +1,72 @@
+VALIDATION {
+  "blender": "4.3.2",
+  "object_count_aircraft": 1832,
+  "mesh_vertices": 298498,
+  "mesh_faces": 273672,
+  "base_triangles": 548152,
+  "evaluated_triangles_including_curves": 1316961,
+  "materials": 36,
+  "cameras": 11,
+  "measurements": {
+    "length_m": 19.100799560546875,
+    "span_m": 19.53260040283203,
+    "height_to_fin_m": 4.876800060272217
+  },
+  "targets": {
+    "length_m": 19.1008,
+    "span_m": 19.5326,
+    "height_to_fin_m": 4.8768
+  },
+  "dimension_checks": {
+    "length_m": true,
+    "span_m": true,
+    "height_to_fin_m": true
+  },
+  "bounds_all_visual_geometry": [
+    [
+      -9.76686954498291,
+      9.76686954498291
+    ],
+    [
+      -9.550399780273438,
+      9.551274299621582
+    ],
+    [
+      0.0,
+      4.877799987792969
+    ]
+  ],
+  "missing_materials": [],
+  "degenerate_face_objects": [],
+  "nonfinite_objects": [],
+  "coincident_duplicate_meshes": [],
+  "primary_symmetry": {
+    "variable_sweep_wing": true,
+    "canted_vertical_fin": true,
+    "all_moving_horizontal_tail": true,
+    "TF30_nacelle_skin": true
+  },
+  "animation_data_objects": [],
+  "aft_stabilator_nozzle_lateral_separation_m": 0.04501199722290039,
+  "measured_fin_cant_deg": {
+    "Port": 4.999999952566649,
+    "Starboard": 4.999999952566649
+  },
+  "laterality_checks": {
+    "port_wing_positive_x": true,
+    "starboard_wing_negative_x": true,
+    "port_red_lens": true,
+    "starboard_green_lens": true,
+    "insignia_on_upper_port": true,
+    "port_profile_camera_positive_x": true
+  },
+  "open_surfaces_note": "Intentional skin patches, decals, ducts, glass and ornamental vanes are not manufacturing solids.",
+  "external_images": [],
+  "precision_limit": "Only overall envelope is verified numerically. Cross-sections, cockpit, gear, skin layout and exhibit engine structure are artistic estimates.",
+  "technical_pass": true
+}
+REOPENED_MASTER_VERIFIED /workspace/PROJECT_TOMCAT/F14A_TOMCAT_MASTER.blend
+Blender 4.3.2 (hash 32f5fdce0a0a built 2024-12-17 01:31:14)
+Read blend: "/workspace/PROJECT_TOMCAT/F14A_TOMCAT_MASTER.blend"
+
+Blender quit

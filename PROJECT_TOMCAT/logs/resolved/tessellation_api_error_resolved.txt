@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/workspace/PROJECT_TOMCAT/src/build.py", line 64, in <module>
+    try:run()
+        ^^^^^
+  File "/workspace/PROJECT_TOMCAT/src/build.py", line 47, in run
+    before={o.name for o in bpy.data.objects};fn()
+                                              ^^^^
+  File "/workspace/PROJECT_TOMCAT/src/detail.py", line 77, in build
+    skull(label,s)
+  File "/workspace/PROJECT_TOMCAT/src/detail.py", line 56, in skull
+    poly(f'_crossbone_{sign}',[(-.39+da,-sign*.32+db),(.39+da,sign*.22+db),(.39-da,sign*.22-db),(-.39-da,-sign*.32-db)],'Marking_white')
+  File "/workspace/PROJECT_TOMCAT/src/detail.py", line 48, in poly
+    lookup[i,j]=len(verts);verts.append(p(q.x,q.y,depth))
+                                          ^^^
+AttributeError: 'float' object has no attribute 'x'

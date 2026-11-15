@@ -1,0 +1,9 @@
+{
+  "changed_renderable_objects": [
+    "Port_bay_door_identification",
+    "Starboard_bay_door_identification"
+  ],
+  "other_renderable_object_fingerprints_unchanged": true,
+  "master_sha256": "72ee953fe589ae43a71eaf63225d689619acb43181011e107d341e7c454c33d0",
+  "note": "Only two gear-door FONT transforms were aligned to the door surface. Image 11 rerendered. Earlier general views retain the previous alignment of these small inscriptions."
+}

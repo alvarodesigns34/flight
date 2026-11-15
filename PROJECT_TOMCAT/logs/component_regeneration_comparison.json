@@ -1,0 +1,13 @@
+{
+  "object_count_aircraft": true,
+  "mesh_vertices": true,
+  "mesh_faces": true,
+  "base_triangles": true,
+  "evaluated_triangles_including_curves": true,
+  "measurements": true,
+  "primary_symmetry": true,
+  "technical_pass": true,
+  "aft_stabilator_nozzle_lateral_separation_m": true,
+  "measured_fin_cant_deg": true,
+  "laterality_checks": true
+}

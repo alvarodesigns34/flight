@@ -1,0 +1,10 @@
+{
+  "camera": "06_REAR",
+  "width": 1280,
+  "samples": 24,
+  "seconds": 16.1,
+  "hidden_static_cutaway": [],
+  "hidden_stage": [
+    "Neutral_studio_floor"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "system": "Linux",
+  "machine": "x86_64",
+  "logical_cpus": 3,
+  "memory_bytes": 10452459520,
+  "workspace": "/workspace",
+  "disk_free_bytes": 6159265792,
+  "system_blender": "/usr/bin/blender",
+  "render_blender": "/workspace/tools/blender-4.3.2-linux-x64/blender",
+  "render_version": "4.3.2 official linux x64",
+  "render_engine": "Cycles CPU",
+  "gpu_detected": false,
+  "denoising": "OpenImageDenoise from official Blender; system binary lacks OIDN support",
+  "python_dependencies_build": "Blender bundled bpy + Python standard library",
+  "python_dependencies_optional_contact_sheet": "Pillow from /usr/bin/python3"
+}

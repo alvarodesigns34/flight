@@ -1,0 +1,141 @@
+{
+  "master_reopened": true,
+  "technical_validation": true,
+  "component_regeneration": true,
+  "whole_aircraft_camera_framing": true,
+  "image_count": 11,
+  "images": [
+    {
+      "file": "01_FRONT_THREE_QUARTER.png",
+      "size_px": [
+        1800,
+        1238
+      ],
+      "samples": 48,
+      "file_bytes": 2345402,
+      "fresh_from_current_master": false,
+      "compatible_except_two_cosmetic_door_label_transforms": true,
+      "nonuniform_pixels": true
+    },
+    {
+      "file": "02_REAR_THREE_QUARTER.png",
+      "size_px": [
+        1400,
+        962
+      ],
+      "samples": 40,
+      "file_bytes": 1426770,
+      "fresh_from_current_master": false,
+      "compatible_except_two_cosmetic_door_label_transforms": true,
+      "nonuniform_pixels": true
+    },
+    {
+      "file": "03_PORT_PROFILE.png",
+      "size_px": [
+        1280,
+        880
+      ],
+      "samples": 24,
+      "file_bytes": 1114593,
+      "fresh_from_current_master": false,
+      "compatible_except_two_cosmetic_door_label_transforms": true,
+      "nonuniform_pixels": true
+    },
+    {
+      "file": "04_TOP.png",
+      "size_px": [
+        1280,
+        1280
+      ],
+      "samples": 24,
+      "file_bytes": 1708792,
+      "fresh_from_current_master": false,
+      "compatible_except_two_cosmetic_door_label_transforms": true,
+      "nonuniform_pixels": true
+    },
+    {
+      "file": "05_FRONT.png",
+      "size_px": [
+        1280,
+        880
+      ],
+      "samples": 24,
+      "file_bytes": 1093742,
+      "fresh_from_current_master": false,
+      "compatible_except_two_cosmetic_door_label_transforms": true,
+      "nonuniform_pixels": true
+    },
+    {
+      "file": "06_REAR.png",
+      "size_px": [
+        1280,
+        880
+      ],
+      "samples": 24,
+      "file_bytes": 1088340,
+      "fresh_from_current_master": false,
+      "compatible_except_two_cosmetic_door_label_transforms": true,
+      "nonuniform_pixels": true
+    },
+    {
+      "file": "07_COCKPIT_CUTAWAY.png",
+      "size_px": [
+        1400,
+        962
+      ],
+      "samples": 40,
+      "file_bytes": 1694524,
+      "fresh_from_current_master": false,
+      "compatible_except_two_cosmetic_door_label_transforms": true,
+      "nonuniform_pixels": true
+    },
+    {
+      "file": "08_NOSE_LANDING_GEAR.png",
+      "size_px": [
+        1400,
+        962
+      ],
+      "samples": 40,
+      "file_bytes": 1494645,
+      "fresh_from_current_master": false,
+      "compatible_except_two_cosmetic_door_label_transforms": true,
+      "nonuniform_pixels": true
+    },
+    {
+      "file": "09_TF30_EXHAUSTS.png",
+      "size_px": [
+        1400,
+        962
+      ],
+      "samples": 40,
+      "file_bytes": 1616490,
+      "fresh_from_current_master": false,
+      "compatible_except_two_cosmetic_door_label_transforms": true,
+      "nonuniform_pixels": true
+    },
+    {
+      "file": "10_STRUCTURE_CUTAWAY.png",
+      "size_px": [
+        1400,
+        962
+      ],
+      "samples": 40,
+      "file_bytes": 1759942,
+      "fresh_from_current_master": false,
+      "compatible_except_two_cosmetic_door_label_transforms": true,
+      "nonuniform_pixels": true
+    },
+    {
+      "file": "11_MAIN_LANDING_GEAR.png",
+      "size_px": [
+        1400,
+        962
+      ],
+      "samples": 40,
+      "file_bytes": 1465783,
+      "fresh_from_current_master": true,
+      "compatible_except_two_cosmetic_door_label_transforms": false,
+      "nonuniform_pixels": true
+    }
+  ]
+}

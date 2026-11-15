@@ -1,0 +1,14 @@
+{
+  "seconds": 2.8676040172576904,
+  "components": [
+    {
+      "component": "canopy",
+      "seconds": 0.15
+    }
+  ],
+  "cleanup": {
+    "welded_vertices": 0,
+    "removed_loose_vertices": 0
+  },
+  "technical_pass": true
+}

@@ -1,0 +1,10 @@
+{
+  "camera": "05_FRONT",
+  "width": 1280,
+  "samples": 24,
+  "seconds": 16.93,
+  "hidden_static_cutaway": [],
+  "hidden_stage": [
+    "Neutral_studio_floor"
+  ]
+}

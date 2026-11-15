@@ -1,0 +1,50 @@
+[
+  {
+    "file": "ref_1.jpg",
+    "author_present": true,
+    "license_present": true,
+    "nonempty_image": true
+  },
+  {
+    "file": "ref_2.jpg",
+    "author_present": true,
+    "license_present": true,
+    "nonempty_image": true
+  },
+  {
+    "file": "ref_3.jpg",
+    "author_present": true,
+    "license_present": true,
+    "nonempty_image": true
+  },
+  {
+    "file": "ref_4_threeview.png",
+    "author_present": true,
+    "license_present": true,
+    "nonempty_image": true
+  },
+  {
+    "file": "ref_5_main_gear.jpg",
+    "author_present": true,
+    "license_present": true,
+    "nonempty_image": true
+  },
+  {
+    "file": "ref_6_nozzle.jpg",
+    "author_present": true,
+    "license_present": true,
+    "nonempty_image": true
+  },
+  {
+    "file": "ref_7_nose_well.jpg",
+    "author_present": true,
+    "license_present": true,
+    "nonempty_image": true
+  },
+  {
+    "file": "ref_8_front.jpg",
+    "author_present": true,
+    "license_present": true,
+    "nonempty_image": true
+  }
+]

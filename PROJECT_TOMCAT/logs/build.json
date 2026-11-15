@@ -1,0 +1,14 @@
+{
+  "seconds": 2.1024625301361084,
+  "components": [
+    {
+      "component": "gear",
+      "seconds": 0.127
+    }
+  ],
+  "cleanup": {
+    "welded_vertices": 0,
+    "removed_loose_vertices": 0
+  },
+  "technical_pass": true
+}
