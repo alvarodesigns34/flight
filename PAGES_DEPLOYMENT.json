@@ -1,0 +1,45 @@
+{
+  "checked_at": "2026-11-15T10:46:49.692Z",
+  "url": "https://alvarodesigns34.github.io/flight/",
+  "source_commit": "0994dd1eb47424386a7b3e56bd9ffe1c94a3fc64",
+  "runtime_files": 6,
+  "checks": [
+    "Pages subdirectory asset loading",
+    "WebGL aircraft ready",
+    "start flight",
+    "pause flight",
+    "wing configuration control"
+  ],
+  "runtime": {
+    "ready": true,
+    "time": 0.9999999999999989,
+    "running": false,
+    "camera": "orbit",
+    "airspeed": 119.99999941561207,
+    "altitude": 1500.0000201532935,
+    "angles": [
+      0,
+      0.0759768323002449,
+      0
+    ],
+    "controls": {
+      "elevator": 0.01564139894411307,
+      "aileron": 0,
+      "rudder": 0,
+      "throttle": 0.20519062325051843,
+      "sweep": 0.6,
+      "flaps": 0,
+      "gear": 0,
+      "brake": 0
+    },
+    "meshCount": 60,
+    "triangles": 230112
+  },
+  "errors": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "deployment_workflow": "https://github.com/alvarodesigns34/flight/actions/runs/43705184725",
+  "deployment_attempt": 2,
+  "deployment_result": "success",
+  "branch": "codex/tomcat-flight-simulator"
+}

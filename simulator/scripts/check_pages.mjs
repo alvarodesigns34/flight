@@ -18,9 +18,12 @@ try {
  await page.locator('#sweep').fill('60');await page.locator('#sweep').dispatchEvent('input');
  await page.waitForFunction(()=>window.flightLab.controls.sweep===.6);
  const runtime=await page.evaluate(()=>window.flightLab);
- const response=await page.request.get(new URL('build-info.json',base).href);
- if(!response.ok())throw new Error('Missing deployed build manifest');
- const build=await response.json();
+ // Read through the same browser connection as the app, including its proxy.
+ const build=await page.evaluate(async url=>{
+  const response=await fetch(url);
+  if(!response.ok)throw new Error('Missing deployed build manifest: '+response.status);
+  return response.json();
+ },new URL('build-info.json',base).href);
  const result={checked_at:new Date().toISOString(),url:base.href,source_commit:build.source_commit,runtime_files:build.files.length,
   checks:['Pages subdirectory asset loading','WebGL aircraft ready','start flight','pause flight','wing configuration control'],runtime,errors,failedRequests,httpErrors};
  await page.screenshot({path:output.replace(/\.json$/,'.png')});

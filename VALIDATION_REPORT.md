@@ -58,3 +58,7 @@ JSBSim 1.2.3 instalado y ejecutado 10 s a 120 Hz con su C172 civil. Trim inicial
 ## Pendiente
 
 Dinámica histórica verificable, afinamiento de contactos y aterrizajes, pruebas de perturbaciones más largas, variación de CG, animación coherente de todos los controles, pérdida y resbalamiento fuera del régimen moderado, dispositivos de entrada físicos, texturización detallada y calibración multivista del modelo. Las limitaciones concretas del motor actual están en `FLIGHT_MODEL.md`. La continuidad automática a las 06:00 **no quedó creada** por el límite de 5 tareas activas.
+
+## Comprobación de GitHub Pages
+
+`check_pages.mjs` pasó con el runtime servido bajo `/flight/`, primero en staging local y después en https://alvarodesigns34.github.io/flight/. Se verificaron geometría WebGL, inicio, pausa, control de alas y manifiesto de despliegue. La ejecución pública registró cero errores JavaScript, cero peticiones fallidas y cero respuestas HTTP de error. `PAGES_DEPLOYMENT.json` conserva el resultado y el SHA del runtime observado. El workflow Pages 43705184725, intento 2, completó build y publicación.

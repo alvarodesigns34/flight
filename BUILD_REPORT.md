@@ -19,3 +19,7 @@ El simulador del navegador usa parámetros **genéricos e ilustrativos**. No se 
 ## Continuación automática
 
 Hora inicial comprobada: 15-11-2026 01:32:37 UTC = 02:32:37 CET, Europe/Madrid. Se intentó crear una única continuación para **15-11-2026 06:00 CET**, `exact_schedule`, en esa zona. La plataforma devolvió `too_many_active_automations`: 5 tareas activas, límite 5. No devolvió identificador y **no quedó programada**. Se comprobó que las tareas activas pertenecían a otros encargos; no se modificaron. El prompt y el resultado se conservan en `simulator/evidence/scheduling.json` y `CONTINUATION.md`. No hay cron, tarea de GitHub ni proceso local que sustituya una reanudación persistente del agente.
+
+## Publicación web
+
+GitHub Pages publica el runtime estático mediante `.github/workflows/pages.yml` en https://alvarodesigns34.github.io/flight/. El usuario permitió la rama del simulador en `github-pages`; el reintento 2 del workflow 43705184725 terminó correctamente. Se comprobó en Chromium la carga real del avión, inicio, pausa y configuración alar sin errores. Manifiesto y estado: `PAGES_DEPLOYMENT.json`.
