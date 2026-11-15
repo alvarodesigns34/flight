@@ -1,5 +1,5 @@
 {
-  "source_commit": "87a6da596557eb09f9f7753aebc44e79cfdcf00c",
+  "source_commit": "6a5d582d56a12bea6f949676264432e06a3ce625",
   "verified_files": 33,
   "zip_integrity": true,
   "standalone_server": true,
@@ -9,5 +9,8 @@
     "started": true,
     "paused": true,
     "errors": []
-  }
+  },
+  "archive_hashes_rechecked_after_visual_water_fix": true,
+  "browser_checkpoint": "87a6da596557eb09f9f7753aebc44e79cfdcf00c",
+  "browser_scope": "Extracted package browser test passed before the water-shader-only visual refinement; final Ultra shader also checked on the published website."
 }
