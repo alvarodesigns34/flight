@@ -1,6 +1,10 @@
-# Tomcat Flight Lab 0.1
+# Tomcat Flight & Archive 0.2
 
 Simulador educativo local con el modelo artístico del repositorio. Dinámica genérica de seis grados de libertad; no prestaciones certificadas del F-14A o TF30. Sin armas, sistemas tácticos o combate.
+
+## Modelo original 3D
+
+Pulsa **Modelo original 3D** para inspeccionar el avión completo. Pausa automáticamente el vuelo. Las ocho vistas, rueda, órbita y desplazamiento permiten ver la cabina, el tren y las toberas. **Vista limpia** oculta paneles; la descarga del `.blend` es idéntica al maestro original. El inspector no decima la malla: 1.316.961 triángulos y todos los interiores. Los materiales se adaptan a WebGL.
 
 ## GitHub Pages
 
@@ -30,6 +34,8 @@ Selecciona un escenario y pulsa **Iniciar vuelo**. Arrastra y usa la rueda en Ex
 | Alabeo izquierda / derecha | ← / → |
 | Guiñada | A / D |
 | Subir / bajar potencia | W / S |
+| Compensador abajo / arriba | Q / E, o botones − / + |
+| Tren / freno / flaps | G / B / F |
 | Pausa / reiniciar / cámara | Espacio / R / C |
 | Alas, flaps, tren, freno, viento | Panel lateral |
 | Gamepad | Ejes 0, 1, 2: alabeo, cabeceo, guiñada; zona muerta 0,09 |
@@ -51,12 +57,12 @@ npm run build
 npm run validate
 ```
 
-Prueba del visor: inicia el servidor y ejecuta `node simulator/scripts/browser_check.mjs`. Requiere Chromium (por defecto `/usr/bin/chromium`; alternativa con `CHROMIUM_PATH`). Esta prueba usa software WebGL para revisar controles y capturas, y bloquea peticiones externas.
+Prueba del visor: inicia el servidor y ejecuta `node simulator/scripts/check_experience.mjs`. Requiere Chromium (por defecto `/usr/bin/chromium`; alternativa con `CHROMIUM_PATH`). Esta prueba usa software WebGL para revisar controles y capturas, y bloquea peticiones externas.
 
 Reconstruir el recurso 3D, con Blender oficial 4.3.2 y desde la raíz:
 
 ```sh
-blender -b PROJECT_TOMCAT/F14A_TOMCAT_MASTER.blend -t 3 --python-exit-code 1 --python simulator/scripts/export_aircraft.py
+blender -b PROJECT_TOMCAT/F14A_TOMCAT_MASTER.blend -t 3 --python-exit-code 1 --python simulator/scripts/export_original.py
 ```
 
 La exportación crea una escena derivada y **no guarda sobre el maestro**. Se registran hashes en `evidence/export.json`. Los shaders procedurales se simplifican para glTF. La versión de sistema de Blender falló al exportar en este entorno; la distribución oficial 4.3.2 completó la operación.
@@ -64,3 +70,5 @@ La exportación crea una escena derivada y **no guarda sobre el maestro**. Se re
 Motor consolidado opcional: `python3 -m pip install -r simulator/reference/requirements.txt` y `python3 simulator/reference/jsbsim_reference.py`. Ejecuta JSBSim con el C172 civil incluido en su paquete. Es una prueba independiente, no el motor del visor ni una validación del F-14.
 
 Si la imagen va lenta, reduce el tamaño de la ventana y usa aceleración gráfica del navegador. Las mediciones de este entorno sin GPU no predicen el rendimiento de tu equipo.
+
+El nuevo vuelo añade mando virtual arrastrable, guiñada y compensador en pantalla, y conserva el control por teclado/gamepad. El render en pausa solo se actualiza al cambiar la vista; «Ultra» prioriza efectos y «Ligera» reduce carga sin eliminar geometría del inspector. La primera carga incluye un GLB de aproximadamente 38 MiB y recursos HDR/texturas locales. Las aproximaciones y licencias se detallan en `VISUAL_UPGRADE.md` de la raíz del repositorio.

@@ -1,6 +1,6 @@
 {
   "name": "project-tomcat-flight-lab",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,6 +9,11 @@
     "test": "node --test simulator/tests/*.test.mjs",
     "validate": "node simulator/scripts/validate.mjs"
   },
-  "dependencies": {"three": "0.181.1"},
-  "devDependencies": {"esbuild": "0.25.12", "@playwright/test": "1.56.1"}
+  "dependencies": {
+    "three": "0.181.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12",
+    "@playwright/test": "1.56.1"
+  }
 }

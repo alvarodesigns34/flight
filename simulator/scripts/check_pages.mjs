@@ -12,7 +12,7 @@ try {
  page.on('requestfailed',r=>failedRequests.push(r.url()));
  page.on('response',r=>{if(r.status()>=400)httpErrors.push({url:r.url(),status:r.status()});});
  await page.goto(base.href,{waitUntil:'domcontentloaded'});
- await page.waitForFunction(()=>window.flightLab?.ready,{},{timeout:120000});
+ await page.waitForFunction(()=>window.flightLab?.ready,{},{timeout:240000});
  await page.locator('#play').click();await page.waitForFunction(()=>window.flightLab.running&&window.flightLab.time>.3);
  await page.locator('#play').click();await page.waitForFunction(()=>!window.flightLab.running);
  await page.locator('#sweep').fill('60');await page.locator('#sweep').dispatchEvent('input');

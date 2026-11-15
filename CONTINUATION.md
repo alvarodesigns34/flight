@@ -1,96 +1,76 @@
-# Continuar Tomcat Flight Lab
+# Continuar Tomcat Flight & Archive 0.2
 
-## Recuperación sin contexto previo
+Repositorio: https://github.com/alvarodesigns34/flight · Rama: `codex/tomcat-flight-simulator` · PR abierta: https://github.com/alvarodesigns34/flight/pull/1.
 
-- Repositorio: https://github.com/alvarodesigns34/flight
-- Rama de trabajo: `codex/tomcat-flight-simulator`.
-- Checkpoint de código empaquetado y comprobado: **`e27f86591ecbb00930e1ddd2edceaccd087338a9`**.
-- Base original preservada: `a43319cc19591294c537d8e8064a71d0997f84dc` (`main`).
-- Último commit efectivo: ejecutar `git log -1 --format='%H %s'` en esta rama. La entrega se cierra con commits de implementación y paquete; el hash del checkpoint empaquetado queda en `downloads/TOMCAT_FLIGHT_LAB.json` y en `PACKAGE_MANIFEST.json` dentro del ZIP. No se escribe un hash autorreferente imposible en este archivo.
-- Pull request abierta: **https://github.com/alvarodesigns34/flight/pull/1**. No fusionar automáticamente.
-- Entrega publicada: commit `46b889f58d22e1c3e18480930e3cec164d31ae1d`, con CI `physics-and-assets` satisfactoria en push y PR. Los commits posteriores de este documento no cambian ese checkpoint ejecutable.
+Web: https://alvarodesigns34.github.io/flight/ · Inspector directo: https://alvarodesigns34.github.io/flight/#modelo.
 
-Clonar o recuperar y comprobar cambios locales **antes de cambiar de rama**. Si existen cambios no confirmados, conservarlos, sin reset, clean o sobrescrituras. Leer cualquier `AGENTS.md` nuevo, README y este documento. El repositorio no tenía `AGENTS.md` al empezar esta fase.
+Leer primero cualquier `AGENTS.md` aplicable, este documento y `VISUAL_UPGRADE.md`. Comprobar `git status` antes de cambiar de rama y conservar cambios existentes. No fusionar la PR automáticamente. Último commit: `git log -1 --format='%H %s'`; el ZIP registra su checkpoint exacto en `downloads/TOMCAT_FLIGHT_LAB.json` y su manifiesto interno.
 
-## Estado funcional
+## Estado actual
 
-El simulador es una aplicación offline Three.js con física educativa genérica de seis grados de libertad en JavaScript independiente del render. Carga una copia glTF optimizada del maestro original, con colores históricos y pivotes visuales de alas/estabilizadores. Hay tres escenarios (crucero, configuración de aterrizaje nivelada, pista), teclado/gamepad/táctil, cámaras exterior/seguimiento/piloto, sonido sintetizado opcional y exportación de telemetría CSV. La cámara Piloto es vista frontal sin cabina funcional. El tren solo cambia visibilidad. Flaps y timón afectan a fuerzas sin animación detallada de esas mallas.
+Hay dos modos: **vuelo** e **inspección del modelo original**. El inspector pausa el vuelo y conserva todas las piezas y triángulos evaluados de la entrega inicial, con normales de esquina. Incluye ocho cámaras, órbita/desplazamiento/zoom, exposición, giro, malla, cortes de cabina/estructura y vista limpia. La pose original es independiente de las alas, tren y mandos del vuelo.
 
-**Los coeficientes son genéricos estimados, no prestaciones del F-14A o TF30.** Mantenerlo explícito. No incorporar armas, sistemas tácticos, combate o calibración militar operativa. El objetivo continuable es un laboratorio educativo no bélico y una reconstrucción visual artística honesta. No afirmar realismo extraordinario o exactitud museística sin evidencia.
+Original: commit `a43319cc19591294c537d8e8064a71d0997f84dc`, maestro `PROJECT_TOMCAT/F14A_TOMCAT_MASTER.blend`, SHA-256 `72ee953fe589ae43a71eaf63225d689619acb43181011e107d341e7c454c33d0`. No se modifica. La copia descargable `simulator/assets/F14A_TOMCAT_ORIGINAL.blend` es idéntica. GLB actual: `assets/tomcat-original.glb`, **1.316.961 triángulos / 1.832 objetos fuente, sin decimación y sin objetos omitidos**. `assets/original-model.json` registra hashes y materiales. `assets/tomcat.glb` es el derivado reducido histórico de 0.1, no se usa en el visor actual ni se publica en el artefacto Pages nuevo.
 
-El maestro y el ZIP estático original se conservan sin modificación. SHA-256 del maestro: `72ee953fe589ae43a71eaf63225d689619acb43181011e107d341e7c454c33d0`. El glTF es una copia derivada; shaders procedurales reducidos a valores PBR, vidrio alpha y estructura interior expositiva omitida. `PROJECT_TOMCAT/DELIVERY_MANIFEST.json` conserva el registro histórico; los archivos de código modificados después no deben compararse como si fueran aquella entrega.
+La exportación conserva PBR base y transmisión; los procedurales Blender se adaptan a WebGL, sin equivalencia píxel a píxel con Cycles. No confundir geometría íntegra con certificación histórica. Persisten aproximaciones originales de cabina, tren, perfiles y estructura.
 
-## Ejecutar y comprobar
+El vuelo incorpora mando virtual, guiñada y compensador en pantalla; atajos visibles; escenario costero a 115 m/s y 800 m; cielo/estudio HDR; materiales de terreno fotográficos; relieve, bosque, aeródromo y mar con reflexión en Ultra. Todos los recursos están incluidos localmente. Las atribuciones CC0 están en `assets/environment/ATTRIBUTIONS.json`.
 
-Desde la raíz:
+La dinámica sigue siendo **genérica y educativa**. No son prestaciones del F-14A o TF30. No incorporar armas, sistemas tácticos, combate o calibración militar operativa. No afirmar fotorrealismo absoluto, exactitud histórica absoluta o calidad profesional sin validación suficiente.
+
+`terrain.mjs` comparte la elevación entre representación y contacto. La pista sigue plana; el agua es contacto superficial simplificado, sin flotación, daños o impactos validados. Los controles actúan sobre las fuerzas y momentos, sin modificar directamente la trayectoria. El compensador es manual.
+
+## Ejecutar
 
 ```sh
 python3 simulator/serve.py --port 5173
-# Navegador: http://127.0.0.1:5173
+# http://127.0.0.1:5173/
+# Inspector: http://127.0.0.1:5173/#modelo
 ```
 
-Desde el paquete extraído: `python3 serve.py`; Windows `py -3 serve.py`. El visor ya incluye el bundle y el avión. No requiere npm, Blender o red para jugar.
+El bundle está incluido; para usarlo no hacen falta Blender, Node ni red. Desde el ZIP extraído: `python3 serve.py`; Windows: `py -3 serve.py`.
 
-Desarrollo:
+Desarrollo y comprobaciones:
 
 ```sh
 npm ci
 npm test
 python3 -m unittest discover -s simulator/tests -p 'test_*.py'
 npm run build
-npm run validate
-python3 -m pip install Pillow==13.0.0
 python3 PROJECT_TOMCAT/src/check_delivery.py
-# Con el servidor activo y Chromium instalado:
-node simulator/scripts/browser_check.mjs
+# Servidor activo y Chromium instalado:
+node simulator/scripts/check_experience.mjs http://127.0.0.1:5173/ /tmp/tomcat-experience
 ```
 
-`CHROMIUM_PATH` permite otro ejecutable Chromium. La prueba de UI bloquea la red externa y genera capturas. Su WebGL por software va lento en este entorno: esperar las condiciones, sin reducir la precisión de la física. No afirmar FPS universales. El escritorio compartido no pudo inicializarse por un fallo de sandbox; se recurrió a Playwright headless y se inspeccionaron sus imágenes reales.
+La suite usa WebGL por software en Ligera para las pruebas generales, mantiene toda la geometría e incluye capturas Ultra. En este entorno sin GPU la compilación y algunas capturas son lentas. Esperar estados reales del DOM en vez de suponer tiempos fijos. `CHROMIUM_PATH` permite otro ejecutable. `check_pages.mjs` comprueba el sitio desplegado y su manifiesto, también aceptando una URL con `?quality=light` para hardware lento.
 
-Exportación 3D (usar distribución oficial Blender 4.3.2; la de sistema falló):
+El render en pausa es por cambios de vista/configuración; no recalcular permanentemente una escena estática. En vuelo y giro automático continúa renderizando. Mantener la física fija a 120 Hz y su limitación de recuperación de cuadros; un equipo lento puede avanzar más despacio que el reloj real.
+
+## Regenerar los recursos
+
+Usar la distribución oficial de Blender 4.3.2. La compilación de sistema produjo fallos nativos en fases anteriores.
 
 ```sh
-blender -b PROJECT_TOMCAT/F14A_TOMCAT_MASTER.blend -t 3 --python-exit-code 1 --python simulator/scripts/audit_blender.py
-blender -b PROJECT_TOMCAT/F14A_TOMCAT_MASTER.blend -t 3 --python-exit-code 1 --python simulator/scripts/export_aircraft.py
+blender -b PROJECT_TOMCAT/F14A_TOMCAT_MASTER.blend -t 3 --python-exit-code 1 --python simulator/scripts/export_original.py
 npm run build
 ```
 
-En el entorno inicial, el binario oficial quedó en `/tmp/blender-4.3.2-linux-x64/blender`; esa ruta temporal no se presupone en futuras máquinas. La exportación no guarda el maestro. No ejecutar la generación original directamente sobre el maestro para una prueba: usar carpeta temporal o `--output` y conservar los archivos existentes.
+El script exige el hash inicial, crea otra escena, conserva las normales y exporta solo la escena activa. Nunca guarda sobre el maestro. Si se cambia intencionadamente el original en otra fase, conservar primero el archivo fuente y no eliminar la comprobación de integridad como atajo. El script histórico `export_aircraft.py` queda para la exportación reducida de 0.1.
 
-Referencia JSBSim civil opcional: `python3 -m pip install -r simulator/reference/requirements.txt` y `python3 simulator/reference/jsbsim_reference.py`. Ese adaptador prueba su C172 civil; no impulsa el navegador ni valida nuestro avión. Arquitectura y alternativas documentadas en `SIMULATION_DESIGN.md`.
+Para auditar el maestro: `blender -b PROJECT_TOMCAT/F14A_TOMCAT_MASTER.blend -t 3 --python-exit-code 1 --python simulator/scripts/audit_blender.py`. Las huellas de la regeneración original y la auditoría previa siguen en `simulator/evidence/`.
 
-Empaquetar solo desde un checkpoint confirmado: `python3 simulator/scripts/package.py --ref HEAD`. El ZIP registra el SHA fuente y hashes por archivo. Confirmar por separado el paquete y sus metadatos, y comprobar extracción y arranque. No modificar el ZIP histórico `PROJECT_TOMCAT.zip`.
+## Publicación y paquetes
 
-## Evidencia disponible
+`.github/workflows/pages.yml` publica cambios del simulador desde `main` o `codex/tomcat-flight-simulator`. El entorno `github-pages` admite ambas ramas: el usuario añadió la segunda después del rechazo inicial. Conservar las políticas. Pages utiliza un artefacto con el runtime, el Blender descargable y atribuciones; no incluye logs, fuentes Python o todo el repositorio. Comprobar siempre el estado real del despliegue y el `build-info.json` público.
 
-- 12 pruebas físicas Node y 2 regresiones Python; resultados en `VALIDATION_REPORT.md`.
-- Tres escenarios de 60 s con CSV y `simulator/evidence/validation.json`.
-- Crucero: deriva de altitud máxima aproximadamente 0,777 m; velocidad 0,043 m/s en 60 s con combustible variable. No validación del F-14.
-- Auditoría Blender original aprobada, regeneración estructural coincidente y 1.833 huellas de objetos coincidentes bajo el alcance de `snapshot_scene.py`.
-- Once imágenes originales verificadas por hashes y dimensiones; diferencia cosmética previa conservada y documentada.
-- `export.json`, capturas y `browser_check.json`: datos de la copia interactiva y pruebas reales de UI. Revisar la última ejecución, no inferir éxito de la mera existencia de una captura antigua.
-- JSBSim 1.2.3: trim inicial y ejecución civil de 10 s, datos finitos, sin equivalencia proclamada con el modelo genérico.
+Paquete offline: confirmar un checkpoint funcional y ejecutar `python3 simulator/scripts/package.py --ref HEAD`. Después verificar con `python3 simulator/scripts/check_package.py`. Confirmar el ZIP y su manifiesto aparte. El ZIP estático original `downloads/PROJECT_TOMCAT.zip` se conserva sin modificación. El paquete 0.1 histórico estaba basado en `e27f86591ecbb00930e1ddd2edceaccd087338a9`; el manifiesto del paquete actual es la referencia vigente.
 
-## Siguiente tarea concreta
+## Continuar a partir de aquí
 
-Ampliar la validación educativa del contacto y rodaje: registrar una maniobra reproducible de rodaje a baja velocidad con frenada, cuantificar compresión y deslizamiento, y ajustar el rig visual para que la suspensión coincida con los puntos físicos. Mantener parámetros genéricos explícitos. Después separar una interfaz de motor para que una dinámica civil de JSBSim pueda sustituir el módulo del navegador sin acoplar entradas, render ni telemetría.
+Prioridad: comprobar capturas y rendimiento de escritorio/móvil en hardware gráfico real y ajustar únicamente resolución/efectos cuando el usuario elija otro modo, sin decimar silenciosamente el inspector. Después mejorar representación de suspensión y despliegue visual del tren, manteniendo las coordenadas de contacto y las limitaciones artísticas explícitas. Una futura integración civil de JSBSim debe permanecer separada de entradas, representación y telemetría; el adaptador opcional `simulator/reference/jsbsim_reference.py` sigue siendo una prueba civil independiente.
 
-Problemas abiertos: no hay cambio de CG con distribución de combustible; inercias aproximadas; sin compresibilidad, mapas aerodinámicos medidos, turbulencia, dinámica real TF30, articulación de todos los controles o contacto severo validado. La fidelidad histórica de secciones, cabina, tren y panelización continúa limitada por las referencias originales. No tratar la exactitud de la envolvente como prueba de exactitud de todos los contornos.
+Pendientes físicos: CG por distribución de combustible, inercias completas, compresibilidad, tablas experimentales, pérdida/resbalamiento fuera del régimen moderado, turbulencia y contacto severo. Pendientes visuales: exactitud local histórica, render procedimental idéntico a Cycles, mayor variedad de vegetación y meteorología volumétrica. El cielo actual es una captura HDR y la luz cálida es artística.
 
-## Despertador solicitado: NO CREADO
+## Programación original de continuación
 
-- Reloj inicial comprobado: **15-11-2026 01:32:37 UTC / 02:32:37 CET**.
-- Próxima hora solicitada en ese momento: **15-11-2026 06:00 CET, Europe/Madrid**, equivalente a 05:00 UTC.
-- Se invocó la automatización persistente de la plataforma con VEVENT único y `exact_schedule`.
-- Resultado: **`too_many_active_automations`**, 5 tareas activas sobre límite 5.
-- Identificador: **ninguno**, la creación falló. Estado activado: **no**.
-- Las tareas activas eran de otros encargos y se conservaron. No se desactivó ninguna ni se usó cron o GitHub Actions como falsa reanudación del agente.
-- Prompt, hora, zona y error: `simulator/evidence/scheduling.json`.
-
-Si una ejecución llega a reanudarse por una acción posterior autorizada, leer primero este documento, conservar cambios y continuar el incremento concreto anterior. No crear recurrencias adicionales por iniciativa propia. Una programación válida tampoco elimina cuotas o dependencia de disponibilidad de la plataforma.
-
-## Publicación GitHub Pages — nueva fase
-
-El usuario configuró Pages → Source → GitHub Actions. La API confirma `build_type=workflow`, URL `https://alvarodesigns34.github.io/flight/`. Se añadió `.github/workflows/pages.yml`: build independiente, tests, bundle, preparación estática, artefacto Pages y deploy con permisos OIDC mínimos. `prepare_pages.py` publica solo los seis archivos de runtime y un manifiesto de commit/hashes; no incluye el maestro, fuentes Python ni informes. `check_pages.mjs` valida el mismo contenido servido en un subdirectorio `/flight/`.
-
-**Estado actual: PUBLICADO Y COMPROBADO** en https://alvarodesigns34.github.io/flight/. El usuario añadió `codex/tomcat-flight-simulator` a las ramas permitidas del entorno `github-pages`; se conserva también `main`. Se reintentó el workflow 43705184725, intento 2, y build/deploy finalizaron con éxito. El navegador cargó la web pública, el avión, inicio, pausa y cambio de alas, sin errores ni recursos fallidos. Evidencia: `PAGES_DEPLOYMENT.json`. Se verificó inicialmente el runtime del commit `0994dd1eb47424386a7b3e56bd9ffe1c94a3fc64`; los cambios posteriores de esta comprobación y documentación no modifican el runtime. La PR sigue abierta. La restricción anterior y el HTTP 403 de la integración quedaron resueltos mediante el cambio hecho por el usuario, sin quitar políticas existentes.
+Se intentó una ejecución única para **15-11-2026 06:00 Europe/Madrid**, a partir del reloj inicial 02:32:37 CET. La plataforma devolvió `too_many_active_automations` (5/5): **no se creó**, no existe identificador. Se conservaron tareas de otros encargos. La evidencia original sigue en `simulator/evidence/scheduling.json`. No afirmar reanudación persistente ni crear recurrencias nuevas por iniciativa propia.

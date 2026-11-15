@@ -1,0 +1,68 @@
+[
+  {
+    "file": "studio-small-09-2k.hdr",
+    "source": "https://polyhaven.com/a/studio_small_09",
+    "author": "Sergej Majboroda",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "provider_license": "https://polyhaven.com/license",
+    "resolution": "2k",
+    "bytes": 6312947,
+    "sha256": "36724313c0fc66dab126ff90f081b85a0b1ef47be65eda1417bd20b033f0573f"
+  },
+  {
+    "file": "kloofendal-sky-2k.hdr",
+    "source": "https://polyhaven.com/a/kloofendal_48d_partly_cloudy_puresky",
+    "author": "Greg Zaal; sky edit Jarod Guest",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "provider_license": "https://polyhaven.com/license",
+    "resolution": "2k",
+    "bytes": 5451493,
+    "sha256": "5244534e9cf5b606f2ff513aa00ddb161b0a4826ffd88a0d3bd03ac29247d198"
+  },
+  {
+    "file": "grass-rock-albedo-2k.jpg",
+    "source": "https://polyhaven.com/a/aerial_grass_rock",
+    "author": "Rob Tuytel",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "provider_license": "https://polyhaven.com/license",
+    "resolution": "2k",
+    "bytes": 2624635,
+    "sha256": "1a2ddfa4652adbe00447b940c40019d46f4b88245bc1b341cdf622c2110b7bc5"
+  },
+  {
+    "file": "grass-rock-normal-2k.jpg",
+    "source": "https://polyhaven.com/a/aerial_grass_rock",
+    "author": "Rob Tuytel",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "provider_license": "https://polyhaven.com/license",
+    "resolution": "2k",
+    "bytes": 3799025,
+    "sha256": "c6aa14b042ce243f93a6ca807f46a085711c23ad316b104578e92df7770ee285"
+  },
+  {
+    "file": "grass-rock-roughness-2k.jpg",
+    "source": "https://polyhaven.com/a/aerial_grass_rock",
+    "author": "Rob Tuytel",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "provider_license": "https://polyhaven.com/license",
+    "resolution": "2k",
+    "bytes": 1495844,
+    "sha256": "fc0fff40e3378f2f54d225db6e3e566a8563bb2c143eef0f09b543c9d4698776"
+  },
+  {
+    "file": "rock-albedo-2k.jpg",
+    "source": "https://polyhaven.com/a/rocky_terrain_02",
+    "author": "Amal Kumar",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "provider_license": "https://polyhaven.com/license",
+    "resolution": "2k",
+    "bytes": 3232826,
+    "sha256": "9b042fe0618ffbc3650592456d7d8d265ba9a1cb5ce802f5f1d86b7ee79508a1"
+  }
+]

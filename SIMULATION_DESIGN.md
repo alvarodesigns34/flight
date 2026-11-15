@@ -1,6 +1,10 @@
 # Tomcat Flight Lab — arquitectura
 
-## Estado del incremento 0.1
+## Estado actual 0.2 — Flight & Archive
+
+Dos escenas: inspector del original y vuelo. `export_original.py` conserva todos los triángulos y normales, sin decimación. La copia nativa es idéntica por SHA-256. El estudio y el vuelo usan HDRI y texturas CC0 locales; `terrain.mjs` comparte la altura con la física. Los detalles están en `VISUAL_UPGRADE.md`. El render se solicita solo cuando la vista cambia si está en pausa; en vuelo o giro automático avanza continuamente.
+
+## Base dinámica del incremento 0.1
 
 Aplicación local ejecutable y sin servicios remotos: el avión artístico existente se representa en Three.js sobre un paisaje ficticio. El modelo dinámico es **genérico y educativo**, con seis grados de libertad. No es un modelo de prestaciones del F-14A ni una simulación operativa de sus motores TF30. La identidad histórica pertenece a la reconstrucción visual; sus límites originales siguen en `PROJECT_TOMCAT/RESEARCH_AND_REFERENCES.md`.
 
@@ -29,11 +33,11 @@ La física avanza a 120 Hz. El render usa `requestAnimationFrame`. Se acumula ti
 
 ## Modelo visual derivado
 
-El maestro conserva su SHA-256 original. `export_aircraft.py` crea otra escena, evalúa modificadores, agrupa por material y conjunto móvil, suelda y reduce geometría. Omite 106 objetos interiores de estructura expositiva. Las marcas del ala de babor y sus luces siguen su pivote. La copia interactiva tiene aproximadamente 255.000 triángulos antes de las separaciones propias del formato glTF; el registro exacto está en `evidence/export.json`.
+El maestro conserva su SHA-256 original. `export_aircraft.py` crea otra escena, evalúa modificadores, agrupa por material y conjunto móvil, suelda y reduce geometría. Omite 106 objetos interiores de estructura expositiva. Las marcas del ala de babor y sus luces siguen su pivote. La copia reducida de 0.1 tenía aproximadamente 255.000 triángulos; queda como artefacto histórico. La versión 0.2 utiliza `assets/tomcat-original.glb` con 1.316.961 triángulos, todos los componentes y las normales de esquina, sin decimación. El registro actual es `assets/original-model.json`.
 
 Blender: +X babor, +Y atrás, +Z arriba. glTF exportado: +X babor, +Y arriba, +Z delante. Física: +X delante, +Y estribor, +Z abajo, cuaternión cuerpo→NED. Mundo gráfico: +X este, +Y arriba, −Z norte. Dos matrices explícitas en el render convierten cuerpo y representación. Los tests comprueban los signos físicos; la revisión visual comprueba la apariencia.
 
-La conversión de shaders conserva los colores PBR base creados en Blender; el ruido y el bump procedural no se hornean. La transmisión se aproxima con transparencia alpha para evitar pasadas costosas. El tren cambia de visibilidad, sin cinemática real; la geometría alar y estabilizadores tienen pivotes artísticos. No hay articulación independiente de flaps o timones: sus controles afectan a las fuerzas, pero no animan toda la geometría correspondiente.
+La conversión de shaders conserva los colores PBR base creados en Blender; el ruido y el bump procedural no se hornean. La transmisión es física en Ultra y se aproxima con alpha en los modos de menor coste. El tren cambia de visibilidad, sin cinemática real; la geometría alar y estabilizadores tienen pivotes artísticos. No hay articulación independiente de flaps o timones: sus controles afectan a las fuerzas, pero no animan toda la geometría correspondiente.
 
 ## Instalación y licencias
 

@@ -62,3 +62,13 @@ Dinámica histórica verificable, afinamiento de contactos y aterrizajes, prueba
 ## Comprobación de GitHub Pages
 
 `check_pages.mjs` pasó con el runtime servido bajo `/flight/`, primero en staging local y después en https://alvarodesigns34.github.io/flight/. Se verificaron geometría WebGL, inicio, pausa, control de alas y manifiesto de despliegue. La ejecución pública registró cero errores JavaScript, cero peticiones fallidas y cero respuestas HTTP de error. `PAGES_DEPLOYMENT.json` conserva el resultado y el SHA del runtime observado. El workflow Pages 43705184725, intento 2, completó build y publicación.
+
+## Versión 0.2 — original íntegro y nueva experiencia
+
+**17/17 pruebas Node y 2/2 regresiones Python pasan.** Las nuevas comprobaciones leen el GLB, suman los índices de cada primitiva y verifican exactamente **1.316.961 triángulos**, atributos de normales y hash del recurso. Comprueban asimismo que el Blender descargable y el maestro tienen el SHA-256 inicial, y que no se omiten los 1.832 objetos fuente. Las pruebas de terreno comprueban pista plana, continuidad, relieve, contacto a la altura dibujada y estabilidad de la salida costera durante 20 s.
+
+La suite `check_experience.mjs` pasó con Chromium/SwiftShader: modelo completo, pestaña original, pausa de la física al inspeccionar, cabina/tren, vista limpia, móvil 390 px, pista, respuesta real de cabeceo a teclado, compensador, audio, Ultra y luz cálida. Terminó con **cero errores JavaScript/console y cero errores HTTP**. Capturas de escritorio, móvil, cabina, tren, vista limpia, vuelo Ultra, atardecer e inspector Ultra fueron inspeccionadas. Registro: `simulator/evidence/experience-02/browser.json`.
+
+La prueba general usa Ligera para reducir el coste del render por software, conservando toda la geometría, y al final activa Ultra para comprobar sus shaders, vidrio y sombras. No se deduce rendimiento en hardware real de esos FPS. En la secuencia registrada se dibujaron 25 cuadros a pesar de múltiples capturas y esperas, gracias al render por cambios en pausa. La exportación source/noise no acredita una equivalencia de todos los shaders con Cycles: se conservan valores PBR, transmisión en Ultra y normales; el grano fino se aproxima. El cielo HDR y la vegetación procedural no equivalen a meteorología o fotogrametría del lugar.
+
+El preparado Pages contiene 15 recursos del runtime, aproximadamente 69 MB sin comprimir, incluida la descarga Blender original y las atribuciones; excluye el GLB reducido histórico, Python y logs. Las rutas siguen siendo relativas para `/flight/`; el despliegue y su comprobación pública se registran en `PAGES_DEPLOYMENT.json`.

@@ -5,11 +5,11 @@ ROOT=Path(__file__).resolve().parents[2]
 parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--ref',default='HEAD');args=parser.parse_args()
 sha=subprocess.check_output(['git','rev-parse',args.ref],cwd=ROOT,text=True).strip()
 paths=subprocess.check_output(['git','ls-tree','-r','--name-only',sha,'--','simulator'],cwd=ROOT,text=True).splitlines()
-paths=[p for p in paths if not any(x in p.split('/') for x in ['evidence','tests','scripts','reference']) and p!='simulator/README.md']
+paths=[p for p in paths if not any(x in p.split('/') for x in ['evidence','tests','scripts','reference']) and p not in ['simulator/README.md','simulator/assets/tomcat.glb']]
 # Runtime root is the simulator directory. Source/development docs stay in Git.
 selected={p:p.removeprefix('simulator/') for p in paths}
 selected['simulator/README.md']='README.md'
-for name in ['SIMULATION_DESIGN.md','FLIGHT_MODEL.md','VALIDATION_REPORT.md','CONTINUATION.md','BUILD_REPORT.md']:
+for name in ['SIMULATION_DESIGN.md','FLIGHT_MODEL.md','VALIDATION_REPORT.md','CONTINUATION.md','BUILD_REPORT.md','VISUAL_UPGRADE.md']:
     selected[name]='docs/'+name
 out=ROOT/'downloads/TOMCAT_FLIGHT_LAB.zip';records=[]
 with zipfile.ZipFile(out,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:

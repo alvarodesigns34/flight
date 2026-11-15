@@ -21,7 +21,7 @@ with tempfile.TemporaryDirectory(prefix='tomcat-package-') as tmp:
                     assert r.status==200;assert b'Tomcat' in r.read();break
             except OSError:time.sleep(.1)
         else:raise RuntimeError('Packaged server did not become ready')
-        for path in ['dist/app.js','style.css','assets/tomcat.glb','assets/THREE-LICENSE.txt']:
+        for path in ['dist/app.js','style.css','assets/tomcat-original.glb','assets/THREE-LICENSE.txt']:
             with urllib.request.urlopen('http://127.0.0.1:5174/'+path) as r:
                 assert r.status==200
                 assert hashlib.sha256(r.read()).hexdigest()==hashlib.sha256((folder/path).read_bytes()).hexdigest()
@@ -31,13 +31,13 @@ import {chromium} from '@playwright/test';
 const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',headless:true,args:['--no-sandbox','--enable-unsafe-swiftshader','--use-angle=swiftshader']});
 const page=await browser.newPage({viewport:{width:960,height:700}}),errors=[];
 page.on('pageerror',e=>errors.push(e.message));
-await page.goto('http://127.0.0.1:5174');await page.waitForFunction(()=>window.flightLab?.ready,{},{timeout:120000});
+await page.goto('http://127.0.0.1:5174/?quality=light');await page.waitForFunction(()=>window.flightLab?.ready,{},{timeout:240000});
 await page.locator('#play').click();await page.waitForFunction(()=>window.flightLab?.time>.3);
 await page.locator('#play').click();await page.waitForFunction(()=>!window.flightLab.running);
 if(errors.length)throw new Error(JSON.stringify(errors));
 console.log(JSON.stringify({ready:true,started:true,paused:true,errors}));await browser.close();
 """
-        run=subprocess.run(['node','--input-type=module','-e',script],cwd=ROOT,text=True,capture_output=True,timeout=180)
+        run=subprocess.run(['node','--input-type=module','-e',script],cwd=ROOT,text=True,capture_output=True,timeout=360)
         assert run.returncode==0,run.stderr
         result={'source_commit':manifest['source_commit'],'verified_files':len(manifest['files']),'zip_integrity':True,'standalone_server':True,'http_asset_hashes_match':True,'browser':json.loads(run.stdout.strip())}
         (ROOT/'simulator/evidence/package_check.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))

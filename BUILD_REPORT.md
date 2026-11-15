@@ -23,3 +23,11 @@ Hora inicial comprobada: 15-11-2026 01:32:37 UTC = 02:32:37 CET, Europe/Madrid. 
 ## Publicación web
 
 GitHub Pages publica el runtime estático mediante `.github/workflows/pages.yml` en https://alvarodesigns34.github.io/flight/. El usuario permitió la rama del simulador en `github-pages`; el reintento 2 del workflow 43705184725 terminó correctamente. Se comprobó en Chromium la carga real del avión, inicio, pausa y configuración alar sin errores. Manifiesto y estado: `PAGES_DEPLOYMENT.json`.
+
+## Flight & Archive 0.2
+
+Se añadió un inspector independiente del modelo inicial y se sustituyó la malla de vuelo reducida por la exportación completa. `export_original.py` conserva 1.316.961 triángulos y 1.832 objetos fuente, normales de esquina y todos los interiores, sin decimación; se agrupa en 78 mallas para dibujar. Se exporta únicamente la escena activa, evitando duplicación de la escena fuente. GLB: 39.861.948 bytes. La copia descargable del Blender mantiene el hash inicial.
+
+Se incorporaron HDRI y texturas CC0 locales de Poly Haven, costa y relieve de 40 km, bosque, aeródromo y mar con reflexión en Ultra. La elevación se comparte con el contacto físico. La interfaz añade dos pestañas, ocho cámaras de inspección, cortes, vista limpia, mando virtual, compensador y atajos visibles. El sonido es una síntesis original de motor y aire, sin grabaciones TF30. La vista estática se renderiza bajo demanda para reducir consumo.
+
+Comprobaciones: 17 pruebas Node y 2 Python pasan; entrega estática original de 11 imágenes verificada; suite Chromium de escritorio/móvil pasa, incluyendo modelo íntegro, pausa del vuelo al inspeccionar, detalles de cabina/tren, controles, audio y Ultra. Se inspeccionaron capturas reales de los dos modos. `simulator/evidence/experience-02/` contiene resultados e imágenes. El alcance y las licencias están en `VISUAL_UPGRADE.md`. Los materiales siguen siendo una adaptación de Blender a WebGL, sin declaración de equivalencia píxel a píxel con Cycles.

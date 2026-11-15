@@ -18,8 +18,8 @@ def stage(output, commit):
     files = [RUNTIME / 'index.html', RUNTIME / 'style.css']
     for directory in ['dist', 'assets']:
         files.extend(sorted((RUNTIME / directory).rglob('*')))
-    files = [path for path in files if path.is_file()]
-    required = {'index.html', 'style.css', 'dist/app.js', 'assets/tomcat.glb', 'assets/THREE-LICENSE.txt'}
+    files = [path for path in files if path.is_file() and path != RUNTIME / 'assets/tomcat.glb']
+    required = {'index.html', 'style.css', 'dist/app.js', 'assets/tomcat-original.glb', 'assets/original-model.json', 'assets/F14A_TOMCAT_ORIGINAL.blend', 'assets/environment/studio-small-09-2k.hdr', 'assets/environment/kloofendal-sky-2k.hdr', 'assets/THREE-LICENSE.txt'}
     relative = {path.relative_to(RUNTIME).as_posix() for path in files}
     if not required.issubset(relative):
         raise ValueError('Missing runtime files: ' + str(required - relative))

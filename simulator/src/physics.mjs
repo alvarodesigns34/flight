@@ -1,3 +1,4 @@
+import {groundHeight,WATER_HEIGHT} from './terrain.mjs';
 import { parameters as P } from './parameters.mjs';
 export const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 export const add=(a,b)=>a.map((x,i)=>x+b[i]);
@@ -57,7 +58,7 @@ export function evaluate(y,controls,wind=[0,0,0]) {
   let worldForce=add(rotate(q,force),[0,0,mass*P.gravity]), groundLoad=0;
   const contacts=c.gear>.95?P.contacts:[[0,0,.9]];
   for(const contact of contacts) {
-    const arm=rotate(q,contact), depth=y[2]+arm[2];
+    const arm=rotate(q,contact), surface=Math.max(WATER_HEIGHT,groundHeight(y[0]+arm[0],y[1]+arm[1])), depth=y[2]+arm[2]+surface;
     if(depth<=0)continue;
     const pointV=add(y.slice(3,6),rotate(q,cross(rates,contact)));
     const normal=Math.max(0,P.spring*depth+P.damper*pointV[2]);
@@ -106,9 +107,10 @@ export function trim(speed=120,altitude=1500,config={}) {
 export class Simulation {
   constructor(){this.reset('cruise');}
   reset(scenario='cruise') {
-    const result=trim(scenario==='approach'?90:120,scenario==='approach'?450:1500,scenario==='approach'?{gear:1,flaps:.5}:{});
+    const result=trim(scenario==='coastal'?115:scenario==='approach'?90:120,scenario==='coastal'?800:scenario==='approach'?450:1500,scenario==='approach'?{gear:1,flaps:.5}:{});
     this.state=result.state;this.controls=result.controls;this.time=0;this.accumulator=0;this.droppedTime=0;this.wind=[0,0,0];this.stopped=false;
     if(scenario==='runway') {this.state=[0,0,-2.05,0,0,0,...quaternion(),0,0,0,0,P.initialFuel];this.controls={...defaultControls(),throttle:0,gear:1,brake:1};}
+    if(scenario==='coastal'){this.state[0]=-1600;this.state[1]=-9200;}
     this.initial={state:[...this.state],controls:{...this.controls},scenario};
     this.telemetry=[];this.nextSample=0;
   }
@@ -125,6 +127,6 @@ export class Simulation {
     const dt=Math.min(frameSeconds,.25);this.droppedTime+=frameSeconds-dt;this.accumulator+=dt;
     while(this.accumulator+1e-12>=1/120){this.step();this.accumulator-=1/120;}
   }
-  read(){return {...evaluate(this.state,this.controls,this.wind),angles:euler(this.state.slice(6,10)),altitude:-this.state[2],verticalSpeed:-this.state[5]};}
+  read(){return {...evaluate(this.state,this.controls,this.wind),angles:euler(this.state.slice(6,10)),altitude:-this.state[2],verticalSpeed:-this.state[5],terrainAltitude:Math.max(WATER_HEIGHT,groundHeight(this.state[0],this.state[1])),heightAboveGround:-this.state[2]-Math.max(WATER_HEIGHT,groundHeight(this.state[0],this.state[1]))};}
 }
 export const csvHeader='time_s,north_m,east_m,down_m,vn_mps,ve_mps,vd_mps,qw,qx,qy,qz,p_rad_s,q_rad_s,r_rad_s,spool,fuel_kg,airspeed_mps,alpha_rad,load_factor,elevator,aileron,rudder,throttle,sweep,flaps,gear,brake,wind_n_mps,wind_e_mps,wind_d_mps';

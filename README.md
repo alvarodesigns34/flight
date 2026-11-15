@@ -4,6 +4,14 @@ Reconstrucción artística editable de un **Grumman F-14A Tomcat**, inspirada en
 
 ![Vista de estudio del F-14A](PROJECT_TOMCAT/renders/01_FRONT_THREE_QUARTER.png)
 
+## Nuevo: Flight & Archive 0.2
+
+**[Simulación de vuelo](https://alvarodesigns34.github.io/flight/)** · **[Modelo original 3D](https://alvarodesigns34.github.io/flight/#modelo)**
+
+La nueva pestaña de inspección utiliza la geometría original completa: **1.316.961 triángulos, 1.832 objetos, sin simplificación y sin omitir interiores**, con normales originales. Incluye ocho cámaras de detalle, cortes de cabina/estructura, giro, malla y vista limpia. La descarga Blender conserva exactamente los bytes del archivo inicial. Los materiales procedurales se adaptan a PBR del navegador; no se declara equivalencia píxel a píxel con Cycles.
+
+El vuelo incorpora escenario costero, relieve y contacto compartidos, agua con reflejos en Ultra, cielo e iluminación HDR, texturas fotográficas, vegetación y aeródromo. Hay mando virtual, compensador, atajos visibles, controles claros y modos Ultra/Alta/Ligera. La dinámica sigue siendo educativa y genérica. Consulta [cambios visuales y alcance](VISUAL_UPGRADE.md).
+
 ## Publicación web con GitHub Pages
 
 Abre el simulador: **[Tomcat Flight Lab](https://alvarodesigns34.github.io/flight/)**. Publicación completada y comprobada en el navegador; registro en `PAGES_DEPLOYMENT.json`. El workflow `Deploy flight lab to Pages` construye y publica únicamente los archivos del navegador, con rutas relativas compatibles con `/flight/`. Se ejecuta al actualizar `main` o `codex/tomcat-flight-simulator` y también admite lanzamiento manual. El entorno `github-pages` debe permitir la rama desde la que se ejecute. El despliegue no requiere el servidor Python ni publica el archivo maestro Blender.

@@ -1,0 +1,38 @@
+import {chromium} from '@playwright/test';
+import {writeFileSync,mkdirSync} from 'node:fs';
+const base=process.argv[2]||'http://127.0.0.1:5173/';
+const out=process.argv[3]||'/tmp/tomcat-experience';mkdirSync(out,{recursive:true});
+const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',headless:true,args:['--no-sandbox','--enable-unsafe-swiftshader','--use-angle=swiftshader']});
+try{
+ const page=await browser.newPage({viewport:{width:1280,height:900},deviceScaleFactor:1});
+ page.setDefaultTimeout(120000);const errors=[],httpErrors=[];
+ page.on('pageerror',e=>{errors.push(e.message);console.error('PAGE_ERROR',e.message);});page.on('console',m=>{if(m.type()==='error'){errors.push(m.text());console.error('BROWSER_ERROR',m.text());}});page.on('response',r=>{if(r.status()>=400)httpErrors.push({url:r.url(),status:r.status()});});
+ const url=new URL(base);url.searchParams.set('quality','light');
+ await page.goto(url.href,{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>window.flightLab?.ready,{},{timeout:180000});
+ console.log('READY');await page.screenshot({path:out+'/flight-desktop.png'});
+ const start=await page.evaluate(()=>window.flightLab);
+ if(start.originalTriangles!==1316961||start.originalObjects!==1832||start.originalSimplified!==false)throw new Error('Full original model was not preserved');
+ await page.locator('#play').click();await page.waitForFunction(()=>window.flightLab.running&&window.flightLab.time>.25);
+ await page.locator('#tab-model').click();await page.waitForFunction(()=>window.flightLab.tab==='model'&&!window.flightLab.running);
+ const pausedTime=await page.evaluate(()=>window.flightLab.time);await page.waitForTimeout(500);
+ if(await page.evaluate(()=>window.flightLab.time)!==pausedTime)throw new Error('Physics continues in the model inspector');
+ console.log('INSPECTOR');await page.screenshot({path:out+'/original-desktop.png'});
+ await page.locator('[data-preset="cockpit"]').click();await page.locator('#cutaway').selectOption('cockpit');await page.waitForTimeout(500);await page.screenshot({path:out+'/original-cockpit.png'});
+ await page.locator('[data-preset="gear"]').click();await page.locator('#cutaway').selectOption('closed');await page.waitForTimeout(500);await page.screenshot({path:out+'/original-gear.png'});
+ await page.locator('[data-preset="hero"]').click();await page.locator('#focus-view').click();await page.waitForTimeout(500);await page.screenshot({path:out+'/original-clean.png'});await page.locator('#focus-view').click();
+ console.log('MOBILE');await page.setViewportSize({width:390,height:844});await page.waitForTimeout(700);await page.screenshot({path:out+'/original-mobile.png'});
+ if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth))throw new Error('Horizontal mobile overflow');
+ await page.locator('#tab-flight').click();await page.locator('#scenario').selectOption('runway');await page.waitForTimeout(500);await page.screenshot({path:out+'/runway-mobile.png'});
+ await page.setViewportSize({width:1280,height:900});await page.locator('#scenario').selectOption('coastal');
+ await page.locator('#play').click();await page.waitForFunction(()=>window.flightLab.running);await page.locator('#viewport canvas').focus();await page.keyboard.down('ArrowUp');
+ const pitch=await page.evaluate(()=>window.flightLab.angles[1]);await page.waitForFunction(p=>window.flightLab.controls.elevator>.1&&window.flightLab.angles[1]>p+.008,pitch);await page.keyboard.up('ArrowUp');
+ await page.locator('#play').click();await page.waitForFunction(()=>!window.flightLab.running);
+ await page.locator('#trim-up').click();await page.waitForFunction(()=>document.getElementById('trim-value').textContent==='+1%');
+ await page.locator('#center-controls').click();
+ await page.locator('#sound').click();await page.waitForFunction(()=>document.getElementById('sound').getAttribute('aria-pressed')==='true');await page.locator('#sound').click();
+ console.log('FLIGHT_CONTROLS');await page.setViewportSize({width:960,height:700});await page.locator('#quality').selectOption('ultra');await page.waitForFunction(()=>window.flightLab.quality==='ultra');await page.screenshot({path:out+'/flight-ultra.png'});
+ await page.locator('#daylight').selectOption('sunset');await page.waitForTimeout(500);await page.screenshot({path:out+'/flight-sunset.png'});
+ await page.locator('#tab-model').click();await page.waitForFunction(()=>window.flightLab.tab==='model');await page.screenshot({path:out+'/original-ultra.png'});
+ const final=await page.evaluate(()=>window.flightLab),result={url:base,at:new Date().toISOString(),checks:['full original geometry and components','original inspector tab','physics pauses in inspector','cockpit and gear inspection','uncluttered inspection','390px layout','runway scene','clear keyboard pitch response','trim control','synthesized audio toggle','Ultra mode','sunset lighting'],start,final,errors,httpErrors};
+ writeFileSync(out+'/result.json',JSON.stringify(result,null,2));if(errors.length||httpErrors.length)throw new Error(JSON.stringify({errors,httpErrors}));console.log(JSON.stringify(result,null,2));
+}finally{await browser.close();}

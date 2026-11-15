@@ -46,3 +46,7 @@ Se usa una atmósfera seca estándar de dos capas: T0=288,15 K, p0=101.325 Pa, R
 ## Pendiente y límites
 
 No hay tablas en Mach, compresibilidad, vuelos supersónicos validados, dinámica real del TF30, cambios de CG por distribución de combustible, productos de inercia, flexibilidad estructural, aerodinámica transitoria, mecanismos certificados o sistema hidráulico. La masa de combustible y la inercia escalar cambian; el CG permanece fijo. El acoplamiento de masa variable ignora la reacción del flujo de combustible, admisible como simplificación educativa declarada. Los contactos fuertes, grandes resbalamientos y vuelo invertido no están validados.
+
+## Entorno y mandos en 0.2
+
+El escenario adicional `coastal` empieza nivelado a 115 m/s y 800 m, sobre una costa ficticia, con posición N=−1.600 m/E=−9.200 m. No se cambian los parámetros aerodinámicos genéricos. Se añade compensador manual a la entrada del elevador y mando virtual; no hay asistencia oculta de trayectoria. El contacto usa `groundHeight(north,east)` compartido con el terreno visual, en lugar de cota cero universal. La pista continúa plana. La superficie de agua se aproxima con un plano de contacto a −16 m, sin flotación o impactos validados. La reacción del contacto sigue siendo vertical y aproximada; no acredita un modelo completo de rodadura sobre pendientes.

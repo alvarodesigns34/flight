@@ -1,0 +1,29 @@
+
+> project-tomcat-flight-lab@0.2.0 test
+> node --test simulator/tests/*.test.mjs
+
+✔ the inspector retains every original aircraft triangle and normal attribute (717.538172ms)
+✔ native download is byte-identical to the original master (187.026604ms)
+✔ SI atmosphere at sea level and tropopause, continuous layers (7.558591ms)
+✔ body forward and pitch/roll signs map to NED (5.98182ms)
+✔ trim solves forces and moments over three configurations (9.051845ms)
+✔ straight and level remains close for 60 seconds with fuel burn (1002.86925ms)
+✔ elevator, aileron and rudder produce the documented angular signs (1.970153ms)
+✔ throttle increases energy relative to idle and spool responds gradually (401.936801ms)
+✔ airspeed uses relative wind, including crosswind and tailwind (0.31836ms)
+✔ configuration drag and estimated sweep response change forces (0.418265ms)
+✔ RK4 convergence under control perturbation (210.408434ms)
+✔ frame rate independence at 30, 60 and 144 Hz (254.767455ms)
+✔ runway suspension settles; brakes remove kinetic energy (633.104007ms)
+✔ zero airspeed, fuel exhaustion and invalid controls remain explicit (2.123642ms)
+✔ runway is flat and continuous, and distant terrain includes coastline and relief (4.722679ms)
+✔ contact follows the rendered elevation instead of a universal zero-altitude plane (2.122278ms)
+✔ coastal starting point has clearance and remains stable above the shared surface (563.532726ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5232.297528

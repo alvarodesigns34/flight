@@ -81,6 +81,6 @@ for name,center in pivots.items():
             mod=ob.modifiers.new('Interactive_LOD','DECIMATE');mod.ratio=.30;bpy.ops.object.modifier_apply(modifier=mod.name)
         for p in ob.data.polygons:p.use_smooth=True
         ob.select_set(False)
-bpy.ops.export_scene.gltf(filepath=str(OUT/'tomcat.glb'),export_format='GLB',export_cameras=False,export_lights=False,export_extras=True,export_yup=True)
+bpy.ops.export_scene.gltf(filepath=str(OUT/'tomcat.glb'),export_format='GLB',export_cameras=False,export_lights=False,export_extras=True,export_yup=True,use_active_scene=True)
 result={'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'source_triangles_exported_before_lod':triangles,'derived_triangles':sum(len(o.data.polygons) for o in scene.objects if o.type=='MESH'),'draw_meshes':sum(o.type=='MESH' for o in scene.objects),'omitted_exhibition_objects':len(skipped),'asset_sha256':hashlib.sha256((OUT/'tomcat.glb').read_bytes()).hexdigest(),'bytes':(OUT/'tomcat.glb').stat().st_size,'pivots_blender_m':pivots,'limitation':'Visual rig only; pivot positions and motion are artistic, not engineering data. Gear toggles visibility without mechanical kinematics. Procedural Blender shaders are flattened to authored PBR defaults.'}
 (ROOT/'simulator/evidence/export.json').write_text(json.dumps(result,indent=2));print(json.dumps(result,indent=2))

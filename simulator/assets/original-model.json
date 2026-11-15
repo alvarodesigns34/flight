@@ -1,0 +1,449 @@
+{
+  "source_sha256": "72ee953fe589ae43a71eaf63225d689619acb43181011e107d341e7c454c33d0",
+  "source_commit": "a43319cc19591294c537d8e8064a71d0997f84dc",
+  "source_objects": 1832,
+  "source_evaluated_triangles": 1316961,
+  "exported_triangles": 1316961,
+  "decimated": false,
+  "omitted_objects": 0,
+  "corner_normals_preserved": true,
+  "mesh_batches": 78,
+  "bytes": 39861948,
+  "asset_sha256": "834f5953d36f04530025d2969ee5ed8aed032c021b8e48b72f00d19dd1674c09",
+  "native_download_sha256": "72ee953fe589ae43a71eaf63225d689619acb43181011e107d341e7c454c33d0",
+  "material_adaptation": "Authored PBR base colours, roughness, metalness, IOR and transmission retained. Blender Noise/ColorRamp/bump are approximated in the browser, not pixel-identical to Cycles.",
+  "material_defaults": {
+    "Aluminum": {
+      "Base Color": [
+        0.5099999904632568,
+        0.550000011920929,
+        0.5600000023841858,
+        1.0
+      ],
+      "Roughness": 0.28999999165534973,
+      "Metallic": 0.8299999833106995,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Antiglare": {
+      "Base Color": [
+        0.017999999225139618,
+        0.023000000044703484,
+        0.024000000208616257,
+        1.0
+      ],
+      "Roughness": 0.5799999833106995,
+      "Metallic": 0.0,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Black_tail": {
+      "Base Color": [
+        0.008999999612569809,
+        0.014000000432133675,
+        0.01899999938905239,
+        1.0
+      ],
+      "Roughness": 0.3499999940395355,
+      "Metallic": 0.0,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Canopy_optical_glass": {
+      "Base Color": [
+        0.949999988079071,
+        0.9800000190734863,
+        0.9900000095367432,
+        1.0
+      ],
+      "Roughness": 0.03500000014901161,
+      "Metallic": 0.0,
+      "IOR": 1.4500000476837158,
+      "Transmission Weight": 1.0
+    },
+    "Chrome": {
+      "Base Color": [
+        0.6299999952316284,
+        0.6899999976158142,
+        0.7099999785423279,
+        1.0
+      ],
+      "Roughness": 0.1599999964237213,
+      "Metallic": 0.949999988079071,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Cockpit_gray": {
+      "Base Color": [
+        0.0949999988079071,
+        0.11500000208616257,
+        0.11699999868869781,
+        1.0
+      ],
+      "Roughness": 0.5299999713897705,
+      "Metallic": 0.0,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "CRT": {
+      "Base Color": [
+        0.02800000086426735,
+        0.07999999821186066,
+        0.06300000101327896,
+        1.0
+      ],
+      "Roughness": 0.20000000298023224,
+      "Metallic": 0.0,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Exhaust_dark": {
+      "Base Color": [
+        0.032999999821186066,
+        0.028999999165534973,
+        0.02500000037252903,
+        1.0
+      ],
+      "Roughness": 0.6299999952316284,
+      "Metallic": 0.550000011920929,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Floor": {
+      "Base Color": [
+        0.11500000208616257,
+        0.14000000059604645,
+        0.1599999964237213,
+        1.0
+      ],
+      "Roughness": 0.5400000214576721,
+      "Metallic": 0.10000000149011612,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Gauge_glass": {
+      "Base Color": [
+        0.7200000286102295,
+        0.8700000047683716,
+        0.8199999928474426,
+        1.0
+      ],
+      "Roughness": 0.11999999731779099,
+      "Metallic": 0.0,
+      "IOR": 1.4600000381469727,
+      "Transmission Weight": 1.0
+    },
+    "Gray_panel": {
+      "Base Color": [
+        0.4449999928474426,
+        0.4650000035762787,
+        0.45500001311302185,
+        1.0
+      ],
+      "Roughness": 0.4300000071525574,
+      "Metallic": 0.0,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Gull_gray": {
+      "Base Color": [
+        0.49000000953674316,
+        0.5099999904632568,
+        0.5,
+        1.0
+      ],
+      "Roughness": 0.3700000047683716,
+      "Metallic": 0.0,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Harness": {
+      "Base Color": [
+        0.38999998569488525,
+        0.4000000059604645,
+        0.28999999165534973,
+        1.0
+      ],
+      "Roughness": 0.800000011920929,
+      "Metallic": 0.0,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Heat_blue": {
+      "Base Color": [
+        0.10999999940395355,
+        0.14000000059604645,
+        0.18000000715255737,
+        1.0
+      ],
+      "Roughness": 0.38999998569488525,
+      "Metallic": 0.8299999833106995,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Heat_bronze": {
+      "Base Color": [
+        0.2199999988079071,
+        0.15000000596046448,
+        0.08299999684095383,
+        1.0
+      ],
+      "Roughness": 0.4300000071525574,
+      "Metallic": 0.8199999928474426,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Insignia_blue": {
+      "Base Color": [
+        0.014000000432133675,
+        0.02800000086426735,
+        0.057999998331069946,
+        1.0
+      ],
+      "Roughness": 0.38999998569488525,
+      "Metallic": 0.0,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Instrument_black": {
+      "Base Color": [
+        0.00800000037997961,
+        0.012000000104308128,
+        0.013000000268220901,
+        1.0
+      ],
+      "Roughness": 0.41999998688697815,
+      "Metallic": 0.0,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Instrument_face": {
+      "Base Color": [
+        0.017999999225139618,
+        0.026000000536441803,
+        0.027000000700354576,
+        1.0
+      ],
+      "Roughness": 0.5199999809265137,
+      "Metallic": 0.0,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Lamp": {
+      "Base Color": [
+        0.8999999761581421,
+        0.8500000238418579,
+        0.6399999856948853,
+        1.0
+      ],
+      "Roughness": 0.18000000715255737,
+      "Metallic": 0.0,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Marking_black": {
+      "Base Color": [
+        0.012000000104308128,
+        0.017000000923871994,
+        0.01899999938905239,
+        1.0
+      ],
+      "Roughness": 0.4300000071525574,
+      "Metallic": 0.0,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Marking_white": {
+      "Base Color": [
+        0.8799999952316284,
+        0.8799999952316284,
+        0.8199999928474426,
+        1.0
+      ],
+      "Roughness": 0.4000000059604645,
+      "Metallic": 0.0,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Nav_green": {
+      "Base Color": [
+        0.004999999888241291,
+        0.5,
+        0.05999999865889549,
+        1.0
+      ],
+      "Roughness": 0.18000000715255737,
+      "Metallic": 0.0,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Nav_red": {
+      "Base Color": [
+        0.8999999761581421,
+        0.00800000037997961,
+        0.004000000189989805,
+        1.0
+      ],
+      "Roughness": 0.18000000715255737,
+      "Metallic": 0.0,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Needle": {
+      "Base Color": [
+        0.75,
+        0.7900000214576721,
+        0.699999988079071,
+        1.0
+      ],
+      "Roughness": 0.4300000071525574,
+      "Metallic": 0.0,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Olive_fabric": {
+      "Base Color": [
+        0.17000000178813934,
+        0.19499999284744263,
+        0.10000000149011612,
+        1.0
+      ],
+      "Roughness": 0.8600000143051147,
+      "Metallic": 0.0,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Panel_gap": {
+      "Base Color": [
+        0.06800000369548798,
+        0.07800000160932541,
+        0.07699999958276749,
+        1.0
+      ],
+      "Roughness": 0.5199999809265137,
+      "Metallic": 0.0,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Radome": {
+      "Base Color": [
+        0.7099999785423279,
+        0.699999988079071,
+        0.6399999856948853,
+        1.0
+      ],
+      "Roughness": 0.46000000834465027,
+      "Metallic": 0.0,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Rubber": {
+      "Base Color": [
+        0.014000000432133675,
+        0.017999999225139618,
+        0.020999999716877937,
+        1.0
+      ],
+      "Roughness": 0.7099999785423279,
+      "Metallic": 0.0,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Seat_frame": {
+      "Base Color": [
+        0.06499999761581421,
+        0.07199999690055847,
+        0.06700000166893005,
+        1.0
+      ],
+      "Roughness": 0.49000000953674316,
+      "Metallic": 0.25,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Squadron_yellow": {
+      "Base Color": [
+        0.9300000071525574,
+        0.5600000023841858,
+        0.03500000014901161,
+        1.0
+      ],
+      "Roughness": 0.38999998569488525,
+      "Metallic": 0.0,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Steel": {
+      "Base Color": [
+        0.23999999463558197,
+        0.2800000011920929,
+        0.30000001192092896,
+        1.0
+      ],
+      "Roughness": 0.25,
+      "Metallic": 0.8799999952316284,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Titanium": {
+      "Base Color": [
+        0.2199999988079071,
+        0.20000000298023224,
+        0.18000000715255737,
+        1.0
+      ],
+      "Roughness": 0.36000001430511475,
+      "Metallic": 0.8500000238418579,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Warm_white": {
+      "Base Color": [
+        0.800000011920929,
+        0.7900000214576721,
+        0.7300000190734863,
+        1.0
+      ],
+      "Roughness": 0.3400000035762787,
+      "Metallic": 0.0,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Warning_red": {
+      "Base Color": [
+        0.5,
+        0.026000000536441803,
+        0.017999999225139618,
+        1.0
+      ],
+      "Roughness": 0.44999998807907104,
+      "Metallic": 0.0,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Wheel_white": {
+      "Base Color": [
+        0.699999988079071,
+        0.7099999785423279,
+        0.6700000166893005,
+        1.0
+      ],
+      "Roughness": 0.3400000035762787,
+      "Metallic": 0.25,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    },
+    "Zinc_chromate": {
+      "Base Color": [
+        0.28999999165534973,
+        0.3400000035762787,
+        0.15000000596046448,
+        1.0
+      ],
+      "Roughness": 0.5199999809265137,
+      "Metallic": 0.10000000149011612,
+      "IOR": 1.5,
+      "Transmission Weight": 0.0
+    }
+  }
+}
