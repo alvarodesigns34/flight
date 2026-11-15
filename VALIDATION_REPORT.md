@@ -1,6 +1,6 @@
 # Validación vigente: Flight & Archive 0.3
 
-La evolución incorpora 28 pruebas Node y dos regresiones Python, auditoría independiente del nativo, prueba completa de interacción, comparación de rutas de render y medición de apertura en seis procesos nuevos. Consulta [TRANSFORMATION_REPORT.md](TRANSFORMATION_REPORT.md) y `simulator/evidence/transformation/` para los resultados actuales. Las secciones siguientes conservan la historia de fases anteriores y sus cifras no sustituyen la validación 0.3.
+La evolución incorpora 28 pruebas Node y tres regresiones Python, auditoría independiente del nativo, prueba completa de interacción, comparación de rutas de render y medición de apertura en seis procesos nuevos. Consulta [TRANSFORMATION_REPORT.md](TRANSFORMATION_REPORT.md) y `simulator/evidence/transformation/` para los resultados actuales. Las secciones siguientes conservan la historia de fases anteriores y sus cifras no sustituyen la validación 0.3.
 
 # Validación — incremento 0.1
 

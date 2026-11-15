@@ -78,7 +78,7 @@ La articulación aumentó inicialmente el coste del vuelo a 148 llamadas. El agr
 ## Verificación y revisión visual
 
 - **28 pruebas Node**: atmósfera, coordenadas/signos, equilibrio, energía comparativa, convergencia, 30/60/144 FPS, suspensión, pendientes, actuadores, entradas inválidas, perfil de mando, integridad de activos, compresión exacta, HDR prefiltrado y matrices/visibilidad de lotes.
-- **2 pruebas Python**, verificación del original y sus once renders, y auditoría independiente del nativo evolucionado guardado.
+- **3 pruebas Python**, incluida una regresión del artefacto Pages que verifica modelos comprimidos, iluminación y descargas; verificación del original y sus once renders, y auditoría independiente del nativo evolucionado guardado.
 - Navegador: pausa al entrar al estudio, número real de triángulos decodificados del original, ambas ediciones, controles físicos de cabeceo, trim, potencia táctil, perfiles y reasignación, audio, descargas CSV/JSON, móvil sin desbordamiento, Ultra y vistas de ambos puestos. `transformation/final/audit.json` registra las comprobaciones y errores.
 - JSBSim vuelve a ejecutarse con su C172 civil como referencia independiente. **Esto no valida el avión del navegador**.
 
