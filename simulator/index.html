@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#102326"><title>Tomcat · Flight Lab</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23102326'/%3E%3Cpath d='M50 10 58 42 90 65 57 60 55 82 68 90 50 86 32 90 45 82 43 60 10 65 42 42Z' fill='%23e8d7a3'/%3E%3C/svg%3E"><link rel="stylesheet" href="style.css"></head>
+<body>
+<div id="viewport" aria-label="Vista interactiva del avión"></div>
+<div id="loading" role="status"><span class="loader"></span><p>Preparando el avión<span id="load-progress">Cargando geometría y materiales…</span></p></div>
+<header><a class="brand" href="./"><span class="mark">↗</span><span>TOMCAT<small>FLIGHT LAB / 001</small></span></a><div class="identity"><span class="live-dot"></span> F-14A <b>·</b> VF-84 <b>·</b> 1978</div><div class="top-actions"><button id="sound" title="Activar sonido sintetizado" aria-pressed="false">Sonido <span>OFF</span></button><button id="help" aria-label="Mostrar controles y alcance">?</button></div></header>
+<aside class="left-panel panel">
+ <div class="eyebrow">ARCHIVO EN MOVIMIENTO</div><h1>Una nueva<br>perspectiva.</h1><p class="intro">Reconstrucción histórica.<br>Un laboratorio para explorar el vuelo.</p>
+ <div class="divider"></div><label class="field-label" for="scenario">ESCENARIO</label>
+ <select id="scenario"><option value="cruise">01 / Vuelo estabilizado</option><option value="approach">02 / Configuración de aterrizaje</option><option value="runway">03 / En pista</option></select>
+ <div class="button-row"><button id="play" class="primary" disabled>Iniciar vuelo <span>›</span></button><button id="reset" title="Reiniciar escenario">↺</button></div>
+ <div class="mode-buttons" role="group" aria-label="Cámara"><button data-camera="orbit" class="active">Exterior</button><button data-camera="chase">Seguimiento</button><button data-camera="pilot">Piloto</button></div>
+ <div class="divider"></div>
+ <div class="control-heading"><span>CONFIGURACIÓN</span><span class="tiny">EN VIVO</span></div>
+ <label class="slider-label" for="throttle">Potencia <output id="throttle-value">0%</output></label><input id="throttle" type="range" min="0" max="100" value="50">
+ <label class="slider-label" for="sweep">Geometría alar <output id="sweep-value">Extendida</output></label><input id="sweep" type="range" min="0" max="100" value="0">
+ <label class="slider-label" for="flaps">Flaps <output id="flaps-value">0%</output></label><input id="flaps" type="range" min="0" max="100" value="0">
+ <div class="toggles"><label><input id="gear" type="checkbox"> Tren</label><label><input id="brake" type="checkbox"> Freno</label></div>
+ <label class="slider-label" for="wind">Viento cruzado <output id="wind-value">0 m/s</output></label><input id="wind" type="range" min="-15" max="15" value="0">
+ <button id="export" class="text-button">Descargar telemetría CSV <span>↓</span></button>
+</aside>
+<div class="view-caption"><span class="cross">+</span><div>BU NO. 160391<small>Representación artística · dinámica educativa</small></div></div>
+<div class="status-bar"><span id="flight-status">EN PAUSA</span><span id="timer">T + 00:00</span><span id="performance">Física 120 Hz</span></div>
+<div class="instrument-bar panel"><div class="metric"><span>VELOCIDAD AIRE</span><strong id="speed">—</strong><small>nudos</small></div><div class="metric"><span>ALTITUD</span><strong id="altitude">—</strong><small>pies MSL</small></div><div class="attitude"><canvas id="attitude" width="140" height="100" aria-label="Horizonte artificial"></canvas></div><div class="metric"><span>VARIÓMETRO</span><strong id="climb">—</strong><small>pies / min</small></div><div class="metric"><span>RUMBO</span><strong id="heading">—</strong><small>grados</small></div><div class="metric secondary"><span>CARGA / COMBUSTIBLE</span><strong id="load">—</strong><small id="fuel">— kg</small></div></div>
+<footer><span><i></i> EXPLORACIÓN SIN COMBATE</span><span class="footer-controls">↑ ↓ cabeceo &nbsp; ← → alabeo &nbsp; A D guiñada &nbsp; W S potencia &nbsp; Espacio pausa</span><button id="about">Acerca del modelo ↗</button></footer>
+<dialog id="info"><button id="close-info" class="close" aria-label="Cerrar">×</button><div class="eyebrow">TOMCAT / FLIGHT LAB</div><h2>Explorar, medir,<br>seguir construyendo.</h2><p>El avión conserva la reconstrucción artística del F-14A BuNo 160391, VF-84, hacia 1978. El motor físico usa parámetros genéricos y estimados: no reproduce prestaciones certificadas del F-14 ni motores TF30 operativos.</p><h3>Controles</h3><p>↑ / ↓: morro arriba / abajo · ← / →: alabeo · A / D: guiñada · W / S: potencia · Espacio: pausa · R: reiniciar · C: cambiar cámara. Los mandos vuelven al trim al soltar las teclas. Arrastra para girar la vista exterior y usa la rueda para acercar.</p><p>También admite mando: eje 0 alabeo, eje 1 cabeceo, eje 2 guiñada. La interfaz táctil incluye mandos en pantalla.</p><h3>Alcance de esta versión</h3><p>Atmósfera, fuerzas y momentos, integración RK4 a 120 Hz, viento uniforme, consumo y suspensión aproximada. Envolvente educativa sugerida: 65–220 m/s y 0–6.000 m. Sin compresibilidad transónica, sistemas tácticos, mapas reales ni reproducción exacta de mecanismos. El modo Piloto es una vista frontal; no es una cabina instrumental funcional.</p><p>CSV: últimas 18.000 muestras, aproximadamente 30 minutos. Las fuerzas cambian al mover alas, flaps y tren; su calibración sigue siendo ilustrativa. El sonido es sintetizado.</p></dialog>
+<div class="touch-controls" aria-label="Mandos táctiles"><button data-input="ArrowUp" aria-label="Morro arriba">↑</button><button data-input="ArrowLeft" aria-label="Alabeo izquierda">←</button><button data-input="ArrowDown" aria-label="Morro abajo">↓</button><button data-input="ArrowRight" aria-label="Alabeo derecha">→</button></div>
+<script type="module" src="dist/app.js"></script>
+</body></html>

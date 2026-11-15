@@ -1,0 +1,27 @@
+{
+  "engine": "JSBSim",
+  "version": "1.2.3",
+  "aircraft": "bundled c172x civil reference",
+  "physics_hz": 120,
+  "duration_s": 10.000000000000073,
+  "samples": 100,
+  "trim_success": true,
+  "all_finite": true,
+  "first": [
+    0.008333333333333333,
+    1524.0000007698477,
+    54.863999938726806,
+    -2.6060370355805836e-14,
+    0.014796848536670652,
+    1.9237157249015215e-14
+  ],
+  "last": [
+    9.908333333333411,
+    1491.2733936381073,
+    59.49307780035418,
+    0.7969547092370645,
+    -0.1833329565993845,
+    0.6533003128739555
+  ],
+  "scope": "Engine integration smoke test only. No F-14 coefficients used; no browser-model cross-validation."
+}

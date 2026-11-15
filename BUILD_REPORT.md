@@ -1,0 +1,19 @@
+# Construcción de la fase de simulación
+
+Fecha: 15-11-2026. Rama: `codex/tomcat-flight-simulator`. Base remota auditada: `a43319cc19591294c537d8e8064a71d0997f84dc`.
+
+Se clonó el repositorio y se comprobó `git ls-remote`; el árbol local inicial estaba limpio. No se encontraron `AGENTS.md`. Se leyeron los README y los informes de construcción, revisión e investigación. La API de GitHub declaró inicialmente tamaño 0, pero el clonado y el commit confirmaron el contenido real; no se trató ese metadato como prueba de ausencia.
+
+Entorno: Linux, 9,7 GiB RAM, sin GPU utilizada, Python 3.12.14, Node 24.22.1. El archivo maestro abrió en Blender 4.3.2 y pasó la auditoría. Se descargó la distribución oficial 4.3.2 después de fallos de la compilación de sistema en la exportación. Esos fallos no afectaron al maestro. La reconstrucción completa en una carpeta temporal terminó en aproximadamente 7 s; el registro y las comparaciones están en `simulator/evidence/`.
+
+Se añadieron el simulador local offline, módulo físico independiente, representación glTF derivada, controles, cámaras, sonido sintetizado opcional, telemetría CSV, pruebas físicas, regresiones de procedencia, verificaciones de navegador, integración civil opcional de JSBSim y CI de GitHub Actions. Los detalles están en `SIMULATION_DESIGN.md` y `VALIDATION_REPORT.md`.
+
+La copia interactiva reduce aproximadamente 1,26 millones de triángulos evaluados a 255.000 antes de la triangulación/separación propia de glTF, agrupados en 60 mallas. Los shaders procedurales se simplifican a colores PBR base; esta diferencia se encontró inspeccionando capturas y se corrigió para evitar exportar en blanco la pintura de las derivas. Se corrigieron también el sentido visual de la geometría alar y la asociación de la insignia de babor a su ala móvil. La nueva representación permite articulación y vuelo educativo; el archivo de exposición original conserva sus límites y no se reescribe.
+
+Se corrigió la comprobación de procedencia de renders, que usaba mtimes no conservados por Git. Las nuevas comprobaciones usan hashes, y los futuros renders registran los hashes de imagen y maestro. `DELIVERY_MANIFEST.json` permanece como registro de la entrega estática original, no como manifiesto de los scripts modificados en esta fase. La salida actual se guarda aparte, en `PROJECT_TOMCAT/logs/delivery_check_current.json`. La restauración de visibilidad en render se protege con `finally`.
+
+El simulador del navegador usa parámetros **genéricos e ilustrativos**. No se declara una dinámica histórica exacta del F-14A, motores TF30 funcionales ni fidelidad profesional. Se ha entregado un incremento funcional, medido y continuable. No se ha completado toda la reconstrucción histórica ni todo el modelo de vuelo descrito en el encargo.
+
+## Continuación automática
+
+Hora inicial comprobada: 15-11-2026 01:32:37 UTC = 02:32:37 CET, Europe/Madrid. Se intentó crear una única continuación para **15-11-2026 06:00 CET**, `exact_schedule`, en esa zona. La plataforma devolvió `too_many_active_automations`: 5 tareas activas, límite 5. No devolvió identificador y **no quedó programada**. Se comprobó que las tareas activas pertenecían a otros encargos; no se modificaron. El prompt y el resultado se conservan en `simulator/evidence/scheduling.json` y `CONTINUATION.md`. No hay cron, tarea de GitHub ni proceso local que sustituya una reanudación persistente del agente.

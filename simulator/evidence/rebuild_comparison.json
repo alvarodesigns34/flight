@@ -1,0 +1,14 @@
+{
+  "comparison": {
+    "mesh_vertices": true,
+    "mesh_faces": true,
+    "measurements": true,
+    "evaluated_triangles_including_curves": true,
+    "primary_symmetry": true,
+    "laterality_checks": true,
+    "materials": true
+  },
+  "technical_pass": true,
+  "all_compared_fields_match": true,
+  "note": "Structural metrics match; this is not an exact byte or object-transform comparison."
+}

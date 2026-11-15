@@ -1,0 +1,42 @@
+{
+  "source_sha256": "72ee953fe589ae43a71eaf63225d689619acb43181011e107d341e7c454c33d0",
+  "source_triangles_exported_before_lod": 1258065,
+  "derived_triangles": 254899,
+  "draw_meshes": 60,
+  "omitted_exhibition_objects": 106,
+  "asset_sha256": "5741b834efad3bd91e3ca60e2a28a73f4c58e9ee4d2dd6077415ed649b6eeff0",
+  "bytes": 23561660,
+  "pivots_blender_m": {
+    "airframe": [
+      0,
+      0,
+      2.2
+    ],
+    "gear": [
+      0,
+      0,
+      2.2
+    ],
+    "Port_wing": [
+      2.06,
+      0.85,
+      2.43
+    ],
+    "Starboard_wing": [
+      -2.06,
+      0.85,
+      2.43
+    ],
+    "Port_tail": [
+      2.13,
+      7.05,
+      1.97
+    ],
+    "Starboard_tail": [
+      -2.13,
+      7.05,
+      1.97
+    ]
+  },
+  "limitation": "Visual rig only; pivot positions and motion are artistic, not engineering data. Gear toggles visibility without mechanical kinematics. Procedural Blender shaders are flattened to authored PBR defaults."
+}

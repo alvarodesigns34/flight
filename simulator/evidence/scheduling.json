@@ -1,0 +1,18 @@
+{
+  "checked_at_utc": "2026-11-15T01:32:37Z",
+  "checked_at_local": "2026-11-15T02:32:37+01:00",
+  "timezone": "Europe/Madrid",
+  "requested_local": "2026-11-15T06:00:00+01:00",
+  "requested_utc": "2026-11-15T05:00:00Z",
+  "schedule": "BEGIN:VEVENT\nDTSTART;TZID=Europe/Madrid:20261115T060000\nEND:VEVENT",
+  "timing_mode": "exact_schedule",
+  "status": "NOT_CREATED",
+  "automation_id": null,
+  "error_code": "too_many_active_automations",
+  "current_count": 5,
+  "plan_limit": 5,
+  "existing_unrelated_tasks_modified": false,
+  "continuation_repository": "https://github.com/alvarodesigns34/flight",
+  "continuation_branch": "codex/tomcat-flight-simulator",
+  "continuation_prompt": "Retoma https://github.com/alvarodesigns34/flight en codex/tomcat-flight-simulator. Lee primero las instrucciones aplicables y CONTINUATION.md. Conserva cambios existentes y originales. Continúa auditoría, correcciones de la reconstrucción artística histórica y desarrollo del simulador educativo no bélico. Mantén física genérica explícitamente aproximada, sin armamento, sistemas tácticos, combate o calibración militar operativa. Ejecuta pruebas y escenarios, inspecciona resultados, registra fuentes e incertidumbres y actualiza los informes. Realiza commits descriptivos, publica avances revisables y deja un checkpoint reproducible. Trabaja con autonomía, sin aclaraciones rutinarias. Esta continuación sería única: no crees ejecuciones adicionales."
+}

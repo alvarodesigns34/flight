@@ -1,0 +1,70 @@
+{
+  "at": "2026-11-15T01:54:31.395Z",
+  "renderer": "Chromium headless / SwiftShader",
+  "initial": {
+    "ready": true,
+    "time": 0,
+    "running": false,
+    "camera": "orbit",
+    "airspeed": 120,
+    "altitude": 1500,
+    "angles": [
+      0,
+      0.07597667594841206,
+      0
+    ],
+    "controls": {
+      "elevator": 0.01564139894411307,
+      "aileron": 0,
+      "rudder": 0,
+      "throttle": 0.20519062325051843,
+      "sweep": 0,
+      "flaps": 0,
+      "gear": 0,
+      "brake": 0
+    },
+    "meshCount": 59,
+    "triangles": 230110
+  },
+  "flown": {
+    "ready": true,
+    "time": 1.249999999999998,
+    "running": false,
+    "camera": "orbit",
+    "airspeed": 119.72481010904187,
+    "altitude": 1500.4234668744648,
+    "angles": [
+      0,
+      0.15011151225834127,
+      0
+    ],
+    "controls": {
+      "elevator": 0.01564139894411307,
+      "aileron": 0,
+      "rudder": 0,
+      "throttle": 0.20519062325051843,
+      "sweep": 0,
+      "flaps": 0,
+      "gear": 0,
+      "brake": 0
+    },
+    "meshCount": 60,
+    "triangles": 230112
+  },
+  "checks": [
+    "offline asset loading",
+    "WebGL scene and original aircraft",
+    "start and pause",
+    "elevator response",
+    "sweep state",
+    "three camera modes",
+    "runway configuration",
+    "CSV export",
+    "help dialog",
+    "synthesized audio toggle",
+    "390px mobile layout",
+    "touch control events"
+  ],
+  "errors": [],
+  "external_requests": []
+}
