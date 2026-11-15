@@ -1,55 +1,104 @@
 {
-  "checked_at": "2026-11-15T11:54:11.502Z",
-  "url": "https://alvarodesigns34.github.io/flight/?quality=light",
-  "source_commit": "87a6da596557eb09f9f7753aebc44e79cfdcf00c",
-  "runtime_files": 15,
-  "checks": [
-    "Pages subdirectory asset loading",
-    "WebGL aircraft ready",
-    "start flight",
-    "pause flight",
-    "wing configuration control",
-    "original-model tab",
-    "full original geometry in public inspector"
-  ],
-  "runtime": {
-    "ready": true,
-    "time": 0.8749999999999993,
-    "running": false,
-    "camera": "orbit",
-    "tab": "model",
-    "airspeed": 114.9999996285379,
-    "altitude": 800.0000136599023,
-    "angles": [
-      0,
-      0.07826751702162753,
-      0
-    ],
-    "controls": {
-      "elevator": 0.018123034805601658,
-      "aileron": 0,
-      "rudder": 0,
-      "throttle": 0.1962009399549724,
-      "sweep": 0.6,
-      "flaps": 0,
-      "gear": 0,
-      "brake": 0
-    },
-    "meshCount": 83,
-    "triangles": 1361587,
-    "quality": "light",
-    "renderedFrames": 8,
-    "originalTriangles": 1316961,
-    "originalObjects": 1832,
-    "originalSimplified": false,
-    "calls": 83
-  },
-  "errors": [],
-  "failedRequests": [],
-  "httpErrors": [],
-  "deployment_workflow": "https://github.com/alvarodesigns34/flight/actions/runs/43710710295",
+  "release": "0.2.0",
+  "url": "https://alvarodesigns34.github.io/flight/",
+  "source_commit": "a5896a0c4038cec73bada6ddab48e7e2efc10d70",
+  "deployment_workflow": "https://github.com/alvarodesigns34/flight/actions/runs/43712426945",
   "deployment_result": "success",
-  "branch": "codex/tomcat-flight-simulator",
+  "runtime_files": 15,
+  "original_triangles": 1316961,
+  "original_objects": 1832,
+  "original_decimated": false,
   "original_public_download_sha256": "72ee953fe589ae43a71eaf63225d689619acb43181011e107d341e7c454c33d0",
-  "release": "0.2.0"
+  "public_ui_check": {
+    "checked_at": "2026-11-15T11:54:11.502Z",
+    "url": "https://alvarodesigns34.github.io/flight/?quality=light",
+    "source_commit": "87a6da596557eb09f9f7753aebc44e79cfdcf00c",
+    "runtime_files": 15,
+    "checks": [
+      "Pages subdirectory asset loading",
+      "WebGL aircraft ready",
+      "start flight",
+      "pause flight",
+      "wing configuration control",
+      "original-model tab",
+      "full original geometry in public inspector"
+    ],
+    "runtime": {
+      "ready": true,
+      "time": 0.8749999999999993,
+      "running": false,
+      "camera": "orbit",
+      "tab": "model",
+      "airspeed": 114.9999996285379,
+      "altitude": 800.0000136599023,
+      "angles": [
+        0,
+        0.07826751702162753,
+        0
+      ],
+      "controls": {
+        "elevator": 0.018123034805601658,
+        "aileron": 0,
+        "rudder": 0,
+        "throttle": 0.1962009399549724,
+        "sweep": 0.6,
+        "flaps": 0,
+        "gear": 0,
+        "brake": 0
+      },
+      "meshCount": 83,
+      "triangles": 1361587,
+      "quality": "light",
+      "renderedFrames": 8,
+      "originalTriangles": 1316961,
+      "originalObjects": 1832,
+      "originalSimplified": false,
+      "calls": 83
+    },
+    "errors": [],
+    "failedRequests": [],
+    "httpErrors": [],
+    "deployment_workflow": "https://github.com/alvarodesigns34/flight/actions/runs/43710710295",
+    "deployment_result": "success",
+    "branch": "codex/tomcat-flight-simulator",
+    "original_public_download_sha256": "72ee953fe589ae43a71eaf63225d689619acb43181011e107d341e7c454c33d0",
+    "release": "0.2.0"
+  },
+  "final_public_ultra_check": {
+    "url": "https://alvarodesigns34.github.io/flight/?quality=ultra",
+    "source_commit": "a5896a0c4038cec73bada6ddab48e7e2efc10d70",
+    "runtime": {
+      "ready": true,
+      "time": 0,
+      "running": false,
+      "camera": "orbit",
+      "tab": "flight",
+      "airspeed": 115,
+      "altitude": 800,
+      "angles": [
+        0,
+        0.0782674167436323,
+        0
+      ],
+      "controls": {
+        "elevator": 0.018123034805601658,
+        "aileron": 0,
+        "rudder": 0,
+        "throttle": 0.1962009399549724,
+        "sweep": 0,
+        "flaps": 0,
+        "gear": 0,
+        "brake": 0
+      },
+      "meshCount": 142,
+      "triangles": 4046134,
+      "quality": "ultra",
+      "renderedFrames": 1,
+      "originalTriangles": 1316961,
+      "originalObjects": 1832,
+      "originalSimplified": false,
+      "calls": 142
+    },
+    "errors": []
+  }
 }
