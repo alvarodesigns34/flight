@@ -20,7 +20,7 @@ Abre el simulador: **[Tomcat Flight Lab](https://alvarodesigns34.github.io/fligh
 
 ## Volar en el laboratorio
 
-![Tomcat Flight Lab](simulator/evidence/transformation/public-pages-flight.png)
+![Tomcat Flight Lab](simulator/evidence/transformation/public-entry-ultra.png)
 
 Descarga y extrae el [paquete del simulador](downloads/TOMCAT_FLIGHT_LAB.zip?raw=true), o clona esta rama. Con **Python 3.10+**, desde la raíz del repositorio:
 

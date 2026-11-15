@@ -24,7 +24,8 @@
     "verified-render/studio-cockpit.png",
     "verified-render/studio-pilot-panel.png",
     "verified-render/batched-pose.png",
-    "sea-check/sea.png"
+    "sea-check/sea.png",
+    "public-entry-ultra.png"
   ],
   "not_opened_individually": [
     "before/01-flight-desktop.png",
