@@ -1,0 +1,13 @@
+{
+  "source_commit": "e27f86591ecbb00930e1ddd2edceaccd087338a9",
+  "verified_files": 21,
+  "zip_integrity": true,
+  "standalone_server": true,
+  "http_asset_hashes_match": true,
+  "browser": {
+    "ready": true,
+    "started": true,
+    "paused": true,
+    "errors": []
+  }
+}

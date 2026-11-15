@@ -47,6 +47,8 @@ Se inspeccionaron capturas reales de escritorio, alas barridas, pista y móvil. 
 
 En esta máquina sin GPU, el rasterizador por software puede reducir el render a unos pocos FPS. La física conserva su paso fijo y limita la recuperación, por lo que el tiempo simulado puede avanzar más despacio que el reloj real. No se declara un rendimiento de 60 FPS universal. El recurso glTF tiene unos 23,6 MB sin comprimir; el ZIP comprime esa copia.
 
+El paquete descargable se generó desde el commit `e27f86591ecbb00930e1ddd2edceaccd087338a9`. Se verificaron los hashes de sus 21 archivos, se extrajo en otra carpeta, se arrancó su propio servidor y Chromium confirmó carga, inicio y pausa sin errores. El ZIP y `downloads/TOMCAT_FLIGHT_LAB.json` registran ese commit fuente; las actualizaciones posteriores de informes quedan en Git. Evidencia: `simulator/evidence/package_check.json`.
+
 `npm audit --omit=dev`: **0 vulnerabilidades detectadas** en el momento de la revisión. Eso no sustituye una auditoría exhaustiva de seguridad. El servidor local usa solo la biblioteca estándar de Python, escucha en `127.0.0.1` y sirve exclusivamente la carpeta del simulador.
 
 ## Motor consolidado evaluado

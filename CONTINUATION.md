@@ -4,6 +4,7 @@
 
 - Repositorio: https://github.com/alvarodesigns34/flight
 - Rama de trabajo: `codex/tomcat-flight-simulator`.
+- Checkpoint de código empaquetado y comprobado: **`e27f86591ecbb00930e1ddd2edceaccd087338a9`**.
 - Base original preservada: `a43319cc19591294c537d8e8064a71d0997f84dc` (`main`).
 - Último commit efectivo: ejecutar `git log -1 --format='%H %s'` en esta rama. La entrega se cierra con commits de implementación y paquete; el hash del checkpoint empaquetado queda en `downloads/TOMCAT_FLIGHT_LAB.json` y en `PACKAGE_MANIFEST.json` dentro del ZIP. No se escribe un hash autorreferente imposible en este archivo.
 - Pull request: consultar la PR abierta de esta rama en GitHub; no fusionar automáticamente.
