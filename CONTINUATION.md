@@ -7,7 +7,8 @@
 - Checkpoint de código empaquetado y comprobado: **`e27f86591ecbb00930e1ddd2edceaccd087338a9`**.
 - Base original preservada: `a43319cc19591294c537d8e8064a71d0997f84dc` (`main`).
 - Último commit efectivo: ejecutar `git log -1 --format='%H %s'` en esta rama. La entrega se cierra con commits de implementación y paquete; el hash del checkpoint empaquetado queda en `downloads/TOMCAT_FLIGHT_LAB.json` y en `PACKAGE_MANIFEST.json` dentro del ZIP. No se escribe un hash autorreferente imposible en este archivo.
-- Pull request: consultar la PR abierta de esta rama en GitHub; no fusionar automáticamente.
+- Pull request abierta: **https://github.com/alvarodesigns34/flight/pull/1**. No fusionar automáticamente.
+- Entrega publicada: commit `46b889f58d22e1c3e18480930e3cec164d31ae1d`, con CI `physics-and-assets` satisfactoria en push y PR. Los commits posteriores de este documento no cambian ese checkpoint ejecutable.
 
 Clonar o recuperar y comprobar cambios locales **antes de cambiar de rama**. Si existen cambios no confirmados, conservarlos, sin reset, clean o sobrescrituras. Leer cualquier `AGENTS.md` nuevo, README y este documento. El repositorio no tenía `AGENTS.md` al empezar esta fase.
 

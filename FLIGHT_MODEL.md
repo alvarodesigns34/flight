@@ -31,7 +31,7 @@ Todos los valores de la tabla están en `simulator/src/parameters.mjs`, salvo la
 | Cnβ / Cnδr / Cnr | 0,14 / 0,12 / −0,5 | G, baja. Timón normalizado ±1; amortiguación con `r b/(2V)`. |
 | Geometría variable | pendiente CL hasta −30%; b hasta −35%; factor inducido hasta +50% | G, baja; interpolación lineal del control 0–1. Sin calendario automático ni inercia de alas variable. |
 | Flaps / tren | ΔCL=0,35f; ΔCD=0,04f+0,025g | G, baja; sin momentos ni límites de actuador medidos. |
-| Contactos, cuerpo | (5,0,2,2), (−1,4,−2,4,2,2), (−1,4,2,4,2,2) m | G, baja; posiciones aproximadas, sin geometría de mecanismo. |
+| Contactos, cuerpo | (5; 0; 2,2), (−1,4; −2,4; 2,2), (−1,4; 2,4; 2,2) m | G, baja; posiciones aproximadas, sin geometría de mecanismo. |
 | Resorte / amortiguación por contacto | 1.000.000 N/m / 100.000 N·s/m | G, baja; suelo plano, no neumático deformable. |
 | Fricción longitudinal / freno / lateral | μ=0,04+0,55·freno / μ lateral=0,65 | G, baja; fuerza `−N μ tanh(v/0,5 m/s)`. Sin giro de rueda, ABS ni dirección de morro. |
 | Contacto de fuselaje | un punto (0,0,0,9) m al ocultar el tren | G, baja; evita atravesar el plano en contactos suaves. No es modelo de daños o colisiones. |
