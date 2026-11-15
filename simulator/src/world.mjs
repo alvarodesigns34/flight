@@ -47,11 +47,16 @@ export class Landscape {
  ocean(){
   const c=canvas(256,256),ctx=c.getContext('2d'),d=ctx.createImageData(256,256);
   for(let z=0;z<256;z++)for(let x=0;x<256;x++){
-   const h=(a,b)=>Math.sin(a*.18+b*.10)*.40+Math.sin(a*.37-b*.27)*.18+noise2(a*.13,b*.13)*.4;
+   // Integer Fourier harmonics make the normal tile seamless at 256 pixels.
+   const h=(a,b)=>{const u=a*Math.PI*2/256,w=b*Math.PI*2/256;return .43*Math.sin(7*u+3*w)+.24*Math.sin(13*u-11*w+.7)+.17*Math.sin(23*u+17*w+1.4)+.12*Math.sin(3*u-19*w+.3);};
    const dx=(h(x+1,z)-h(x-1,z))*.7,dz=(h(x,z+1)-h(x,z-1))*.7,i=(z*256+x)*4;
    d.data[i]=128+dx*100;d.data[i+1]=128+dz*100;d.data[i+2]=245;d.data[i+3]=255;
   }ctx.putImageData(d,0,0);const normals=texture(c,false);normals.wrapS=normals.wrapT=THREE.RepeatWrapping;
   this.water=new Water(new THREE.PlaneGeometry(180000,180000),{textureWidth:512,textureHeight:512,waterNormals:normals,sunDirection:new THREE.Vector3(-.4,.8,.5),sunColor:0xfff1d9,waterColor:0x22575e,distortionScale:2.6,fog:true});
+  // Fresnel reflectance for air/water (IOR 1 / 1.333), rather than the
+  // artistic 30% base reflectance of the upstream Water example.
+  const waterR0=((1.333-1)/(1.333+1))**2;
+  this.water.material.fragmentShader=this.water.material.fragmentShader.replace('float rf0 = 0.3;',`float rf0 = ${waterR0.toFixed(8)};`);
   this.water.rotation.x=-Math.PI/2;this.water.position.y=WATER_HEIGHT;this.group.add(this.water);
   const calmNormals=normals.clone();calmNormals.needsUpdate=true;calmNormals.repeat.set(4500,4500);
   this.waterFallback=new THREE.Mesh(new THREE.PlaneGeometry(180000,180000),new THREE.MeshStandardMaterial({color:'#245765',metalness:.35,roughness:.23,normalMap:calmNormals,normalScale:new THREE.Vector2(.45,.45)}));this.waterFallback.rotation.x=-Math.PI/2;this.waterFallback.position.y=WATER_HEIGHT;this.group.add(this.waterFallback);
