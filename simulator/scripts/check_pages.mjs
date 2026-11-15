@@ -15,9 +15,13 @@ try {
  await page.waitForFunction(()=>window.flightLab?.ready,{},{timeout:240000});
  await page.locator('#play').click();await page.waitForFunction(()=>window.flightLab.running&&window.flightLab.time>.3);
  await page.locator('#play').click();await page.waitForFunction(()=>!window.flightLab.running);
+ await page.locator('details.configuration > summary').click();
  await page.locator('#sweep').fill('60');await page.locator('#sweep').dispatchEvent('input');
  await page.waitForFunction(()=>window.flightLab.controls.sweep===.6);
+ await page.screenshot({path:output.replace(/\.json$/,'-flight.png')});
+ await page.locator('#tab-model').click();await page.waitForFunction(()=>window.flightLab.tab==='model'&&!window.flightLab.running);
  const runtime=await page.evaluate(()=>window.flightLab);
+ if(runtime.originalTriangles!==1316961||runtime.originalObjects!==1832||runtime.originalSimplified!==false)throw new Error('Public inspector does not contain the full original model');
  // Read through the same browser connection as the app, including its proxy.
  const build=await page.evaluate(async url=>{
   const response=await fetch(url);
@@ -25,7 +29,7 @@ try {
   return response.json();
  },new URL('build-info.json',base).href);
  const result={checked_at:new Date().toISOString(),url:base.href,source_commit:build.source_commit,runtime_files:build.files.length,
-  checks:['Pages subdirectory asset loading','WebGL aircraft ready','start flight','pause flight','wing configuration control'],runtime,errors,failedRequests,httpErrors};
+  checks:['Pages subdirectory asset loading','WebGL aircraft ready','start flight','pause flight','wing configuration control','original-model tab','full original geometry in public inspector'],runtime,errors,failedRequests,httpErrors};
  await page.screenshot({path:output.replace(/\.json$/,'.png')});
  writeFileSync(output,JSON.stringify(result,null,2)+'\n');
  if(errors.length||failedRequests.length||httpErrors.length)throw new Error(JSON.stringify({errors,failedRequests,httpErrors}));
