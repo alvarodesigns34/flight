@@ -88,3 +88,9 @@ Problemas abiertos: no hay cambio de CG con distribución de combustible; inerci
 - Prompt, hora, zona y error: `simulator/evidence/scheduling.json`.
 
 Si una ejecución llega a reanudarse por una acción posterior autorizada, leer primero este documento, conservar cambios y continuar el incremento concreto anterior. No crear recurrencias adicionales por iniciativa propia. Una programación válida tampoco elimina cuotas o dependencia de disponibilidad de la plataforma.
+
+## Publicación GitHub Pages — nueva fase
+
+El usuario configuró Pages → Source → GitHub Actions. La API confirma `build_type=workflow`, URL `https://alvarodesigns34.github.io/flight/`. Se añadió `.github/workflows/pages.yml`: build independiente, tests, bundle, preparación estática, artefacto Pages y deploy con permisos OIDC mínimos. `prepare_pages.py` publica solo los seis archivos de runtime y un manifiesto de commit/hashes; no incluye el maestro, fuentes Python ni informes. `check_pages.mjs` valida el mismo contenido servido en un subdirectorio `/flight/`.
+
+La configuración inicial de `github-pages` solo admite la rama `main`. La PR continúa abierta y el simulador está en `codex/tomcat-flight-simulator`. La integración devuelve HTTP 403 `Resource not accessible by integration` al intentar añadir esta rama a la lista de permitidas. No se quitaron las restricciones ni se fusionó la PR. Para desplegar desde esta rama hace falta permitirla en Settings → Environments → github-pages → Deployment branches and tags. Cuando esté permitida, volver a ejecutar el job o el workflow Pages y verificar la URL con `check_pages.mjs`. No afirmar publicación completa hasta observar el deploy y la carga real.

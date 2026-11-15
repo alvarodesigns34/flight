@@ -4,6 +4,10 @@ Reconstrucción artística editable de un **Grumman F-14A Tomcat**, inspirada en
 
 ![Vista de estudio del F-14A](PROJECT_TOMCAT/renders/01_FRONT_THREE_QUARTER.png)
 
+## Publicación web con GitHub Pages
+
+URL prevista: **https://alvarodesigns34.github.io/flight/**. El workflow `Deploy flight lab to Pages` construye y publica únicamente los archivos del navegador, con rutas relativas compatibles con `/flight/`. Se ejecuta al actualizar `main` o `codex/tomcat-flight-simulator` y también admite lanzamiento manual. El entorno `github-pages` debe permitir la rama desde la que se ejecute. El despliegue no requiere el servidor Python ni publica el archivo maestro Blender.
+
 ## Volar en el laboratorio
 
 ![Tomcat Flight Lab](simulator/evidence/flight-lab-desktop.png)

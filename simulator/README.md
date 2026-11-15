@@ -2,6 +2,12 @@
 
 Simulador educativo local con el modelo artístico del repositorio. Dinámica genérica de seis grados de libertad; no prestaciones certificadas del F-14A o TF30. Sin armas, sistemas tácticos o combate.
 
+## GitHub Pages
+
+El repositorio incorpora `.github/workflows/pages.yml` para publicar el visor en https://alvarodesigns34.github.io/flight/. El build prepara solo `index.html`, CSS, bundle y recursos con `scripts/prepare_pages.py`. Las rutas relativas permiten servirlo bajo `/flight/`. El entorno `github-pages` debe permitir la rama del workflow. No hace falta Python para acceder a la versión web.
+
+Comprobación del despliegue: `node simulator/scripts/check_pages.mjs https://alvarodesigns34.github.io/flight/ /tmp/tomcat-pages-check.json`, desde la raíz con las dependencias de desarrollo instaladas.
+
 ## Abrir
 
 Requiere **Python 3.10+**, navegador moderno con **WebGL 2** y extracción completa del ZIP si usas el paquete descargable. No requiere Blender, Node, cuenta o conexión a internet para jugar.
