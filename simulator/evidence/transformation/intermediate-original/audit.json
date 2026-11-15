@@ -1,0 +1,155 @@
+{
+  "capturedAt": "2026-11-15T14:59:28.978Z",
+  "base": "http://127.0.0.1:5173/",
+  "viewport": [
+    960,
+    720
+  ],
+  "quality": "light",
+  "gpu": "Chromium SwiftShader (software)",
+  "readyMs": 30373,
+  "timing": {
+    "frames": 1,
+    "medianMs": 8516.299999999988,
+    "p95Ms": 8516.299999999988,
+    "elapsedMs": 8516.299999999988,
+    "diagnostics": {
+      "ready": true,
+      "time": 0.24999999999999997,
+      "running": true,
+      "camera": "orbit",
+      "tab": "flight",
+      "airspeed": 114.99999999403703,
+      "altitude": 800.0000003433412,
+      "angles": [
+        0,
+        0.07826741761566233,
+        0
+      ],
+      "controls": {
+        "elevator": 0.018123034805601658,
+        "aileron": 0,
+        "rudder": 0,
+        "throttle": 0.1962009399549724,
+        "sweep": 0,
+        "flaps": 0,
+        "gear": 0,
+        "brake": 0
+      },
+      "appliedControls": {
+        "elevator": 0.018123034805601658,
+        "aileron": 0,
+        "rudder": 0,
+        "throttle": 0.1962009399549724,
+        "sweep": 0,
+        "flaps": 0,
+        "gear": 0,
+        "brake": 0
+      },
+      "physicsCpuMs": 11.5,
+      "droppedTime": 8.349599999999977,
+      "position": [
+        -1571.2500000003681,
+        -9200,
+        -800.0000003433412
+      ],
+      "contacts": [
+        {
+          "index": 0,
+          "compression": 0,
+          "load": 0
+        }
+      ],
+      "meshCount": 119,
+      "triangles": 1781837,
+      "quality": "light",
+      "renderedFrames": 17,
+      "originalTriangles": 1316961,
+      "originalObjects": 1832,
+      "originalSimplified": false,
+      "evolvedTriangles": 1340137,
+      "modelVersion": "original",
+      "assetLoading": false,
+      "terrainTriangles": 131072,
+      "cpuSubmitMs": 2.5,
+      "calls": 119,
+      "textures": 13,
+      "geometries": 227,
+      "gpuMs": null
+    }
+  },
+  "totalEncodedBytes": 83387304,
+  "resources": [
+    {
+      "name": "127.0.0.1:5173/style.css?v=0.3.0",
+      "bytes": 21816,
+      "durationMs": 56.5
+    },
+    {
+      "name": "dist/app.js?v=0.3.0",
+      "bytes": 719130,
+      "durationMs": 45.599999997764826
+    },
+    {
+      "name": "assets/tomcat-evolved.meshopt.glb",
+      "bytes": 25809224,
+      "durationMs": 2149.5
+    },
+    {
+      "name": "environment/kloofendal-sky-2k.hdr",
+      "bytes": 5451493,
+      "durationMs": 1074.699999999255
+    },
+    {
+      "name": "assets/original-model.json",
+      "bytes": 10583,
+      "durationMs": 23.600000001490116
+    },
+    {
+      "name": "assets/evolved-model.json",
+      "bytes": 3269,
+      "durationMs": 32.899999998509884
+    },
+    {
+      "name": "environment/pmrem.json",
+      "bytes": 967,
+      "durationMs": 32.80000000074506
+    },
+    {
+      "name": "environment/grass-rock-albedo-2k.jpg",
+      "bytes": 2624635,
+      "durationMs": 983.5
+    },
+    {
+      "name": "environment/rock-albedo-2k.jpg",
+      "bytes": 3232826,
+      "durationMs": 1004.6000000014901
+    },
+    {
+      "name": "environment/grass-rock-normal-2k.jpg",
+      "bytes": 3799025,
+      "durationMs": 1016.8000000007451
+    },
+    {
+      "name": "environment/grass-rock-roughness-2k.jpg",
+      "bytes": 1495844,
+      "durationMs": 785.6000000014901
+    },
+    {
+      "name": "environment/kloofendal-sky-pmrem.bin.gz",
+      "bytes": 10478674,
+      "durationMs": 349.6000000014901
+    },
+    {
+      "name": "environment/studio-small-09-pmrem.bin.gz",
+      "bytes": 11153014,
+      "durationMs": 976.3000000007451
+    },
+    {
+      "name": "assets/tomcat-original.meshopt.glb",
+      "bytes": 18586804,
+      "durationMs": 179.40000000223517
+    }
+  ],
+  "errors": []
+}

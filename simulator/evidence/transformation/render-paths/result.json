@@ -1,0 +1,148 @@
+{
+  "at": "2026-11-15T16:07:02.792Z",
+  "pose": {
+    "gear": 0.5,
+    "flaps": 0.7,
+    "rudder": 0.25,
+    "aileron": 0.2
+  },
+  "records": [
+    {
+      "stage": 1,
+      "stats": {
+        "tab": "flight",
+        "quality": "light",
+        "renderedFrames": 1,
+        "originalTriangles": 1316961,
+        "originalObjects": 1832,
+        "originalSimplified": false,
+        "evolvedTriangles": 1341681,
+        "modelVersion": "original",
+        "assetLoading": false,
+        "originalLoaded": false,
+        "actualOriginalTriangles": 0,
+        "treeCount": 4500,
+        "vegetationChunks": 122,
+        "terrainTriangles": 131072,
+        "rigidBatching": true,
+        "rigidBatchStats": {
+          "sourceMeshBatches": 135,
+          "multiDrawBatches": 33
+        },
+        "cpuSubmitMs": 2193.5,
+        "calls": 63,
+        "triangles": 1386305,
+        "textures": 71,
+        "geometries": 59,
+        "gpuMs": null
+      }
+    },
+    {
+      "stage": 2,
+      "stats": {
+        "tab": "flight",
+        "quality": "light",
+        "renderedFrames": 2,
+        "originalTriangles": 1316961,
+        "originalObjects": 1832,
+        "originalSimplified": false,
+        "evolvedTriangles": 1341681,
+        "modelVersion": "original",
+        "assetLoading": false,
+        "originalLoaded": false,
+        "actualOriginalTriangles": 0,
+        "treeCount": 4500,
+        "vegetationChunks": 122,
+        "terrainTriangles": 131072,
+        "rigidBatching": false,
+        "cpuSubmitMs": 208.19999999925494,
+        "calls": 165,
+        "triangles": 1386305,
+        "textures": 71,
+        "geometries": 194,
+        "gpuMs": null
+      }
+    },
+    {
+      "stage": "airport",
+      "stats": {
+        "tab": "flight",
+        "quality": "light",
+        "renderedFrames": 4,
+        "originalTriangles": 1316961,
+        "originalObjects": 1832,
+        "originalSimplified": false,
+        "evolvedTriangles": 1341681,
+        "modelVersion": "original",
+        "assetLoading": false,
+        "originalLoaded": false,
+        "actualOriginalTriangles": 0,
+        "treeCount": 4500,
+        "vegetationChunks": 122,
+        "terrainTriangles": 131072,
+        "rigidBatching": false,
+        "cpuSubmitMs": 276.1000000014901,
+        "calls": 65,
+        "triangles": 524848,
+        "textures": 79,
+        "geometries": 217,
+        "gpuMs": null
+      }
+    },
+    {
+      "stage": "coast",
+      "stats": {
+        "tab": "flight",
+        "quality": "light",
+        "renderedFrames": 6,
+        "originalTriangles": 1316961,
+        "originalObjects": 1832,
+        "originalSimplified": false,
+        "evolvedTriangles": 1341681,
+        "modelVersion": "original",
+        "assetLoading": false,
+        "originalLoaded": false,
+        "actualOriginalTriangles": 0,
+        "treeCount": 4500,
+        "vegetationChunks": 122,
+        "terrainTriangles": 131072,
+        "rigidBatching": false,
+        "cpuSubmitMs": 8.200000002980232,
+        "calls": 148,
+        "triangles": 922814,
+        "textures": 79,
+        "geometries": 217,
+        "gpuMs": null
+      }
+    },
+    {
+      "stage": "sea",
+      "stats": {
+        "tab": "flight",
+        "quality": "light",
+        "renderedFrames": 8,
+        "originalTriangles": 1316961,
+        "originalObjects": 1832,
+        "originalSimplified": false,
+        "evolvedTriangles": 1341681,
+        "modelVersion": "original",
+        "assetLoading": false,
+        "originalLoaded": false,
+        "actualOriginalTriangles": 0,
+        "treeCount": 4500,
+        "vegetationChunks": 122,
+        "terrainTriangles": 131072,
+        "rigidBatching": false,
+        "cpuSubmitMs": 6.300000000745058,
+        "calls": 120,
+        "triangles": 672584,
+        "textures": 79,
+        "geometries": 217,
+        "gpuMs": null
+      }
+    }
+  ],
+  "errors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+}

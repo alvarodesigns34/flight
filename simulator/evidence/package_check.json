@@ -1,0 +1,15 @@
+{
+  "source_commit": "d02b68f25f784af32e34bae3ec4cf8f203643ded",
+  "verified_files": 46,
+  "zip_integrity": true,
+  "standalone_server": true,
+  "http_asset_hashes_match": true,
+  "browser": {
+    "ready": true,
+    "started": true,
+    "paused": true,
+    "originalInspector": true,
+    "evolvedInspector": true,
+    "errors": []
+  }
+}

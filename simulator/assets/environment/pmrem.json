@@ -1,0 +1,30 @@
+{
+  "threeRevision": "181",
+  "prefilter": "GGX VNDF PMREMGenerator, full source resolution",
+  "records": [
+    {
+      "name": "studio-small-09",
+      "width": 1536,
+      "height": 2048,
+      "format": "RGBA16F",
+      "mapping": "CubeUVReflectionMapping",
+      "sourceSha256": "36724313c0fc66dab126ff90f081b85a0b1ef47be65eda1417bd20b033f0573f",
+      "rawSha256": "0e9e1f7facf9b606fe8de340e106eb89df9eda174ea130891b39b5206cd98a1f",
+      "rawBytes": 25165824,
+      "compressedBytes": 11153014,
+      "losslessGzip": true
+    },
+    {
+      "name": "kloofendal-sky",
+      "width": 1536,
+      "height": 2048,
+      "format": "RGBA16F",
+      "mapping": "CubeUVReflectionMapping",
+      "sourceSha256": "5244534e9cf5b606f2ff513aa00ddb161b0a4826ffd88a0d3bd03ac29247d198",
+      "rawSha256": "594181dcdb25d84f9bf54ee9c93f5f3e770806f91df06bc9531848cbb89f7a3a",
+      "rawBytes": 25165824,
+      "compressedBytes": 10478674,
+      "losslessGzip": true
+    }
+  ]
+}

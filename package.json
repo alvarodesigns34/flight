@@ -1,0 +1,20 @@
+{
+  "name": "project-tomcat-flight-lab",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "python3 simulator/serve.py",
+    "build": "node simulator/scripts/build.mjs",
+    "test": "node --test simulator/tests/*.test.mjs",
+    "validate": "node simulator/scripts/validate.mjs"
+  },
+  "dependencies": {
+    "three": "0.181.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "esbuild": "0.25.12",
+    "meshoptimizer": "^0.24.0"
+  }
+}

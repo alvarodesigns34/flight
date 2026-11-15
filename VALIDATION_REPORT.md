@@ -1,0 +1,84 @@
+# Validación vigente: Flight & Archive 0.3
+
+La evolución incorpora 28 pruebas Node y tres regresiones Python, auditoría independiente del nativo, prueba completa de interacción, comparación de rutas de render y medición de apertura en seis procesos nuevos. Consulta [TRANSFORMATION_REPORT.md](TRANSFORMATION_REPORT.md) y `simulator/evidence/transformation/` para los resultados actuales. Las secciones siguientes conservan la historia de fases anteriores y sus cifras no sustituyen la validación 0.3.
+
+# Validación — incremento 0.1
+
+Fecha: 15-11-2026. Los resultados numéricos y las capturas se conservan en `simulator/evidence/`. Las comprobaciones de este informe corresponden a comportamiento **educativo genérico**, no a validación de prestaciones del F-14A.
+
+## Auditoría del repositorio y del Blender
+
+| Impacto | Hallazgo y resultado |
+|---|---|
+| Alto, corregido | `check_delivery.py` infería procedencia de renders a partir de fechas de archivo. Git no conserva esas fechas. Se sustituyó por asociación mediante SHA-256 del maestro y la imagen: registros nuevos o manifiesto archivado. Dos tests demuestran rechazo de manipulación incluso con fecha futura y aceptación de contenido intacto con fecha antigua. |
+| Alto para el visor, corregido | Los nodos procedurales de Blender no se convertían bien a glTF y la pintura oscura se exportaba blanca. Se inspeccionaron capturas y se exportan ahora los valores PBR base explícitos; las derivas VF-84 conservan negro, amarillo y marcas. |
+| Medio, corregido | La conversión inicial de ejes hacía barrer las alas visualmente hacia delante. Se corrigió el signo de los dos pivotes y la insignia de babor acompaña su ala. El rig sigue siendo artístico. |
+| Medio, corregido | Error de render podía dejar ocultas piezas de cortes expositivos. Se restauran con `finally`. |
+| Medio, resuelto con herramienta alternativa | La compilación de sistema de Blender terminó con fallos nativos al preparar la exportación. La distribución oficial 4.3.2 completó exportación y regeneración. No se afirma que el origen del fallo nativo haya quedado diagnosticado. |
+| Pendiente | Exactitud de cada sección, panel, cabina, tren, ruta interna o unión. Los controles técnicos no equivalen a reconstrucción museística ni revisión exhaustiva de intersecciones. |
+
+El maestro abrió y pasó: **1.832 objetos de aeronave**, 298.498 vértices de malla, 273.672 caras base, 36 materiales y 11 cámaras. Las medidas verificadas son longitud 19,1008 m, envergadura 19,5326 m y altura de deriva 4,8768 m. Simetría principal, lateralidad de babor/estribor y luces, inclinación de derivas, materiales, degenerados y números finitos: pasan. No hay imágenes externas sin empaquetar ni animación en el maestro original.
+
+Se regeneró todo el proyecto en una carpeta temporal con el código fuente. Las métricas estructurales coincidieron. Además, se compararon las huellas de **1.833 objetos renderizables, incluido el suelo**: no hay nombres faltantes ni huellas distintas. El alcance de esa huella es el de `snapshot_scene.py`: transformaciones, vértices, tamaños de cara, flags de suavizado, materiales por nombre, textos y curvas. No demuestra equivalencia de todos los nodos de shader, normales personalizadas o conectividad completa. El `.blend` no tiene que ser idéntico byte a byte para reproducir estas métricas.
+
+Se comprobaron las once imágenes originales con hashes y dimensiones. Se conserva su diferencia cosmética conocida de dos pequeñas inscripciones de puertas, según el informe histórico. No se regeneraron las once imágenes en esta fase. El hash del maestro original sigue siendo `72ee953fe589ae43a71eaf63225d689619acb43181011e107d341e7c454c33d0`.
+
+## Física: pruebas reproducibles
+
+`npm test`: **12/12** pasan. `python3 -m unittest discover -s simulator/tests -p 'test_*.py'`: **2/2** pasan.
+
+| Comprobación | Evidencia y alcance |
+|---|---|
+| Unidades y ejes | Densidad al nivel del mar aproximadamente 1,225 kg/m³; continuidad de atmósfera en 11 km; cuaterniones verifican signos de cabeceo, alabeo y rumbo en NED. |
+| Equilibrio | Trim en tres combinaciones de velocidad/altitud/configuración. Residuo inicial de fuerza del caso base: 0 N a precisión registrada; momento aproximadamente 1,6×10⁻¹¹ N·m. |
+| Vuelo nivelado | 60 s, 120 m/s, 1.500 m: cambio máximo de altitud 0,777 m y de velocidad 0,043 m/s, con consumo. |
+| Configuración de aterrizaje | 60 s, 90 m/s, 450 m, tren y flaps: cambio máximo de altitud 1,024 m y velocidad 0,055 m/s. **Es vuelo nivelado con configuración**, no un aterrizaje validado. |
+| Energía y motor | Más potencia da mayor energía específica que ralentí; respuesta temporal gradual; consumo positivo y combustible no negativo. No es una prueba completa de conservación en todas las configuraciones. |
+| Mandos | Elevador, alerón y timón positivos generan las aceleraciones angulares documentadas. |
+| Viento y configuración | Viento de cola cambia velocidad del aire; viento lateral cambia β; tren/flaps aumentan arrastre y geometría alar modifica coeficientes estimados. |
+| Convergencia RK4 | Error combinado de posición/velocidad a 2 s frente a 480 Hz: 1,78×10⁻⁸ a 60 Hz y 1,12×10⁻⁹ a 120 Hz. Norma numérica de componentes en SI, no una única unidad física. |
+| Frecuencia gráfica | Estados iguales dentro de 10⁻⁸ de norma numérica a 30, 60 y 144 FPS sintéticos. Se comprueba el límite de recuperación tras un cuadro de 5 s. |
+| Contacto y freno | Reposo en suelo plano se asienta y la frenada reduce energía cinética. Sin validación de impactos fuertes, derrape o neumáticos reales. |
+| Casos límite | Velocidad cero, combustible agotado, inputs no finitos y petición de trim fuera de rango. |
+
+`npm run validate` guarda tres CSV de 60 s y `validation.json`, que contienen el estado completo, controles y viento. No hay comparación numérica con curvas de prestaciones públicas del F-14: los coeficientes genéricos no permiten sostener esa comparación.
+
+## Visor y ejecución
+
+La prueba `browser_check.mjs` ejecuta Chromium headless con WebGL por software y bloquea toda petición externa. Se han verificado carga offline, geometría real, inicio/pausa, respuesta de cabeceo, cambio de alas, tres cámaras, escenario de pista, CSV, diálogo informativo y disposición móvil de 390 px. El registro exacto de la última ejecución está en `browser_check.json`, con errores y peticiones externas.
+
+Se inspeccionaron capturas reales de escritorio, alas barridas, pista y móvil. Se corrigieron colores, encuadre móvil y precisión de profundidad del paisaje a partir de esa revisión. El navegador compartido de Cloud Desktop no pudo inicializarse por un error de su sandbox; se utilizó la alternativa reproducible de Playwright/Chromium. La prueba no acredita funcionamiento del mando físico ni de todos los navegadores, ni una escucha humana de calidad sonora.
+
+En esta máquina sin GPU, el rasterizador por software puede reducir el render a unos pocos FPS. La física conserva su paso fijo y limita la recuperación, por lo que el tiempo simulado puede avanzar más despacio que el reloj real. No se declara un rendimiento de 60 FPS universal. El recurso glTF tiene unos 23,6 MB sin comprimir; el ZIP comprime esa copia.
+
+El paquete descargable se generó desde el commit `e27f86591ecbb00930e1ddd2edceaccd087338a9`. Se verificaron los hashes de sus 21 archivos, se extrajo en otra carpeta, se arrancó su propio servidor y Chromium confirmó carga, inicio y pausa sin errores. El ZIP y `downloads/TOMCAT_FLIGHT_LAB.json` registran ese commit fuente; las actualizaciones posteriores de informes quedan en Git. Evidencia: `simulator/evidence/package_check.json`.
+
+`npm audit --omit=dev`: **0 vulnerabilidades detectadas** en el momento de la revisión. Eso no sustituye una auditoría exhaustiva de seguridad. El servidor local usa solo la biblioteca estándar de Python, escucha en `127.0.0.1` y sirve exclusivamente la carpeta del simulador.
+
+## Motor consolidado evaluado
+
+JSBSim 1.2.3 instalado y ejecutado 10 s a 120 Hz con su C172 civil. Trim inicial satisfactorio y muestras finitas. Los resultados muestran evolución libre después del trim; no se interpreta como vuelo perfectamente nivelado ni como validación cruzada del modelo del navegador. El adaptador exporta a SI para facilitar una futura integración. Datos y resultados: `jsbsim_reference.json` y `jsbsim_civil_reference.csv`.
+
+## Pendiente
+
+Dinámica histórica verificable, afinamiento de contactos y aterrizajes, pruebas de perturbaciones más largas, variación de CG, animación coherente de todos los controles, pérdida y resbalamiento fuera del régimen moderado, dispositivos de entrada físicos, texturización detallada y calibración multivista del modelo. Las limitaciones concretas del motor actual están en `FLIGHT_MODEL.md`. La continuidad automática a las 06:00 **no quedó creada** por el límite de 5 tareas activas.
+
+## Comprobación de GitHub Pages
+
+`check_pages.mjs` pasó con el runtime servido bajo `/flight/`, primero en staging local y después en https://alvarodesigns34.github.io/flight/. Se verificaron geometría WebGL, inicio, pausa, control de alas y manifiesto de despliegue. La ejecución pública registró cero errores JavaScript, cero peticiones fallidas y cero respuestas HTTP de error. `PAGES_DEPLOYMENT.json` conserva el resultado y el SHA del runtime observado. El workflow Pages 43705184725, intento 2, completó build y publicación.
+
+## Versión 0.2 — original íntegro y nueva experiencia
+
+**17/17 pruebas Node y 2/2 regresiones Python pasan.** Las nuevas comprobaciones leen el GLB, suman los índices de cada primitiva y verifican exactamente **1.316.961 triángulos**, atributos de normales y hash del recurso. Comprueban asimismo que el Blender descargable y el maestro tienen el SHA-256 inicial, y que no se omiten los 1.832 objetos fuente. Las pruebas de terreno comprueban pista plana, continuidad, relieve, contacto a la altura dibujada y estabilidad de la salida costera durante 20 s.
+
+La suite `check_experience.mjs` pasó con Chromium/SwiftShader: modelo completo, pestaña original, pausa de la física al inspeccionar, cabina/tren, vista limpia, móvil 390 px, pista, respuesta real de cabeceo a teclado, compensador, audio, Ultra y luz cálida. Terminó con **cero errores JavaScript/console y cero errores HTTP**. Capturas de escritorio, móvil, cabina, tren, vista limpia, vuelo Ultra, atardecer e inspector Ultra fueron inspeccionadas. Registro: `simulator/evidence/experience-02/browser.json`.
+
+La prueba general usa Ligera para reducir el coste del render por software, conservando toda la geometría, y al final activa Ultra para comprobar sus shaders, vidrio y sombras. No se deduce rendimiento en hardware real de esos FPS. En la secuencia registrada se dibujaron 25 cuadros a pesar de múltiples capturas y esperas, gracias al render por cambios en pausa. La exportación source/noise no acredita una equivalencia de todos los shaders con Cycles: se conservan valores PBR, transmisión en Ultra y normales; el grano fino se aproxima. El cielo HDR y la vegetación procedural no equivalen a meteorología o fotogrametría del lugar.
+
+El preparado Pages contiene 15 recursos del runtime, aproximadamente 69 MB sin comprimir, incluida la descarga Blender original y las atribuciones; excluye el GLB reducido histórico, Python y logs. Las rutas siguen siendo relativas para `/flight/`; el despliegue y su comprobación pública se registran en `PAGES_DEPLOYMENT.json`.
+
+El despliegue público de 0.2 completó build, validación y Pages en el commit `87a6da596557eb09f9f7753aebc44e79cfdcf00c`. La prueba real de `https://alvarodesigns34.github.io/flight/?quality=light` pasó para vuelo, alas e inspector, con cero errores y 15 recursos en el manifiesto. La copia `.blend` descargada de la web volvió a verificar el SHA-256 del original. El ZIP 0.2 registra ese mismo checkpoint, contiene 33 archivos verificados y se probó extraído mediante servidor independiente y Chromium.
+
+El acabado final del agua se comprobó en la web pública con Ultra para el commit `a5896a0c4038cec73bada6ddab48e7e2efc10d70`: carga completa, captura real y cero errores JavaScript/console. El bundle público coincidió por SHA-256 con el construido localmente. `PAGES_DEPLOYMENT.json` conserva esta comprobación y la prueba de interacción de vuelo/inspector, y `experience-02/public-flight-ultra.png` muestra el acabado final. El archivo del avión y sus conteos no cambiaron durante el ajuste del mar.
+
+El paquete offline final, del checkpoint `6e505d66c7bc5688614cb1d69056e6b7f666e520`, también se volvió a extraer y probar íntegramente: 33 archivos verificados, servidor independiente, hashes HTTP y carga/inicio/pausa de Chromium sin errores. `simulator/evidence/package_check.json` registra esta última comprobación.

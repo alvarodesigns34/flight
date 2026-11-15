@@ -1,0 +1,24 @@
+[
+  {
+    "name": "original",
+    "sourceBytes": 39861948,
+    "compressedBytes": 18586804,
+    "sourceSha256": "834f5953d36f04530025d2969ee5ed8aed032c021b8e48b72f00d19dd1674c09",
+    "compressedSha256": "bb66b987117e31c4900316aafd13237731f9ba73d6b1a8127c3de019c622e13b",
+    "compressedViews": 227,
+    "decodedBufferViewsByteIdentical": true,
+    "quantized": false,
+    "decimated": false
+  },
+  {
+    "name": "evolved",
+    "sourceBytes": 51044164,
+    "compressedBytes": 25058828,
+    "sourceSha256": "856ec468cbed29c7a90196a84a783eeb6116a20ca3a5cebdf214cffefa1b3f70",
+    "compressedSha256": "549e9d9cf08f5fc9bc662b67a1af3454488043d4d4d54be209a039e3340a8f6b",
+    "compressedViews": 499,
+    "decodedBufferViewsByteIdentical": true,
+    "quantized": false,
+    "decimated": false
+  }
+]

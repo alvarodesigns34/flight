@@ -1,0 +1,30 @@
+{
+  "native_file": "PROJECT_TOMCAT/evolved/F14A_TOMCAT_EVOLVED.blend",
+  "native_sha256": "f6cc319fe3b33b620def96ade3673128ba3c5bd414d783304f52d004b6e1f331",
+  "source_objects_retained": 1832,
+  "added_objects": [
+    "Port_articulated_rudder",
+    "Starboard_articulated_rudder"
+  ],
+  "modified_objects": [
+    "Port_variable_sweep_wing",
+    "Port_flap_skin_1",
+    "Port_flap_skin_2",
+    "Port_flap_skin_3",
+    "Starboard_variable_sweep_wing",
+    "Starboard_flap_skin_1",
+    "Starboard_flap_skin_2",
+    "Starboard_flap_skin_3",
+    "Port_canted_vertical_fin",
+    "Port_articulated_rudder",
+    "Starboard_canted_vertical_fin",
+    "Starboard_articulated_rudder",
+    "Pilot_seat_cushion",
+    "Pilot_back_cushion",
+    "RIO_seat_cushion",
+    "RIO_back_cushion"
+  ],
+  "ao_objects": 22,
+  "images_packed": true,
+  "original_hash_verified": true
+}

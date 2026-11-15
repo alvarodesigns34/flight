@@ -1,0 +1,84 @@
+{
+  "url": "http://127.0.0.1:5173/",
+  "at": "2026-11-15T11:45:41.879Z",
+  "checks": [
+    "full original geometry and components",
+    "original inspector tab",
+    "physics pauses in inspector",
+    "cockpit and gear inspection",
+    "uncluttered inspection",
+    "390px layout",
+    "runway scene",
+    "clear keyboard pitch response",
+    "trim control",
+    "synthesized audio toggle",
+    "Ultra mode",
+    "sunset lighting"
+  ],
+  "start": {
+    "ready": true,
+    "time": 0,
+    "running": false,
+    "camera": "orbit",
+    "tab": "flight",
+    "airspeed": 115,
+    "altitude": 800,
+    "angles": [
+      0,
+      0.0782674167436323,
+      0
+    ],
+    "controls": {
+      "elevator": 0.018123034805601658,
+      "aileron": 0,
+      "rudder": 0,
+      "throttle": 0.1962009399549724,
+      "sweep": 0,
+      "flaps": 0,
+      "gear": 0,
+      "brake": 0
+    },
+    "meshCount": 87,
+    "triangles": 2067969,
+    "quality": "light",
+    "renderedFrames": 1,
+    "originalTriangles": 1316961,
+    "originalObjects": 1832,
+    "originalSimplified": false,
+    "calls": 87
+  },
+  "final": {
+    "ready": true,
+    "time": 0.8749999999999993,
+    "running": false,
+    "camera": "orbit",
+    "tab": "model",
+    "airspeed": 114.88326356623314,
+    "altitude": 800.1584659708982,
+    "angles": [
+      0,
+      0.12000854700911036,
+      0
+    ],
+    "controls": {
+      "elevator": 0.018123034805601658,
+      "aileron": 0,
+      "rudder": 0,
+      "throttle": 0.1962009399549724,
+      "sweep": 0,
+      "flaps": 0,
+      "gear": 0,
+      "brake": 0
+    },
+    "meshCount": 158,
+    "triangles": 2633926,
+    "quality": "ultra",
+    "renderedFrames": 25,
+    "originalTriangles": 1316961,
+    "originalObjects": 1832,
+    "originalSimplified": false,
+    "calls": 158
+  },
+  "errors": [],
+  "httpErrors": []
+}

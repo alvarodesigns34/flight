@@ -1,0 +1,60 @@
+name: Deploy flight lab to Pages
+
+on:
+  push:
+    branches: [main, codex/tomcat-flight-simulator]
+    paths:
+      - 'simulator/index.html'
+      - 'simulator/style.css'
+      - 'simulator/src/**'
+      - 'simulator/dist/**'
+      - 'simulator/assets/**'
+      - 'simulator/scripts/build.mjs'
+      - 'simulator/scripts/prepare_pages.py'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - name: Stage browser runtime
+        run: python simulator/scripts/prepare_pages.py --output _site --commit "$GITHUB_SHA"
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - name: Publish simulator
+        id: deployment
+        uses: actions/deploy-pages@v4

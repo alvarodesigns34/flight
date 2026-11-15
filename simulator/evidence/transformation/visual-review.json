@@ -1,0 +1,45 @@
+{
+  "at": "2026-11-15",
+  "baseline_views": 12,
+  "comparison_views": 12,
+  "reviewed_contact_sheet": "comparison.jpg",
+  "full_size_final_reviewed": [
+    "01-flight-desktop",
+    "02-hero",
+    "04-top",
+    "05-cockpit",
+    "06-gear",
+    "9-runway",
+    "11-flight-mobile",
+    "12-model-mobile",
+    "14-pilot-ultra",
+    "16-cockpit-ultra",
+    "17-pilot-panel",
+    "18-rear-panel"
+  ],
+  "reviewed_supplemental": [
+    "verified-render/airport.png",
+    "verified-render/coast.png",
+    "verified-render/studio-hero.png",
+    "verified-render/studio-cockpit.png",
+    "verified-render/studio-pilot-panel.png",
+    "verified-render/batched-pose.png",
+    "sea-check/sea.png",
+    "public-entry-ultra.png"
+  ],
+  "not_opened_individually": [
+    "before/01-flight-desktop.png",
+    "before/02-hero.png",
+    "before/03-port.png",
+    "before/04-top.png",
+    "before/05-cockpit.png",
+    "before/06-gear.png",
+    "before/07-engines.png",
+    "before/8-coastal.png",
+    "before/9-runway.png",
+    "before/10-sunset.png",
+    "before/11-flight-mobile.png",
+    "before/12-model-mobile.png"
+  ],
+  "note": "All baseline images were inspected in the contact sheet; not individually at full resolution. Intermediate artifacts are retained; verified-render and sea-check document corrections. No photorealism or real-GPU FPS claim."
+}

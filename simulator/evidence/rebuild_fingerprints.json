@@ -1,0 +1,8 @@
+{
+  "original_count": 1833,
+  "rebuilt_count": 1833,
+  "only_original": [],
+  "only_rebuilt": [],
+  "changed": [],
+  "comparison_scope": "per-object transforms, positions, material names, vertex coordinates, face sizes, smooth flags, curve geometry and text; see snapshot_scene.py. Not full shader/normal/topology equivalence."
+}

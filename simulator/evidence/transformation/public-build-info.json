@@ -1,0 +1,115 @@
+{
+  "source_commit": "d02b68f25f784af32e34bae3ec4cf8f203643ded",
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 15527,
+      "sha256": "7a485c9dae7fdaabb04dd6baf4de33cb6ca9572983d3081046230d308ac43844"
+    },
+    {
+      "path": "style.css",
+      "bytes": 22200,
+      "sha256": "5f541dea615e829e622a58699acb1d51d51aee45f032f363758bc65a184c2ab0"
+    },
+    {
+      "path": "dist/app.js",
+      "bytes": 747420,
+      "sha256": "2b766cf2008805c48c92b62318401a0f3b131bd31372bad49dc144b9eab96983"
+    },
+    {
+      "path": "dist/app.js.LEGAL.txt",
+      "bytes": 188,
+      "sha256": "373b12aaa205aa5bc749aef71f9d69280e4b405d39570ffcd66a385349d76587"
+    },
+    {
+      "path": "assets/F14A_TOMCAT_EVOLVED.blend",
+      "bytes": 10965567,
+      "sha256": "f6cc319fe3b33b620def96ade3673128ba3c5bd414d783304f52d004b6e1f331"
+    },
+    {
+      "path": "assets/F14A_TOMCAT_ORIGINAL.blend",
+      "bytes": 5489563,
+      "sha256": "72ee953fe589ae43a71eaf63225d689619acb43181011e107d341e7c454c33d0"
+    },
+    {
+      "path": "assets/MESHOPT-LICENSE.txt",
+      "bytes": 1079,
+      "sha256": "e4a26033e3551fb2722888949fbb41e77aee628e8e8f04dcffeee301aa7e5634"
+    },
+    {
+      "path": "assets/THREE-LICENSE.txt",
+      "bytes": 1081,
+      "sha256": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601"
+    },
+    {
+      "path": "assets/environment/ATTRIBUTIONS.json",
+      "bytes": 2552,
+      "sha256": "3e625ae8c9532babca32b3a27aa2ad4e97e30697f228354b08baa62742d8ea15"
+    },
+    {
+      "path": "assets/environment/grass-rock-albedo-2k.jpg",
+      "bytes": 2624635,
+      "sha256": "1a2ddfa4652adbe00447b940c40019d46f4b88245bc1b341cdf622c2110b7bc5"
+    },
+    {
+      "path": "assets/environment/grass-rock-normal-2k.jpg",
+      "bytes": 3799025,
+      "sha256": "c6aa14b042ce243f93a6ca807f46a085711c23ad316b104578e92df7770ee285"
+    },
+    {
+      "path": "assets/environment/grass-rock-roughness-2k.jpg",
+      "bytes": 1495844,
+      "sha256": "fc0fff40e3378f2f54d225db6e3e566a8563bb2c143eef0f09b543c9d4698776"
+    },
+    {
+      "path": "assets/environment/kloofendal-sky-2k.hdr",
+      "bytes": 5451493,
+      "sha256": "5244534e9cf5b606f2ff513aa00ddb161b0a4826ffd88a0d3bd03ac29247d198"
+    },
+    {
+      "path": "assets/environment/kloofendal-sky-pmrem.bin.gz",
+      "bytes": 10478674,
+      "sha256": "0aedcae7eb8811910dee6235f0bf273dcc2a24c7bdf1f4b0b408e9f9d4bedd25"
+    },
+    {
+      "path": "assets/environment/pmrem.json",
+      "bytes": 967,
+      "sha256": "5048f25fb049daca91b5df819dff93c010b4aea8549f22b7640baefa35cd1d95"
+    },
+    {
+      "path": "assets/environment/rock-albedo-2k.jpg",
+      "bytes": 3232826,
+      "sha256": "9b042fe0618ffbc3650592456d7d8d265ba9a1cb5ce802f5f1d86b7ee79508a1"
+    },
+    {
+      "path": "assets/environment/studio-small-09-2k.hdr",
+      "bytes": 6312947,
+      "sha256": "36724313c0fc66dab126ff90f081b85a0b1ef47be65eda1417bd20b033f0573f"
+    },
+    {
+      "path": "assets/environment/studio-small-09-pmrem.bin.gz",
+      "bytes": 11153014,
+      "sha256": "92f06218a61583ab5fd12d588e30c8ea554a630279982a1c504e037ff55c9b9c"
+    },
+    {
+      "path": "assets/evolved-model.json",
+      "bytes": 66877,
+      "sha256": "033f3e4fcd4fb99e371d8c04db081382540a8020dce30bc88846f250d64cd54a"
+    },
+    {
+      "path": "assets/original-model.json",
+      "bytes": 10583,
+      "sha256": "6ad12b08c99df5a12e8ff4b95a81f04737b06f81088c703c9240de9976dcc96c"
+    },
+    {
+      "path": "assets/tomcat-evolved.meshopt.glb",
+      "bytes": 25058828,
+      "sha256": "549e9d9cf08f5fc9bc662b67a1af3454488043d4d4d54be209a039e3340a8f6b"
+    },
+    {
+      "path": "assets/tomcat-original.meshopt.glb",
+      "bytes": 18586804,
+      "sha256": "bb66b987117e31c4900316aafd13237731f9ba73d6b1a8127c3de019c622e13b"
+    }
+  ]
+}

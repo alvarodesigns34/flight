@@ -1,0 +1,37 @@
+{
+  "url": "https://alvarodesigns34.github.io/flight/?quality=ultra",
+  "source_commit": "a5896a0c4038cec73bada6ddab48e7e2efc10d70",
+  "runtime": {
+    "ready": true,
+    "time": 0,
+    "running": false,
+    "camera": "orbit",
+    "tab": "flight",
+    "airspeed": 115,
+    "altitude": 800,
+    "angles": [
+      0,
+      0.0782674167436323,
+      0
+    ],
+    "controls": {
+      "elevator": 0.018123034805601658,
+      "aileron": 0,
+      "rudder": 0,
+      "throttle": 0.1962009399549724,
+      "sweep": 0,
+      "flaps": 0,
+      "gear": 0,
+      "brake": 0
+    },
+    "meshCount": 142,
+    "triangles": 4046134,
+    "quality": "ultra",
+    "renderedFrames": 1,
+    "originalTriangles": 1316961,
+    "originalObjects": 1832,
+    "originalSimplified": false,
+    "calls": 142
+  },
+  "errors": []
+}

@@ -1,5 +1,5 @@
 """Static camera rendering; state restored after each view. No keyframes."""
-import bpy,sys,time,json
+import bpy,sys,time,json,hashlib
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 from config import ROOT
@@ -29,8 +29,10 @@ for name in names:
         for o in bpy.data.collections['Removable_Panels'].objects:o.hide_render=True;hidden.append(o)
     scene.render.filepath=str(ROOT/'renders'/f'{name}.png')
     print('RENDER_START',name,width,samples,flush=True)
-    bpy.ops.render.render(write_still=True)
-    for o in hidden:o.hide_render=False
-    records.append({'camera':name,'width':width,'samples':samples,'seconds':round(time.time()-start,2),'hidden_static_cutaway':[o.name for o in hidden if o.name!='Neutral_studio_floor'],'hidden_stage':[o.name for o in hidden if o.name=='Neutral_studio_floor']})
+    try:
+        bpy.ops.render.render(write_still=True)
+    finally:
+        for o in hidden:o.hide_render=False
+    records.append({'camera':name,'width':width,'samples':samples,'master_sha256':hashlib.sha256(Path(bpy.data.filepath).read_bytes()).hexdigest(),'image_sha256':hashlib.sha256(Path(scene.render.filepath).read_bytes()).hexdigest(),'seconds':round(time.time()-start,2),'hidden_static_cutaway':[o.name for o in hidden if o.name!='Neutral_studio_floor'],'hidden_stage':[o.name for o in hidden if o.name=='Neutral_studio_floor']})
     (ROOT/'logs'/f'render_{name}.json').write_text(json.dumps(records[-1],indent=2))
 print('RENDER_COMPLETE',json.dumps(records),flush=True)
