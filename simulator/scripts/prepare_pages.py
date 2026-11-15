@@ -18,8 +18,8 @@ def stage(output, commit):
     files = [RUNTIME / 'index.html', RUNTIME / 'style.css']
     for directory in ['dist', 'assets']:
         files.extend(sorted((RUNTIME / directory).rglob('*')))
-    files = [path for path in files if path.is_file() and path != RUNTIME / 'assets/tomcat.glb']
-    required = {'index.html', 'style.css', 'dist/app.js', 'assets/tomcat-original.glb', 'assets/original-model.json', 'assets/F14A_TOMCAT_ORIGINAL.blend', 'assets/environment/studio-small-09-2k.hdr', 'assets/environment/kloofendal-sky-2k.hdr', 'assets/THREE-LICENSE.txt'}
+    files = [path for path in files if path.is_file() and path.relative_to(RUNTIME).as_posix() not in {'assets/tomcat.glb','assets/tomcat-original.meshopt.glb', 'assets/tomcat-evolved.meshopt.glb', 'assets/evolved-model.json', 'assets/environment/pmrem.json', 'assets/environment/studio-small-09-pmrem.bin.gz', 'assets/environment/kloofendal-sky-pmrem.bin.gz','assets/tomcat-evolved.glb'} and 'finish' not in path.parts]
+    required = {'index.html', 'style.css', 'dist/app.js', 'assets/tomcat-original.meshopt.glb', 'assets/tomcat-evolved.meshopt.glb', 'assets/evolved-model.json', 'assets/environment/pmrem.json', 'assets/environment/studio-small-09-pmrem.bin.gz', 'assets/environment/kloofendal-sky-pmrem.bin.gz', 'assets/original-model.json', 'assets/F14A_TOMCAT_ORIGINAL.blend', 'assets/F14A_TOMCAT_EVOLVED.blend', 'assets/environment/studio-small-09-2k.hdr', 'assets/environment/kloofendal-sky-2k.hdr', 'assets/THREE-LICENSE.txt'}
     relative = {path.relative_to(RUNTIME).as_posix() for path in files}
     if not required.issubset(relative):
         raise ValueError('Missing runtime files: ' + str(required - relative))

@@ -22,5 +22,23 @@ export function terrainHeight(east,south) {
  h*=airportBlend;
  return h;
 }
-export const groundHeight=(north,east)=>terrainHeight(east,-north);
+// The finest rendered grid and contact solver share these exact triangles.
+// Coarser rings are visual LOD only, outside the contact neighbourhood.
+export const TERRAIN_STEP=20;
+const heights=new Map();
+export function gridHeight(ix,iz){
+ const key=ix+','+iz;if(heights.has(key))return heights.get(key);
+ const h=terrainHeight(ix*TERRAIN_STEP,iz*TERRAIN_STEP);
+ if(heights.size>150000)heights.clear();heights.set(key,h);return h;
+}
+export function terrainSample(east,south){
+ const x=east/TERRAIN_STEP,z=south/TERRAIN_STEP,ix=Math.floor(x),iz=Math.floor(z),u=x-ix,v=z-iz;
+ const a=gridHeight(ix,iz),b=gridHeight(ix+1,iz),c=gridHeight(ix,iz+1),d=gridHeight(ix+1,iz+1);
+ let height,dx,dz;
+ if(u+v<=1){height=a+(b-a)*u+(c-a)*v;dx=(b-a)/TERRAIN_STEP;dz=(c-a)/TERRAIN_STEP;}
+ else{height=d+(c-d)*(1-u)+(b-d)*(1-v);dx=(d-c)/TERRAIN_STEP;dz=(d-b)/TERRAIN_STEP;}
+ // Upward surface normal in NED: north=-south, down=-height.
+ const length=Math.hypot(dz,dx,1);return {height,normal:[-dz/length,dx/length,-1/length]};
+}
+export const groundHeight=(north,east)=>terrainSample(east,-north).height;
 export const WATER_HEIGHT=-16;

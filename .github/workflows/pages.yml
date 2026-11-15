@@ -4,7 +4,13 @@ on:
   push:
     branches: [main, codex/tomcat-flight-simulator]
     paths:
-      - 'simulator/**'
+      - 'simulator/index.html'
+      - 'simulator/style.css'
+      - 'simulator/src/**'
+      - 'simulator/dist/**'
+      - 'simulator/assets/**'
+      - 'simulator/scripts/build.mjs'
+      - 'simulator/scripts/prepare_pages.py'
       - 'package.json'
       - 'package-lock.json'
       - '.github/workflows/pages.yml'

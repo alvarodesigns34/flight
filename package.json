@@ -1,6 +1,6 @@
 {
   "name": "project-tomcat-flight-lab",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -13,7 +13,8 @@
     "three": "0.181.1"
   },
   "devDependencies": {
+    "@playwright/test": "1.56.1",
     "esbuild": "0.25.12",
-    "@playwright/test": "1.56.1"
+    "meshoptimizer": "^0.24.0"
   }
 }

@@ -1,0 +1,180 @@
+{
+  "capturedAt": "2026-11-15T15:54:36.571Z",
+  "base": "http://127.0.0.1:5173/",
+  "viewport": [
+    960,
+    720
+  ],
+  "quality": "light (13–18 supplementary Ultra)",
+  "gpu": "Chromium SwiftShader (software)",
+  "edition": "evolved",
+  "readyMs": 6244,
+  "initialEncodedBytes": 52970878,
+  "timing": {
+    "frames": 1,
+    "medianMs": 12926.200000002224,
+    "p95Ms": 12926.200000002224,
+    "elapsedMs": 12926.200000002224,
+    "diagnostics": {
+      "ready": true,
+      "time": 0.24999999999999997,
+      "running": true,
+      "camera": "orbit",
+      "tab": "flight",
+      "airspeed": 114.99999999403703,
+      "altitude": 800.0000003433412,
+      "angles": [
+        0,
+        0.07826741761566233,
+        0
+      ],
+      "controls": {
+        "elevator": 0.018123034805601658,
+        "aileron": 0,
+        "rudder": 0,
+        "throttle": 0.1962009399549724,
+        "sweep": 0,
+        "flaps": 0,
+        "gear": 0,
+        "brake": 0
+      },
+      "appliedControls": {
+        "elevator": 0.018123034805601658,
+        "aileron": 0,
+        "rudder": 0,
+        "throttle": 0.1962009399549724,
+        "sweep": 0,
+        "flaps": 0,
+        "gear": 0,
+        "brake": 0
+      },
+      "physicsCpuMs": 9,
+      "droppedTime": 12.782799999999988,
+      "position": [
+        -1571.2500000003681,
+        -9200,
+        -800.0000003433412
+      ],
+      "contacts": [
+        {
+          "index": 0,
+          "compression": 0,
+          "load": 0
+        }
+      ],
+      "meshCount": 148,
+      "triangles": 1468381,
+      "quality": "light",
+      "renderedFrames": 20,
+      "originalTriangles": 1316961,
+      "originalObjects": 1832,
+      "originalSimplified": false,
+      "evolvedTriangles": 1341681,
+      "modelVersion": "evolved",
+      "assetLoading": false,
+      "originalLoaded": true,
+      "actualOriginalTriangles": 1316961,
+      "treeCount": 4500,
+      "vegetationChunks": 122,
+      "terrainTriangles": 131072,
+      "cpuSubmitMs": 38.900000002235174,
+      "calls": 148,
+      "textures": 14,
+      "geometries": 259,
+      "gpuMs": null
+    }
+  },
+  "timingSampleValid": false,
+  "totalEncodedBytes": 82710696,
+  "resources": [
+    {
+      "name": "127.0.0.1:5173/style.css?v=0.3.0",
+      "bytes": 22200,
+      "durationMs": 14.799999997019768
+    },
+    {
+      "name": "dist/app.js?v=0.3.0",
+      "bytes": 727372,
+      "durationMs": 41.20000000298023
+    },
+    {
+      "name": "assets/tomcat-evolved.meshopt.glb",
+      "bytes": 25060564,
+      "durationMs": 734.3000000007451
+    },
+    {
+      "name": "environment/kloofendal-sky-2k.hdr",
+      "bytes": 5451493,
+      "durationMs": 332.30000000074506
+    },
+    {
+      "name": "assets/original-model.json",
+      "bytes": 10583,
+      "durationMs": 26.699999999254942
+    },
+    {
+      "name": "assets/evolved-model.json",
+      "bytes": 66695,
+      "durationMs": 16.800000000745058
+    },
+    {
+      "name": "environment/pmrem.json",
+      "bytes": 967,
+      "durationMs": 23.300000000745058
+    },
+    {
+      "name": "environment/grass-rock-albedo-2k.jpg",
+      "bytes": 2624635,
+      "durationMs": 209.69999999925494
+    },
+    {
+      "name": "environment/rock-albedo-2k.jpg",
+      "bytes": 3232826,
+      "durationMs": 213.19999999925494
+    },
+    {
+      "name": "environment/grass-rock-normal-2k.jpg",
+      "bytes": 3799025,
+      "durationMs": 220.10000000149012
+    },
+    {
+      "name": "environment/grass-rock-roughness-2k.jpg",
+      "bytes": 1495844,
+      "durationMs": 94.59999999776483
+    },
+    {
+      "name": "environment/kloofendal-sky-pmrem.bin.gz",
+      "bytes": 10478674,
+      "durationMs": 151.69999999925494
+    },
+    {
+      "name": "environment/studio-small-09-pmrem.bin.gz",
+      "bytes": 11153014,
+      "durationMs": 884.3000000007451
+    },
+    {
+      "name": "assets/tomcat-original.meshopt.glb",
+      "bytes": 18586804,
+      "durationMs": 232.30000000074506
+    }
+  ],
+  "checks": [
+    "12 comparable views",
+    "desktop and 390px layout",
+    "no browser or HTTP errors",
+    "full original decoded triangle count",
+    "inspector pauses flight",
+    "evolved edition",
+    "touch throttle",
+    "profile persistence and key rebinding",
+    "trim",
+    "keyboard changes physical pitch",
+    "audio toggle",
+    "diagnostic JSON download",
+    "telemetry CSV download",
+    "Ultra materials",
+    "geometric pilot cockpit",
+    "both cockpit stations"
+  ],
+  "errors": []
+}

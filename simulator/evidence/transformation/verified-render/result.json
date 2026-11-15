@@ -1,0 +1,236 @@
+{
+  "at": "2026-11-15T16:20:54.530Z",
+  "pose": {
+    "gear": 0.5,
+    "flaps": 0.7,
+    "rudder": 0.25,
+    "aileron": 0.2
+  },
+  "records": [
+    {
+      "stage": 1,
+      "stats": {
+        "tab": "flight",
+        "quality": "light",
+        "renderedFrames": 1,
+        "originalTriangles": 1316961,
+        "originalObjects": 1832,
+        "originalSimplified": false,
+        "evolvedTriangles": 1341681,
+        "modelVersion": "original",
+        "assetLoading": false,
+        "originalLoaded": false,
+        "actualOriginalTriangles": 0,
+        "treeCount": 4500,
+        "vegetationChunks": 122,
+        "terrainTriangles": 131072,
+        "rigidBatching": true,
+        "rigidBatchStats": {
+          "sourceMeshBatches": 135,
+          "multiDrawBatches": 33
+        },
+        "cpuSubmitMs": 3333.7000000029802,
+        "calls": 61,
+        "triangles": 1383725,
+        "textures": 71,
+        "geometries": 59,
+        "gpuMs": null
+      }
+    },
+    {
+      "stage": 2,
+      "stats": {
+        "tab": "flight",
+        "quality": "light",
+        "renderedFrames": 2,
+        "originalTriangles": 1316961,
+        "originalObjects": 1832,
+        "originalSimplified": false,
+        "evolvedTriangles": 1341681,
+        "modelVersion": "original",
+        "assetLoading": false,
+        "originalLoaded": false,
+        "actualOriginalTriangles": 0,
+        "treeCount": 4500,
+        "vegetationChunks": 122,
+        "terrainTriangles": 131072,
+        "rigidBatching": false,
+        "cpuSubmitMs": 62.30000000074506,
+        "calls": 163,
+        "triangles": 1383725,
+        "textures": 71,
+        "geometries": 194,
+        "gpuMs": null
+      }
+    },
+    {
+      "stage": "airport",
+      "stats": {
+        "tab": "flight",
+        "quality": "light",
+        "renderedFrames": 4,
+        "originalTriangles": 1316961,
+        "originalObjects": 1832,
+        "originalSimplified": false,
+        "evolvedTriangles": 1341681,
+        "modelVersion": "original",
+        "assetLoading": false,
+        "originalLoaded": false,
+        "actualOriginalTriangles": 0,
+        "treeCount": 4500,
+        "vegetationChunks": 122,
+        "terrainTriangles": 131072,
+        "rigidBatching": false,
+        "cpuSubmitMs": 238.09999999776483,
+        "calls": 65,
+        "triangles": 524848,
+        "textures": 79,
+        "geometries": 217,
+        "gpuMs": null
+      }
+    },
+    {
+      "stage": "coast",
+      "stats": {
+        "tab": "flight",
+        "quality": "light",
+        "renderedFrames": 6,
+        "originalTriangles": 1316961,
+        "originalObjects": 1832,
+        "originalSimplified": false,
+        "evolvedTriangles": 1341681,
+        "modelVersion": "original",
+        "assetLoading": false,
+        "originalLoaded": false,
+        "actualOriginalTriangles": 0,
+        "treeCount": 4500,
+        "vegetationChunks": 122,
+        "terrainTriangles": 131072,
+        "rigidBatching": false,
+        "cpuSubmitMs": 9.099999997764826,
+        "calls": 148,
+        "triangles": 922814,
+        "textures": 79,
+        "geometries": 217,
+        "gpuMs": null
+      }
+    },
+    {
+      "stage": "sea",
+      "stats": {
+        "tab": "flight",
+        "quality": "light",
+        "renderedFrames": 8,
+        "originalTriangles": 1316961,
+        "originalObjects": 1832,
+        "originalSimplified": false,
+        "evolvedTriangles": 1341681,
+        "modelVersion": "original",
+        "assetLoading": false,
+        "originalLoaded": false,
+        "actualOriginalTriangles": 0,
+        "treeCount": 4500,
+        "vegetationChunks": 122,
+        "terrainTriangles": 131072,
+        "rigidBatching": false,
+        "cpuSubmitMs": 3.5,
+        "calls": 120,
+        "triangles": 672584,
+        "textures": 79,
+        "geometries": 217,
+        "gpuMs": null
+      }
+    },
+    {
+      "stage": "hero",
+      "stats": {
+        "tab": "model",
+        "quality": "ultra",
+        "renderedFrames": 9,
+        "originalTriangles": 1316961,
+        "originalObjects": 1832,
+        "originalSimplified": false,
+        "evolvedTriangles": 1341681,
+        "modelVersion": "evolved",
+        "assetLoading": false,
+        "originalLoaded": false,
+        "actualOriginalTriangles": 0,
+        "treeCount": 4500,
+        "vegetationChunks": 122,
+        "terrainTriangles": 131072,
+        "rigidBatching": false,
+        "cpuSubmitMs": 3692.5,
+        "calls": 468,
+        "triangles": 3820895,
+        "textures": 82,
+        "geometries": 218,
+        "gpuMs": null
+      }
+    },
+    {
+      "stage": "cockpit",
+      "stats": {
+        "tab": "model",
+        "quality": "ultra",
+        "renderedFrames": 10,
+        "originalTriangles": 1316961,
+        "originalObjects": 1832,
+        "originalSimplified": false,
+        "evolvedTriangles": 1341681,
+        "modelVersion": "evolved",
+        "assetLoading": false,
+        "originalLoaded": false,
+        "actualOriginalTriangles": 0,
+        "treeCount": 4500,
+        "vegetationChunks": 122,
+        "terrainTriangles": 131072,
+        "rigidBatching": false,
+        "cpuSubmitMs": 11.199999999254942,
+        "calls": 370,
+        "triangles": 3524355,
+        "textures": 82,
+        "geometries": 218,
+        "gpuMs": null
+      }
+    },
+    {
+      "stage": "pilot-panel",
+      "stats": {
+        "tab": "model",
+        "quality": "ultra",
+        "renderedFrames": 11,
+        "originalTriangles": 1316961,
+        "originalObjects": 1832,
+        "originalSimplified": false,
+        "evolvedTriangles": 1341681,
+        "modelVersion": "evolved",
+        "assetLoading": false,
+        "originalLoaded": false,
+        "actualOriginalTriangles": 0,
+        "treeCount": 4500,
+        "vegetationChunks": 122,
+        "terrainTriangles": 131072,
+        "rigidBatching": false,
+        "cpuSubmitMs": 13.5,
+        "calls": 259,
+        "triangles": 3101503,
+        "textures": 82,
+        "geometries": 218,
+        "gpuMs": null
+      }
+    }
+  ],
+  "errors": [],
+  "pixel_comparison": {
+    "viewport": [
+      960,
+      720
+    ],
+    "mean_absolute_difference_0_255": [
+      3.0381944444444444e-05,
+      3.18287037037037e-05,
+      3.0381944444444444e-05
+    ],
+    "method": "Pillow ImageChops difference on the same pose, lighting and camera; full RGB frame"
+  }
+}

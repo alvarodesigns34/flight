@@ -1,4 +1,4 @@
-import {groundHeight,WATER_HEIGHT} from './terrain.mjs';
+import {groundHeight,terrainSample,WATER_HEIGHT} from './terrain.mjs';
 import { parameters as P } from './parameters.mjs';
 export const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 export const add=(a,b)=>a.map((x,i)=>x+b[i]);
@@ -25,7 +25,7 @@ export function atmosphere(altitude) {
 export function aeroCoefficients(alpha,beta,config={}) {
   const sweep=clamp(config.sweep??0,0,1), flaps=clamp(config.flaps??0,0,1);
   const linear=P.cl0 + P.clMaxIncrement*Math.tanh(P.clAlpha*(1-.3*sweep)*alpha/P.clMaxIncrement)+.35*flaps;
-  const blend=clamp((Math.abs(alpha)-.35)/.35,0,1);
+  const t=clamp((Math.abs(alpha)-.35)/.35,0,1),blend=t*t*(3-2*t);
   const cl=linear*(1-blend)+1.1*Math.sin(2*alpha)*blend;
   const cd=P.cd0+P.inducedDrag*(1+.5*sweep)*cl*cl+.8*Math.sin(alpha)**2+.35*beta*beta+.04*flaps+.025*(config.gear??0);
   return {cl,cd,cy:P.cyBeta*beta};
@@ -42,6 +42,8 @@ export function sanitizeControls(c) {
 }
 // State: [N,E,D, vN,vE,vD, qw,qx,qy,qz, p,q,r, spool, fuel].
 export function evaluate(y,controls,wind=[0,0,0]) {
+  if(y.length!==15||y.some(x=>!Number.isFinite(x))||norm(y.slice(6,10))<1e-10)throw new TypeError('Invalid rigid-body state');
+  if(wind.length!==3||wind.some(x=>!Number.isFinite(x)))throw new TypeError('Invalid wind vector');
   const c=sanitizeControls(controls), mass=P.dryMass+Math.max(0,y[14]);
   const q=scale(y.slice(6,10),1/norm(y.slice(6,10))), rates=y.slice(10,13);
   const velocity=add(y.slice(3,6),scale(wind,-1)), bodyV=rotate(conjugate(q),velocity);
@@ -56,15 +58,23 @@ export function evaluate(y,controls,wind=[0,0,0]) {
   const span=P.span*(1-.35*c.sweep), phat=rates[0]*span/(2*safeSpeed), qhat=rates[1]*P.chord/(2*safeSpeed), rhat=rates[2]*span/(2*safeSpeed);
   let moment=[dynamicPressure*P.area*span*(P.clAileron*c.aileron+P.clP*phat+P.clBeta*beta),dynamicPressure*P.area*P.chord*(P.cm0+P.cmAlpha*alpha+P.cmElevator*c.elevator+P.cmQ*qhat),dynamicPressure*P.area*span*(P.cnBeta*beta+P.cnRudder*c.rudder+P.cnR*rhat)];
   let worldForce=add(rotate(q,force),[0,0,mass*P.gravity]), groundLoad=0;
-  const contacts=c.gear>.95?P.contacts:[[0,0,.9]];
-  for(const contact of contacts) {
-    const arm=rotate(q,contact), surface=Math.max(WATER_HEIGHT,groundHeight(y[0]+arm[0],y[1]+arm[1])), depth=y[2]+arm[2]+surface;
-    if(depth<=0)continue;
+  const contacts=c.gear>.95?P.contacts:[[0,0,.9]],contactData=[];
+  for(const [index,contact] of contacts.entries()) {
+    const arm=rotate(q,contact),sample=terrainSample(y[1]+arm[1],-y[0]-arm[0]);
+    const surface=Math.max(WATER_HEIGHT,sample.height),up=sample.height<WATER_HEIGHT?[0,0,-1]:sample.normal;
+    const depth=(y[2]+arm[2]+surface)*(-up[2]);
+    if(depth<=0){contactData.push({index,compression:0,load:0});continue;}
     const pointV=add(y.slice(3,6),rotate(q,cross(rates,contact)));
-    const normal=Math.max(0,P.spring*depth+P.damper*pointV[2]);
-    // Smooth Coulomb approximation; forces oppose contact velocity.
+    const normal=Math.max(0,P.spring*depth-P.damper*dot(pointV,up));
+    // Roll and lateral friction live in the actual surface tangent plane.
+    const bodyForward=rotate(q,[1,0,0]),projected=add(bodyForward,scale(up,-dot(bodyForward,up)));
+    const forward=scale(projected,1/Math.max(1e-9,norm(projected))),right=cross(forward,up);
     const mu=P.contactFriction+.55*c.brake;
-    const f=[-normal*mu*Math.tanh(pointV[0]/.5),-normal*.65*Math.tanh(pointV[1]/.5),-normal];
+    let friction=add(scale(forward,-mu*Math.tanh(dot(pointV,forward)/.5)),scale(right,-.65*Math.tanh(dot(pointV,right)/.5)));
+    // Friction ellipse prevents diagonally combined forces exceeding the bound.
+    const magnitude=norm(friction);if(magnitude>.8)friction=scale(friction,.8/magnitude);
+    const f=scale(add(up,friction),normal);
+    contactData.push({index,compression:depth,load:normal,normal:[...up],point:[y[0]+arm[0],y[1]+arm[1],y[2]+arm[2]]});
     groundLoad+=normal;worldForce=add(worldForce,f);
     moment=add(moment,cross(contact,rotate(conjugate(q),f)));
   }
@@ -72,9 +82,10 @@ export function evaluate(y,controls,wind=[0,0,0]) {
   const angularAcceleration=add(moment,scale(cross(rates,angularMomentum),-1)).map((x,i)=>x/inertia[i]);
   const qdot=scale(qmul(q,[0,...rates]),.5);
   const derivative=[...y.slice(3,6),...scale(worldForce,1/mass),...qdot,...angularAcceleration,(c.throttle-y[13])/P.spoolSeconds,-thrust*P.fuelPerNewtonSecond];
-  return {derivative,speed,alpha,beta,...air,mach:speed/air.soundSpeed,mass,thrust,lift:L,drag:D,groundLoad,loadFactor:(L+groundLoad)/(mass*P.gravity),force:worldForce,moment};
+  return {derivative,speed,alpha,beta,...air,mach:speed/air.soundSpeed,mass,thrust,lift:L,drag:D,groundLoad,contactData,loadFactor:(L+groundLoad)/(mass*P.gravity),force:worldForce,moment};
 }
 export function rk4(y,h,c,wind=[0,0,0]) {
+  if(!Number.isFinite(h)||h<=0||h>1/30)throw new RangeError('Invalid integrator step');
   const k1=evaluate(y,c,wind).derivative;
   const k2=evaluate(add(y,scale(k1,h/2)),c,wind).derivative;
   const k3=evaluate(add(y,scale(k2,h/2)),c,wind).derivative;
@@ -111,14 +122,27 @@ export class Simulation {
     this.state=result.state;this.controls=result.controls;this.time=0;this.accumulator=0;this.droppedTime=0;this.wind=[0,0,0];this.stopped=false;
     if(scenario==='runway') {this.state=[0,0,-2.05,0,0,0,...quaternion(),0,0,0,0,P.initialFuel];this.controls={...defaultControls(),throttle:0,gear:1,brake:1};}
     if(scenario==='coastal'){this.state[0]=-1600;this.state[1]=-9200;}
+    this.applied={...this.controls};this.gustStrength=0;this.actualWind=[...this.wind];this.gearNoticeUntil=0;
+    this.previousState=[...this.state];
     this.initial={state:[...this.state],controls:{...this.controls},scenario};
     this.telemetry=[];this.nextSample=0;
   }
   step(h=1/120) {
     if(!Number.isFinite(h)||h<=0||h>1/60)throw new RangeError('Physics step must be in (0, 1/60]');
-    this.state=rk4(this.state,h,this.controls,this.wind);this.time+=h;
+    const targets=sanitizeControls(this.controls);
+    // Educational ground interlock: do not fold load-bearing supports through
+    // the runway. A fresh command can be given once airborne.
+    if(targets.gear<.5&&this.applied.gear>.95&&evaluate(this.state,this.applied,this.wind).groundLoad>1000){targets.gear=this.controls.gear=1;this.gearNoticeUntil=this.time+3;}
+    for(const key of Object.keys(targets)){
+      const rate={gear:.2,flaps:.25,sweep:.12,brake:3}[key]??2.5;
+      const lag=['elevator','aileron','rudder'].includes(key)?1-Math.exp(-h/.10):1;
+      this.applied[key]+=clamp((targets[key]-this.applied[key])*lag,-rate*h,rate*h);
+    }
+    this.actualWind=this.wind.map((w,i)=>w+this.gustStrength*(.6*Math.sin(this.time*(.71+i*.13)+i*2)+.25*Math.sin(this.time*(1.83+i*.21)+i)));
+    this.previousState=this.state;
+    this.state=rk4(this.state,h,this.applied,this.actualWind);this.time+=h;
     if(this.time>=this.nextSample) {
-      const t=this.read();this.telemetry.push([this.time,...this.state,t.speed,t.alpha,t.loadFactor,...Object.values(this.controls),...this.wind]);
+      const t=this.read();this.telemetry.push([this.time,...this.state,t.speed,t.alpha,t.loadFactor,...Object.values(this.controls),...this.actualWind,...Object.values(this.applied),...t.force,...t.moment,this.droppedTime]);
       if(this.telemetry.length>18000)this.telemetry.shift();this.nextSample=this.time+.1-1e-9;
     }
   }
@@ -127,6 +151,6 @@ export class Simulation {
     const dt=Math.min(frameSeconds,.25);this.droppedTime+=frameSeconds-dt;this.accumulator+=dt;
     while(this.accumulator+1e-12>=1/120){this.step();this.accumulator-=1/120;}
   }
-  read(){return {...evaluate(this.state,this.controls,this.wind),angles:euler(this.state.slice(6,10)),altitude:-this.state[2],verticalSpeed:-this.state[5],terrainAltitude:Math.max(WATER_HEIGHT,groundHeight(this.state[0],this.state[1])),heightAboveGround:-this.state[2]-Math.max(WATER_HEIGHT,groundHeight(this.state[0],this.state[1]))};}
+  read(){return {...evaluate(this.state,this.applied,this.time>0?this.actualWind:this.wind),angles:euler(this.state.slice(6,10)),altitude:-this.state[2],verticalSpeed:-this.state[5],terrainAltitude:Math.max(WATER_HEIGHT,groundHeight(this.state[0],this.state[1])),heightAboveGround:-this.state[2]-Math.max(WATER_HEIGHT,groundHeight(this.state[0],this.state[1]))};}
 }
-export const csvHeader='time_s,north_m,east_m,down_m,vn_mps,ve_mps,vd_mps,qw,qx,qy,qz,p_rad_s,q_rad_s,r_rad_s,spool,fuel_kg,airspeed_mps,alpha_rad,load_factor,elevator,aileron,rudder,throttle,sweep,flaps,gear,brake,wind_n_mps,wind_e_mps,wind_d_mps';
+export const csvHeader='time_s,north_m,east_m,down_m,vn_mps,ve_mps,vd_mps,qw,qx,qy,qz,p_rad_s,q_rad_s,r_rad_s,spool,fuel_kg,airspeed_mps,alpha_rad,load_factor,elevator,aileron,rudder,throttle,sweep,flaps,gear,brake,wind_n_mps,wind_e_mps,wind_d_mps,applied_elevator,applied_aileron,applied_rudder,applied_throttle,applied_sweep,applied_flaps,applied_gear,applied_brake,force_n_N,force_e_N,force_d_N,moment_x_Nm,moment_y_Nm,moment_z_Nm,dropped_time_s';

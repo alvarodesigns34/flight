@@ -21,7 +21,7 @@ with tempfile.TemporaryDirectory(prefix='tomcat-package-') as tmp:
                     assert r.status==200;assert b'Tomcat' in r.read();break
             except OSError:time.sleep(.1)
         else:raise RuntimeError('Packaged server did not become ready')
-        for path in ['dist/app.js','style.css','assets/tomcat-original.glb','assets/THREE-LICENSE.txt']:
+        for path in ['dist/app.js','style.css','assets/tomcat-original.meshopt.glb','assets/tomcat-evolved.meshopt.glb','assets/environment/pmrem.json','assets/THREE-LICENSE.txt']:
             with urllib.request.urlopen('http://127.0.0.1:5174/'+path) as r:
                 assert r.status==200
                 assert hashlib.sha256(r.read()).hexdigest()==hashlib.sha256((folder/path).read_bytes()).hexdigest()

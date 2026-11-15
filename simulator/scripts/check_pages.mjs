@@ -15,13 +15,13 @@ try {
  await page.waitForFunction(()=>window.flightLab?.ready,{},{timeout:240000});
  await page.locator('#play').click();await page.waitForFunction(()=>window.flightLab.running&&window.flightLab.time>.3);
  await page.locator('#play').click();await page.waitForFunction(()=>!window.flightLab.running);
- await page.locator('details.configuration > summary').click();
+ await page.locator('#settings-toggle').click();await page.locator('details.configuration > summary').click();
  await page.locator('#sweep').fill('60');await page.locator('#sweep').dispatchEvent('input');
  await page.waitForFunction(()=>window.flightLab.controls.sweep===.6);
  await page.screenshot({path:output.replace(/\.json$/,'-flight.png')});
- await page.locator('#tab-model').click();await page.waitForFunction(()=>window.flightLab.tab==='model'&&!window.flightLab.running);
+ await page.locator('#tab-model').click();await page.waitForFunction(()=>window.flightLab.tab==='model'&&!window.flightLab.running&&window.flightLab.originalLoaded&&document.getElementById('asset-progress').hidden);
  const runtime=await page.evaluate(()=>window.flightLab);
- if(runtime.originalTriangles!==1316961||runtime.originalObjects!==1832||runtime.originalSimplified!==false)throw new Error('Public inspector does not contain the full original model');
+ if(runtime.originalTriangles!==1316961||runtime.originalObjects!==1832||runtime.originalSimplified!==false||runtime.actualOriginalTriangles!==1316961)throw new Error('Public inspector does not contain the full original model');
  // Read through the same browser connection as the app, including its proxy.
  const build=await page.evaluate(async url=>{
   const response=await fetch(url);

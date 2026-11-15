@@ -1,12 +1,20 @@
-# Continuar Tomcat Flight & Archive 0.2
+# Continuar Tomcat Flight & Archive 0.3
 
 Repositorio: https://github.com/alvarodesigns34/flight · Rama: `codex/tomcat-flight-simulator` · PR abierta: https://github.com/alvarodesigns34/flight/pull/1.
 
 Web: https://alvarodesigns34.github.io/flight/ · Inspector directo: https://alvarodesigns34.github.io/flight/#modelo.
 
-Leer primero cualquier `AGENTS.md` aplicable, este documento y `VISUAL_UPGRADE.md`. Comprobar `git status` antes de cambiar de rama y conservar cambios existentes. No fusionar la PR automáticamente. Último commit: `git log -1 --format='%H %s'`; el ZIP registra su checkpoint exacto en `downloads/TOMCAT_FLIGHT_LAB.json` y su manifiesto interno.
+Leer primero cualquier `AGENTS.md` aplicable, este documento y `TRANSFORMATION_REPORT.md`. Comprobar `git status` antes de cambiar de rama y conservar cambios existentes. No fusionar la PR automáticamente. Último commit: `git log -1 --format='%H %s'`; el ZIP registra su checkpoint exacto en `downloads/TOMCAT_FLIGHT_LAB.json` y su manifiesto interno.
 
-## Estado actual
+## Estado actual 0.3
+
+El vuelo usa `tomcat-evolved.meshopt.glb`, derivado de `PROJECT_TOMCAT/evolved/F14A_TOMCAT_EVOLVED.blend`. El estudio permite elegir original o evolución y tiene diez vistas. Se mantienen las 1.832 identidades originales; se añaden dos timones. `evolved-model.json` documenta cambios, inventario, texturas y hashes. No mezclar la comparación de esta fase con la evidencia histórica de 0.2.
+
+El bundle incluye el decodificador meshopt. `compress-models.mjs` usa atributos exactos e índices con orden exacto; las pruebas comparan los buffers decodificados. La iluminación de estudio se carga bajo demanda y los PMREM RGBA16F se preparan offline con el mismo Three 0.181.1. No reducirlos ni volver a introducir generación PMREM obligatoria durante la apertura.
+
+Los anillos de terreno comparten una malla cercana de 20 m con las fuerzas de contacto. Los controles objetivo/aplicados están separados; el CSV añade ambos y fuerzas/momentos/tiempo descartado. La interacción y perfil se guardan en `flight-input-v1`. El visor muestra geometría de cabina en Piloto, sin sistemas reales. Las animaciones del tren siguen siendo de exposición.
+
+## Base histórica 0.2
 
 Hay dos modos: **vuelo** e **inspección del modelo original**. El inspector pausa el vuelo y conserva todas las piezas y triángulos evaluados de la entrega inicial, con normales de esquina. Incluye ocho cámaras, órbita/desplazamiento/zoom, exposición, giro, malla, cortes de cabina/estructura y vista limpia. La pose original es independiente de las alas, tren y mandos del vuelo.
 

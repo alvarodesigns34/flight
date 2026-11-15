@@ -1,0 +1,94 @@
+{
+  "at": "2026-11-15T16:23:54.211Z",
+  "pose": {
+    "gear": 0.5,
+    "flaps": 0.7,
+    "rudder": 0.25,
+    "aileron": 0.2
+  },
+  "records": [
+    {
+      "stage": 1,
+      "stats": {
+        "tab": "flight",
+        "quality": "light",
+        "renderedFrames": 1,
+        "originalTriangles": 1316961,
+        "originalObjects": 1832,
+        "originalSimplified": false,
+        "evolvedTriangles": 1341681,
+        "modelVersion": "original",
+        "assetLoading": false,
+        "originalLoaded": false,
+        "actualOriginalTriangles": 0,
+        "treeCount": 4500,
+        "vegetationChunks": 122,
+        "terrainTriangles": 131072,
+        "rigidBatching": true,
+        "rigidBatchStats": {
+          "sourceMeshBatches": 135,
+          "multiDrawBatches": 33
+        },
+        "cpuSubmitMs": 4245,
+        "calls": 61,
+        "triangles": 1383725,
+        "textures": 71,
+        "geometries": 59,
+        "gpuMs": null
+      }
+    },
+    {
+      "stage": 2,
+      "stats": {
+        "tab": "flight",
+        "quality": "light",
+        "renderedFrames": 2,
+        "originalTriangles": 1316961,
+        "originalObjects": 1832,
+        "originalSimplified": false,
+        "evolvedTriangles": 1341681,
+        "modelVersion": "original",
+        "assetLoading": false,
+        "originalLoaded": false,
+        "actualOriginalTriangles": 0,
+        "treeCount": 4500,
+        "vegetationChunks": 122,
+        "terrainTriangles": 131072,
+        "rigidBatching": false,
+        "cpuSubmitMs": 7544.89999999851,
+        "calls": 163,
+        "triangles": 1383725,
+        "textures": 71,
+        "geometries": 194,
+        "gpuMs": null
+      }
+    },
+    {
+      "stage": "sea",
+      "stats": {
+        "tab": "flight",
+        "quality": "light",
+        "renderedFrames": 4,
+        "originalTriangles": 1316961,
+        "originalObjects": 1832,
+        "originalSimplified": false,
+        "evolvedTriangles": 1341681,
+        "modelVersion": "original",
+        "assetLoading": false,
+        "originalLoaded": false,
+        "actualOriginalTriangles": 0,
+        "treeCount": 4500,
+        "vegetationChunks": 122,
+        "terrainTriangles": 131072,
+        "rigidBatching": false,
+        "cpuSubmitMs": 2523.199999999255,
+        "calls": 120,
+        "triangles": 672584,
+        "textures": 78,
+        "geometries": 210,
+        "gpuMs": null
+      }
+    }
+  ],
+  "errors": []
+}

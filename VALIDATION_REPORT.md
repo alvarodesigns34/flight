@@ -1,3 +1,7 @@
+# Validación vigente: Flight & Archive 0.3
+
+La evolución incorpora 28 pruebas Node y dos regresiones Python, auditoría independiente del nativo, prueba completa de interacción, comparación de rutas de render y medición de apertura en seis procesos nuevos. Consulta [TRANSFORMATION_REPORT.md](TRANSFORMATION_REPORT.md) y `simulator/evidence/transformation/` para los resultados actuales. Las secciones siguientes conservan la historia de fases anteriores y sus cifras no sustituyen la validación 0.3.
+
 # Validación — incremento 0.1
 
 Fecha: 15-11-2026. Los resultados numéricos y las capturas se conservan en `simulator/evidence/`. Las comprobaciones de este informe corresponden a comportamiento **educativo genérico**, no a validación de prestaciones del F-14A.

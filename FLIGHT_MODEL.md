@@ -31,11 +31,11 @@ Todos los valores de la tabla están en `simulator/src/parameters.mjs`, salvo la
 | Cnβ / Cnδr / Cnr | 0,14 / 0,12 / −0,5 | G, baja. Timón normalizado ±1; amortiguación con `r b/(2V)`. |
 | Geometría variable | pendiente CL hasta −30%; b hasta −35%; factor inducido hasta +50% | G, baja; interpolación lineal del control 0–1. Sin calendario automático ni inercia de alas variable. |
 | Flaps / tren | ΔCL=0,35f; ΔCD=0,04f+0,025g | G, baja; sin momentos ni límites de actuador medidos. |
-| Contactos, cuerpo | (5; 0; 2,2), (−1,4; −2,4; 2,2), (−1,4; 2,4; 2,2) m | G, baja; posiciones aproximadas, sin geometría de mecanismo. |
-| Resorte / amortiguación por contacto | 1.000.000 N/m / 100.000 N·s/m | G, baja; suelo plano, no neumático deformable. |
+| Contactos, cuerpo | (5,48; 0; 2,2), (−1,4; −2,4; 2,2), (−1,4; 2,4; 2,2) m | G, baja; posiciones aproximadas, sin geometría de mecanismo. |
+| Resorte / amortiguación por contacto | 1.000.000 N/m / 100.000 N·s/m | G, baja; superficie triangulada local, no neumático deformable. |
 | Fricción longitudinal / freno / lateral | μ=0,04+0,55·freno / μ lateral=0,65 | G, baja; fuerza `−N μ tanh(v/0,5 m/s)`. Sin giro de rueda, ABS ni dirección de morro. |
 | Contacto de fuselaje | un punto (0,0,0,9) m al ocultar el tren | G, baja; evita atravesar el plano en contactos suaves. No es modelo de daños o colisiones. |
-| Viento | NED uniforme; control E entre −15 y +15 m/s | G; determinista. Sin turbulencia, ráfagas ni topografía atmosférica. |
+| Viento | NED uniforme; control E entre −15 y +15 m/s | G; determinista. En 0.3 se añaden ráfagas deterministas ilustrativas; sin topografía atmosférica. |
 
 ## Atmósfera y fuentes generales
 
@@ -50,3 +50,13 @@ No hay tablas en Mach, compresibilidad, vuelos supersónicos validados, dinámic
 ## Entorno y mandos en 0.2
 
 El escenario adicional `coastal` empieza nivelado a 115 m/s y 800 m, sobre una costa ficticia, con posición N=−1.600 m/E=−9.200 m. No se cambian los parámetros aerodinámicos genéricos. Se añade compensador manual a la entrada del elevador y mando virtual; no hay asistencia oculta de trayectoria. El contacto usa `groundHeight(north,east)` compartido con el terreno visual, en lugar de cota cero universal. La pista continúa plana. La superficie de agua se aproxima con un plano de contacto a −16 m, sin flotación o impactos validados. La reacción del contacto sigue siendo vertical y aproximada; no acredita un modelo completo de rodadura sobre pendientes.
+
+## Contacto y mandos en 0.3
+
+`terrainSample` interpola las dos caras de cada celda de 20 m. El anillo visual cercano utiliza exactamente sus vértices y diagonales. El resorte actúa sobre la normal de esa cara; la velocidad del punto incluye `ω × r`. La fricción longitudinal y lateral se proyecta sobre el plano tangente y se limita su combinación. La representación del tren aplica la compresión calculada, con límite visual de 0,22 m. No es una reconstrucción del amortiguador real.
+
+Los objetivos de mando se filtran a 120 Hz: constante de 0,10 s y tasa máxima 2,5 unidades/s para superficies; tren 0,2/s; flaps 0,25/s; barrido 0,12/s; freno 3/s. Son valores de diseño educativo, no datos de actuadores reales. Un interbloqueo ilustrativo mantiene los apoyos cargados; requiere una nueva orden después del despegue. El modelo de pérdida usa una mezcla cúbica continua de las curvas existentes, sin agregar tablas militares.
+
+Las ráfagas combinan dos senos por eje con fases fijas y amplitud regulable. Son reproducibles, pero no representan Dryden, von Kármán ni meteorología real. Las pruebas comprueban finitud y repetibilidad; no validan una estadística atmosférica. El agua continúa siendo un plano medio de contacto y las ondas son visuales; no hay flotación ni aterrizajes sobre agua validados.
+
+Se rechazan estados no finitos, cuaterniones nulos, viento inválido y pasos fuera del rango. Las pruebas cubren equilibrio genérico, signos, energía comparativa, convergencia RK4, independencia a 30/60/144 FPS, asentamiento de apoyos, pendiente y controles progresivos. La coincidencia del terreno no valida impactos violentos, derrapes extremos ni límites estructurales.

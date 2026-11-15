@@ -1,0 +1,103 @@
+{
+  "capturedAt": "2026-11-15T14:45:21.871Z",
+  "base": "http://127.0.0.1:5173/",
+  "viewport": [
+    960,
+    720
+  ],
+  "quality": "light",
+  "gpu": "Chromium SwiftShader (software)",
+  "readyMs": 62146,
+  "timing": {
+    "frames": 2,
+    "medianMs": 15516.100000000006,
+    "p95Ms": 15516.100000000006,
+    "elapsedMs": 15605.000000000757,
+    "diagnostics": {
+      "ready": true,
+      "time": 0.40833333333333377,
+      "running": true,
+      "camera": "orbit",
+      "tab": "flight",
+      "airspeed": 114.99999997219781,
+      "altitude": 800.0000014642244,
+      "angles": [
+        0,
+        0.078267422598108,
+        0
+      ],
+      "controls": {
+        "elevator": 0.018123034805601658,
+        "aileron": 0,
+        "rudder": 0,
+        "throttle": 0.1962009399549724,
+        "sweep": 0,
+        "flaps": 0,
+        "gear": 0,
+        "brake": 0
+      },
+      "meshCount": 74,
+      "triangles": 2067607,
+      "quality": "light",
+      "renderedFrames": 17,
+      "originalTriangles": 1316961,
+      "originalObjects": 1832,
+      "originalSimplified": false,
+      "calls": 74
+    }
+  },
+  "totalEncodedBytes": 63461884,
+  "resources": [
+    {
+      "name": "127.0.0.1:5173/style.css?v=0.2.0",
+      "bytes": 19702,
+      "durationMs": 66.39999999850988
+    },
+    {
+      "name": "dist/app.js?v=0.2.0",
+      "bytes": 652881,
+      "durationMs": 97
+    },
+    {
+      "name": "assets/tomcat-original.glb",
+      "bytes": 39861948,
+      "durationMs": 3708.2000000029802
+    },
+    {
+      "name": "environment/studio-small-09-2k.hdr",
+      "bytes": 6312947,
+      "durationMs": 1319.199999999255
+    },
+    {
+      "name": "environment/kloofendal-sky-2k.hdr",
+      "bytes": 5451493,
+      "durationMs": 908.8999999985099
+    },
+    {
+      "name": "assets/original-model.json",
+      "bytes": 10583,
+      "durationMs": 39.30000000074506
+    },
+    {
+      "name": "environment/grass-rock-albedo-2k.jpg",
+      "bytes": 2624635,
+      "durationMs": 653.6000000014901
+    },
+    {
+      "name": "environment/rock-albedo-2k.jpg",
+      "bytes": 3232826,
+      "durationMs": 712.8999999985099
+    },
+    {
+      "name": "environment/grass-rock-normal-2k.jpg",
+      "bytes": 3799025,
+      "durationMs": 810.0999999977648
+    },
+    {
+      "name": "environment/grass-rock-roughness-2k.jpg",
+      "bytes": 1495844,
+      "durationMs": 902.9000000022352
+    }
+  ],
+  "errors": []
+}

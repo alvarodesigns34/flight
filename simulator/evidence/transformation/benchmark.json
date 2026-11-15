@@ -1,0 +1,406 @@
+{
+  "at": "2026-11-15T16:02:22.183Z",
+  "baseline": "8e799375aa3b0a9ce32d9334d72df0eef8606bc4",
+  "viewport": [
+    960,
+    720
+  ],
+  "quality": "light",
+  "gpu": "Chromium SwiftShader (software)",
+  "gpuTimeMs": null,
+  "framesPerSecond": null,
+  "scope": "Opening and static frames only. No GPU hardware or sustained FPS claim.",
+  "summary": {
+    "before": {
+      "samples": 3,
+      "medianReadyMs": 71711.10606800002,
+      "medianVisibleCaptureMs": 73390.419552,
+      "initialEncodedBytes": 63461884,
+      "calls": 74,
+      "triangles": 2067607,
+      "idleRenderedFrames": [
+        0,
+        0,
+        0
+      ]
+    },
+    "after": {
+      "samples": 3,
+      "medianReadyMs": 11698.387031999999,
+      "medianVisibleCaptureMs": 33475.446008,
+      "initialEncodedBytes": 52990432,
+      "calls": 75,
+      "triangles": 1468453,
+      "idleRenderedFrames": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "records": [
+    {
+      "version": "before",
+      "readyMs": 75636.5368,
+      "firstVisibleCaptureMs": 77825.622101,
+      "initialEncodedBytes": 63461884,
+      "idleRenderedFrames": 0,
+      "diagnostics": {
+        "ready": true,
+        "time": 0,
+        "running": false,
+        "camera": "orbit",
+        "tab": "flight",
+        "airspeed": 115,
+        "altitude": 800,
+        "angles": [
+          0,
+          0.0782674167436323,
+          0
+        ],
+        "controls": {
+          "elevator": 0.018123034805601658,
+          "aileron": 0,
+          "rudder": 0,
+          "throttle": 0.1962009399549724,
+          "sweep": 0,
+          "flaps": 0,
+          "gear": 0,
+          "brake": 0
+        },
+        "meshCount": 74,
+        "triangles": 2067607,
+        "quality": "light",
+        "renderedFrames": 1,
+        "originalTriangles": 1316961,
+        "originalObjects": 1832,
+        "originalSimplified": false,
+        "calls": 74
+      },
+      "errors": []
+    },
+    {
+      "version": "after",
+      "readyMs": 11698.387031999999,
+      "firstVisibleCaptureMs": 33475.446008,
+      "initialEncodedBytes": 52990432,
+      "idleRenderedFrames": 0,
+      "diagnostics": {
+        "ready": true,
+        "time": 0,
+        "running": false,
+        "camera": "orbit",
+        "tab": "flight",
+        "airspeed": 115,
+        "altitude": 800,
+        "angles": [
+          0,
+          0.0782674167436323,
+          0
+        ],
+        "controls": {
+          "elevator": 0.018123034805601658,
+          "aileron": 0,
+          "rudder": 0,
+          "throttle": 0.1962009399549724,
+          "sweep": 0,
+          "flaps": 0,
+          "gear": 0,
+          "brake": 0
+        },
+        "appliedControls": {
+          "elevator": 0.018123034805601658,
+          "aileron": 0,
+          "rudder": 0,
+          "throttle": 0.1962009399549724,
+          "sweep": 0,
+          "flaps": 0,
+          "gear": 0,
+          "brake": 0
+        },
+        "physicsCpuMs": 0,
+        "droppedTime": 0,
+        "position": [
+          -1600,
+          -9200,
+          -800
+        ],
+        "contacts": [
+          {
+            "index": 0,
+            "compression": 0,
+            "load": 0
+          }
+        ],
+        "meshCount": 75,
+        "triangles": 1468453,
+        "quality": "light",
+        "renderedFrames": 1,
+        "originalTriangles": 1316961,
+        "originalObjects": 1832,
+        "originalSimplified": false,
+        "evolvedTriangles": 1341681,
+        "modelVersion": "original",
+        "assetLoading": false,
+        "originalLoaded": false,
+        "actualOriginalTriangles": 0,
+        "treeCount": 4500,
+        "vegetationChunks": 122,
+        "terrainTriangles": 131072,
+        "rigidBatching": true,
+        "rigidBatchStats": {
+          "sourceMeshBatches": 135,
+          "multiDrawBatches": 33
+        },
+        "cpuSubmitMs": 6710.199999999255,
+        "calls": 75,
+        "textures": 78,
+        "geometries": 68,
+        "gpuMs": null
+      },
+      "errors": []
+    },
+    {
+      "version": "after",
+      "readyMs": 13978.959852999993,
+      "firstVisibleCaptureMs": 34368.66953999999,
+      "initialEncodedBytes": 52990432,
+      "idleRenderedFrames": 0,
+      "diagnostics": {
+        "ready": true,
+        "time": 0,
+        "running": false,
+        "camera": "orbit",
+        "tab": "flight",
+        "airspeed": 115,
+        "altitude": 800,
+        "angles": [
+          0,
+          0.0782674167436323,
+          0
+        ],
+        "controls": {
+          "elevator": 0.018123034805601658,
+          "aileron": 0,
+          "rudder": 0,
+          "throttle": 0.1962009399549724,
+          "sweep": 0,
+          "flaps": 0,
+          "gear": 0,
+          "brake": 0
+        },
+        "appliedControls": {
+          "elevator": 0.018123034805601658,
+          "aileron": 0,
+          "rudder": 0,
+          "throttle": 0.1962009399549724,
+          "sweep": 0,
+          "flaps": 0,
+          "gear": 0,
+          "brake": 0
+        },
+        "physicsCpuMs": 0,
+        "droppedTime": 0,
+        "position": [
+          -1600,
+          -9200,
+          -800
+        ],
+        "contacts": [
+          {
+            "index": 0,
+            "compression": 0,
+            "load": 0
+          }
+        ],
+        "meshCount": 75,
+        "triangles": 1468453,
+        "quality": "light",
+        "renderedFrames": 1,
+        "originalTriangles": 1316961,
+        "originalObjects": 1832,
+        "originalSimplified": false,
+        "evolvedTriangles": 1341681,
+        "modelVersion": "original",
+        "assetLoading": false,
+        "originalLoaded": false,
+        "actualOriginalTriangles": 0,
+        "treeCount": 4500,
+        "vegetationChunks": 122,
+        "terrainTriangles": 131072,
+        "rigidBatching": true,
+        "rigidBatchStats": {
+          "sourceMeshBatches": 135,
+          "multiDrawBatches": 33
+        },
+        "cpuSubmitMs": 6447.300000000745,
+        "calls": 75,
+        "textures": 78,
+        "geometries": 68,
+        "gpuMs": null
+      },
+      "errors": []
+    },
+    {
+      "version": "before",
+      "readyMs": 71711.10606800002,
+      "firstVisibleCaptureMs": 73390.419552,
+      "initialEncodedBytes": 63461884,
+      "idleRenderedFrames": 0,
+      "diagnostics": {
+        "ready": true,
+        "time": 0,
+        "running": false,
+        "camera": "orbit",
+        "tab": "flight",
+        "airspeed": 115,
+        "altitude": 800,
+        "angles": [
+          0,
+          0.0782674167436323,
+          0
+        ],
+        "controls": {
+          "elevator": 0.018123034805601658,
+          "aileron": 0,
+          "rudder": 0,
+          "throttle": 0.1962009399549724,
+          "sweep": 0,
+          "flaps": 0,
+          "gear": 0,
+          "brake": 0
+        },
+        "meshCount": 74,
+        "triangles": 2067607,
+        "quality": "light",
+        "renderedFrames": 1,
+        "originalTriangles": 1316961,
+        "originalObjects": 1832,
+        "originalSimplified": false,
+        "calls": 74
+      },
+      "errors": []
+    },
+    {
+      "version": "before",
+      "readyMs": 60774.673165000015,
+      "firstVisibleCaptureMs": 63068.676201000024,
+      "initialEncodedBytes": 63461884,
+      "idleRenderedFrames": 0,
+      "diagnostics": {
+        "ready": true,
+        "time": 0,
+        "running": false,
+        "camera": "orbit",
+        "tab": "flight",
+        "airspeed": 115,
+        "altitude": 800,
+        "angles": [
+          0,
+          0.0782674167436323,
+          0
+        ],
+        "controls": {
+          "elevator": 0.018123034805601658,
+          "aileron": 0,
+          "rudder": 0,
+          "throttle": 0.1962009399549724,
+          "sweep": 0,
+          "flaps": 0,
+          "gear": 0,
+          "brake": 0
+        },
+        "meshCount": 74,
+        "triangles": 2067607,
+        "quality": "light",
+        "renderedFrames": 1,
+        "originalTriangles": 1316961,
+        "originalObjects": 1832,
+        "originalSimplified": false,
+        "calls": 74
+      },
+      "errors": []
+    },
+    {
+      "version": "after",
+      "readyMs": 10503.504564000003,
+      "firstVisibleCaptureMs": 24851.033410000033,
+      "initialEncodedBytes": 52990432,
+      "idleRenderedFrames": 0,
+      "diagnostics": {
+        "ready": true,
+        "time": 0,
+        "running": false,
+        "camera": "orbit",
+        "tab": "flight",
+        "airspeed": 115,
+        "altitude": 800,
+        "angles": [
+          0,
+          0.0782674167436323,
+          0
+        ],
+        "controls": {
+          "elevator": 0.018123034805601658,
+          "aileron": 0,
+          "rudder": 0,
+          "throttle": 0.1962009399549724,
+          "sweep": 0,
+          "flaps": 0,
+          "gear": 0,
+          "brake": 0
+        },
+        "appliedControls": {
+          "elevator": 0.018123034805601658,
+          "aileron": 0,
+          "rudder": 0,
+          "throttle": 0.1962009399549724,
+          "sweep": 0,
+          "flaps": 0,
+          "gear": 0,
+          "brake": 0
+        },
+        "physicsCpuMs": 0,
+        "droppedTime": 0,
+        "position": [
+          -1600,
+          -9200,
+          -800
+        ],
+        "contacts": [
+          {
+            "index": 0,
+            "compression": 0,
+            "load": 0
+          }
+        ],
+        "meshCount": 75,
+        "triangles": 1468453,
+        "quality": "light",
+        "renderedFrames": 1,
+        "originalTriangles": 1316961,
+        "originalObjects": 1832,
+        "originalSimplified": false,
+        "evolvedTriangles": 1341681,
+        "modelVersion": "original",
+        "assetLoading": false,
+        "originalLoaded": false,
+        "actualOriginalTriangles": 0,
+        "treeCount": 4500,
+        "vegetationChunks": 122,
+        "terrainTriangles": 131072,
+        "rigidBatching": true,
+        "rigidBatchStats": {
+          "sourceMeshBatches": 135,
+          "multiDrawBatches": 33
+        },
+        "cpuSubmitMs": 5825.199999999255,
+        "calls": 75,
+        "textures": 78,
+        "geometries": 68,
+        "gpuMs": null
+      },
+      "errors": []
+    }
+  ]
+}

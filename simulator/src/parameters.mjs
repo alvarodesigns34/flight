@@ -10,5 +10,5 @@ export const parameters = Object.freeze({
   clAileron: 0.12, clP: -0.6, clBeta: -0.08,
   cyBeta: -0.7, cnBeta: 0.14, cnRudder: 0.12, cnR: -0.5,
   spring: 1000000, damper: 100000, contactFriction: 0.04,
-  contacts: [[5,0,2.2],[-1.4,-2.4,2.2],[-1.4,2.4,2.2]],
+  contacts: [[5.48,0,2.2],[-1.4,-2.4,2.2],[-1.4,2.4,2.2]],
 });

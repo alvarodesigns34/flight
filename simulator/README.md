@@ -1,10 +1,10 @@
-# Tomcat Flight & Archive 0.2
+# Tomcat Flight & Archive 0.3
 
 Simulador educativo local con el modelo artístico del repositorio. Dinámica genérica de seis grados de libertad; no prestaciones certificadas del F-14A o TF30. Sin armas, sistemas tácticos o combate.
 
 ## Modelo original 3D
 
-Pulsa **Modelo original 3D** para inspeccionar el avión completo. Pausa automáticamente el vuelo. Las ocho vistas, rueda, órbita y desplazamiento permiten ver la cabina, el tren y las toberas. **Vista limpia** oculta paneles; la descarga del `.blend` es idéntica al maestro original. El inspector no decima la malla: 1.316.961 triángulos y todos los interiores. Los materiales se adaptan a WebGL.
+Pulsa **Modelo original 3D** para inspeccionar el avión completo. Pausa automáticamente el vuelo. Las diez vistas, rueda, órbita y desplazamiento permiten ver la cabina, el tren y las toberas. **Vista limpia** oculta paneles; la descarga del `.blend` es idéntica al maestro original. El inspector no decima la malla: 1.316.961 triángulos y todos los interiores. Los materiales se adaptan a WebGL.
 
 ## GitHub Pages
 
@@ -26,7 +26,7 @@ Windows: `py -3 serve.py` o `START_WINDOWS.cmd`. macOS/Linux: `sh START_MAC_LINU
 
 Abre **http://127.0.0.1:5173**. El servidor solo escucha en tu ordenador; Ctrl+C lo detiene. Si el puerto está ocupado: `python3 serve.py --port 5174`. No abras `index.html` directamente como `file://`: el cargador del modelo requiere HTTP local.
 
-Selecciona un escenario y pulsa **Iniciar vuelo**. Arrastra y usa la rueda en Exterior. Las cámaras Seguimiento y Piloto siguen el avión. Piloto es una vista frontal, sin cabina funcional. La pausa conserva el estado; cambiar escenario o reiniciar lo restablece. Al ocultar la pestaña se pausa automáticamente.
+Selecciona un escenario y pulsa **Iniciar vuelo**. Arrastra y usa la rueda en Exterior. Las cámaras Seguimiento y Piloto siguen el avión. Piloto sitúa la cámara dentro de la cabina geométrica; los instrumentos de época son decorativos. La pausa conserva el estado; cambiar escenario o reiniciar lo restablece. Al ocultar la pestaña se pausa automáticamente.
 
 | Acción | Entrada |
 |---|---|
@@ -37,9 +37,9 @@ Selecciona un escenario y pulsa **Iniciar vuelo**. Arrastra y usa la rueda en Ex
 | Compensador abajo / arriba | Q / E, o botones − / + |
 | Tren / freno / flaps | G / B / F |
 | Pausa / reiniciar / cámara | Espacio / R / C |
-| Alas, flaps, tren, freno, viento | Panel lateral |
-| Gamepad | Ejes 0, 1, 2: alabeo, cabeceo, guiñada; zona muerta 0,09 |
-| Táctil | Botones de dirección y panel |
+| Alas, flaps, tren, freno, viento y ráfagas | Ajustes |
+| Gamepad | Ejes 0/1; guiñada configurable 2/3; curva, sensibilidad, inversión y calibración |
+| Táctil | Mando izquierdo y potencia vertical derecha |
 
 Los mandos de teclado vuelven al trim inicial al soltar; cambiar configuración requiere pilotar para compensar. El freno empieza activado en el escenario de pista: desactívalo y aumenta la potencia para rodar. El contacto es aproximado y no hay sistema de daños. No hay asistencia oculta de actitud. Se recomienda mantenerse en el rango educativo indicado en el diálogo Acerca del modelo.
 
@@ -57,7 +57,7 @@ npm run build
 npm run validate
 ```
 
-Prueba del visor: inicia el servidor y ejecuta `node simulator/scripts/check_experience.mjs`. Requiere Chromium (por defecto `/usr/bin/chromium`; alternativa con `CHROMIUM_PATH`). Esta prueba usa software WebGL para revisar controles y capturas, y bloquea peticiones externas.
+Prueba del visor: inicia el servidor y ejecuta `node simulator/scripts/check_experience.mjs`. Requiere Chromium (por defecto `/usr/bin/chromium`; alternativa con `CHROMIUM_PATH`). Esta prueba usa software WebGL para revisar controles y capturas. Todos los recursos de ejecución se sirven localmente.
 
 Reconstruir el recurso 3D, con Blender oficial 4.3.2 y desde la raíz:
 
@@ -71,4 +71,23 @@ Motor consolidado opcional: `python3 -m pip install -r simulator/reference/requi
 
 Si la imagen va lenta, reduce el tamaño de la ventana y usa aceleración gráfica del navegador. Las mediciones de este entorno sin GPU no predicen el rendimiento de tu equipo.
 
-El nuevo vuelo añade mando virtual arrastrable, guiñada y compensador en pantalla, y conserva el control por teclado/gamepad. El render en pausa solo se actualiza al cambiar la vista; «Ultra» prioriza efectos y «Ligera» reduce carga sin eliminar geometría del inspector. La primera carga incluye un GLB de aproximadamente 38 MiB y recursos HDR/texturas locales. Las aproximaciones y licencias se detallan en `VISUAL_UPGRADE.md` de la raíz del repositorio.
+El nuevo vuelo añade mando virtual arrastrable, guiñada y compensador en pantalla, y conserva el control por teclado/gamepad. El render en pausa solo se actualiza al cambiar la vista; «Ultra» prioriza efectos y «Ligera» reduce carga sin eliminar geometría del inspector. El vuelo carga el modelo evolucionado con compresión sin pérdida. El original completo y la luz de estudio se cargan al abrir el inspector. Los mapas HDR prefiltrados se entregan en RGBA16F sin reducir su resolución. Las aproximaciones y licencias se detallan en `VISUAL_UPGRADE.md` de la raíz del repositorio.
+
+## Evolución 0.3
+
+En el estudio, **Edición del modelo** alterna entre el original íntegro y la evolución independiente. Esta última incorpora volúmenes cerrados de flaps y timones, huecos en las superficies fijas, tapicería contorneada, UV de pintura/tejido y un atlas de oclusión local horneado con Cycles. El `.blend` evolucionado se entrega por separado. Ninguna selección reduce la geometría.
+
+**Ajustes** abre la preparación del escenario. **Configurar mando y sensibilidad** permite reasignar teclas, modificar la respuesta y calibrar el gamepad. Los cambios se guardan localmente; restablecer recupera las asignaciones iniciales. **Datos técnicos** muestra tiempos de CPU, llamadas, triángulos y configuración aplicada; el JSON identifica que no se dispone de medición GPU fiable.
+
+El tren tarda 5 s, los flaps 4 s y las alas usan una tasa visual ilustrativa. Las superficies siguen los mandos aplicados, no el objetivo instantáneo. En tierra se mantiene el tren si soporta carga; después de despegar puede darse una nueva orden. El contacto usa las mismas celdas trianguladas de 20 m que el anillo cercano del terreno, con reacción normal y fricción tangente. Las ráfagas son sumas deterministas de senos: no un modelo meteorológico validado.
+
+Reconstruir la evolución con Blender oficial 4.3.2 (el horneado consume varios minutos de CPU):
+
+```sh
+blender -b PROJECT_TOMCAT/F14A_TOMCAT_MASTER.blend --python-exit-code 1 --python simulator/scripts/export_evolved.py
+node simulator/scripts/compress-models.mjs
+node simulator/scripts/bake-environment.mjs
+npm run build
+```
+
+Para reexportar el nativo evolucionado sin repetir el horneado: `blender -b PROJECT_TOMCAT/evolved/F14A_TOMCAT_EVOLVED.blend --python-exit-code 1 --python simulator/scripts/export_evolved.py -- --export-existing`. El compresor verifica la igualdad de cada buffer decodificado; no usa cuantización ni decimación. Consulta [TRANSFORMATION_REPORT.md](../TRANSFORMATION_REPORT.md) para métricas, evidencia y límites.

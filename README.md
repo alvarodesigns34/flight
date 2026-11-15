@@ -4,13 +4,15 @@ Reconstrucción artística editable de un **Grumman F-14A Tomcat**, inspirada en
 
 ![Vista de estudio del F-14A](PROJECT_TOMCAT/renders/01_FRONT_THREE_QUARTER.png)
 
-## Nuevo: Flight & Archive 0.2
+## Nuevo: Flight & Archive 0.3
 
 **[Simulación de vuelo](https://alvarodesigns34.github.io/flight/)** · **[Modelo original 3D](https://alvarodesigns34.github.io/flight/#modelo)**
 
-La nueva pestaña de inspección utiliza la geometría original completa: **1.316.961 triángulos, 1.832 objetos, sin simplificación y sin omitir interiores**, con normales originales. Incluye ocho cámaras de detalle, cortes de cabina/estructura, giro, malla y vista limpia. La descarga Blender conserva exactamente los bytes del archivo inicial. Los materiales procedurales se adaptan a PBR del navegador; no se declara equivalencia píxel a píxel con Cycles.
+La nueva pestaña de inspección utiliza la geometría original completa: **1.316.961 triángulos, 1.832 objetos, sin simplificación y sin omitir interiores**, con normales originales. Incluye diez cámaras de detalle, cortes de cabina/estructura, giro, malla y vista limpia. La descarga Blender conserva exactamente los bytes del archivo inicial. Los materiales procedurales se adaptan a PBR del navegador; no se declara equivalencia píxel a píxel con Cycles.
 
-El vuelo incorpora escenario costero, relieve y contacto compartidos, agua con reflejos en Ultra, cielo e iluminación HDR, texturas fotográficas, vegetación y aeródromo. Hay mando virtual, compensador, atajos visibles, controles claros y modos Ultra/Alta/Ligera. La dinámica sigue siendo educativa y genérica. Consulta [cambios visuales y alcance](VISUAL_UPGRADE.md).
+El vuelo utiliza una **evolución independiente en Blender**: flaps y timones articulados como volúmenes cerrados, tapicería contorneada, materiales UV y oclusión local horneada. El inspector compara ambas ediciones con diez vistas. El original permanece intacto.
+
+La interfaz separa preparación, cámaras y mandos; en móvil ofrece mando y potencia para dos pulgares. Se pueden reasignar teclas, calibrar el gamepad y personalizar su respuesta. El terreno emplea cinco anillos de detalle, contacto coherente con sus triángulos y vegetación variada por sectores; el aeródromo tiene hangares abovedados y torre de observación. La dinámica conserva parámetros educativos genéricos. [Informe técnico, comparativas y límites](TRANSFORMATION_REPORT.md).
 
 ## Publicación web con GitHub Pages
 
@@ -18,7 +20,7 @@ Abre el simulador: **[Tomcat Flight Lab](https://alvarodesigns34.github.io/fligh
 
 ## Volar en el laboratorio
 
-![Tomcat Flight Lab](simulator/evidence/experience-02/public-flight.png)
+![Tomcat Flight Lab](simulator/evidence/transformation/final/13-flight-ultra.png)
 
 Descarga y extrae el [paquete del simulador](downloads/TOMCAT_FLIGHT_LAB.zip?raw=true), o clona esta rama. Con **Python 3.10+**, desde la raíz del repositorio:
 
@@ -28,7 +30,7 @@ python3 simulator/serve.py
 
 En Windows: `py -3 simulator/serve.py`. Abre **http://127.0.0.1:5173** en un navegador con WebGL 2 y pulsa **Iniciar vuelo**. No necesitas Blender, Node ni conexión a internet para usar la versión entregada. Dentro del ZIP, ejecuta `python3 serve.py` o el lanzador de tu sistema.
 
-Flechas: cabeceo y alabeo · A/D: guiñada · W/S: potencia · Espacio: pausa · R: reiniciar · C: cámara. El panel controla alas, flaps, tren, freno y viento, y permite descargar telemetría. Incluye tres escenarios, cámaras exterior/seguimiento/piloto y sonido sintetizado opcional.
+Flechas: cabeceo y alabeo · A/D: guiñada · W/S: potencia · Espacio: pausa · R: reiniciar · C: cámara. El panel controla alas, flaps, tren, freno y viento, y permite descargar telemetría. Incluye cuatro escenarios, cámaras exterior/seguimiento/piloto y sonido sintetizado opcional.
 
 **Dinámica genérica educativa de seis grados de libertad**, separada de la reconstrucción visual. Los parámetros son estimados: no se reproducen prestaciones verificadas del F-14A o de motores TF30. Sin armamento, sistemas tácticos o combate. El proyecto original sigue conservado.
 
@@ -66,7 +68,7 @@ La distribución oficial de Blender incluye OpenImageDenoise. Algunas compilacio
 
 ## Alcance y referencias
 
-La envolvente general está ajustada a dimensiones publicadas. Cabina, tren, panelización e interiores contienen reconstrucciones aproximadas, documentadas en el informe. **No se acredita precisión museística exacta ni un activo cinematográfico terminado.** La escena es estática, sin armamento, simulación o sistemas operativos.
+La envolvente general está ajustada a dimensiones publicadas. Cabina, tren, panelización e interiores contienen reconstrucciones aproximadas, documentadas en el informe. **No se acredita precisión museística exacta ni un activo cinematográfico terminado.** La entrega histórica es estática; el visor añade una evolución visual y dinámica educativa, sin sistemas operativos de la aeronave.
 
 Las fotografías documentales conservan sus autores y licencias en [credits.json](PROJECT_TOMCAT/resources/references/credits.json) y en la [investigación](PROJECT_TOMCAT/RESEARCH_AND_REFERENCES.md). Las referencias no son dependencias externas para renderizar el avión.
 

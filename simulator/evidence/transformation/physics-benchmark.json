@@ -1,0 +1,63 @@
+{
+  "at": "2026-11-15T16:11:54.382Z",
+  "baseline": "8e799375aa3b0a9ce32d9334d72df0eef8606bc4",
+  "currentPhysicsSha256": "26dc75cea6993ca34ee8df12f42c654b5f107449ff2e47ee46de10db0e374584",
+  "method": "240 warmup steps, 2400 measured steps per run, 3 interleaved runs. performance.now wall duration, including telemetry. No browser rendering.",
+  "fixedStepBudgetMs": 8.333333333333334,
+  "records": [
+    {
+      "version": "before",
+      "steps": 2400,
+      "simulatedSeconds": 20,
+      "meanMs": 0.05559342750000007,
+      "medianMs": 0.033290000000022246,
+      "p95Ms": 0.18753700000002027,
+      "finite": true
+    },
+    {
+      "version": "after",
+      "steps": 2400,
+      "simulatedSeconds": 20,
+      "meanMs": 0.06220294874999929,
+      "medianMs": 0.030074000000013257,
+      "p95Ms": 0.2079130000000191,
+      "finite": true
+    },
+    {
+      "version": "after",
+      "steps": 2400,
+      "simulatedSeconds": 20,
+      "meanMs": 0.06773542583333347,
+      "medianMs": 0.03009199999996781,
+      "p95Ms": 0.19053099999996448,
+      "finite": true
+    },
+    {
+      "version": "before",
+      "steps": 2400,
+      "simulatedSeconds": 20,
+      "meanMs": 0.045003105000001396,
+      "medianMs": 0.023731999999995423,
+      "p95Ms": 0.15304900000000998,
+      "finite": true
+    },
+    {
+      "version": "before",
+      "steps": 2400,
+      "simulatedSeconds": 20,
+      "meanMs": 0.04678381791666628,
+      "medianMs": 0.02361299999995481,
+      "p95Ms": 0.15725400000007994,
+      "finite": true
+    },
+    {
+      "version": "after",
+      "steps": 2400,
+      "simulatedSeconds": 20,
+      "meanMs": 0.05105681583333331,
+      "medianMs": 0.025757999999996173,
+      "p95Ms": 0.15618100000006052,
+      "finite": true
+    }
+  ]
+}

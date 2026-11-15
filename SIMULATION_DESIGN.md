@@ -42,3 +42,20 @@ La conversión de shaders conserva los colores PBR base creados en Blender; el r
 ## Instalación y licencias
 
 El visor entregado solo requiere Python 3 y WebGL 2. Node/npm se usan para desarrollo; el bundle y los recursos están incluidos y no hacen peticiones externas. Three.js conserva su licencia en `assets/THREE-LICENSE.txt` y avisos del bundle. No se cambia la licencia del material previo del repositorio ni se presume una licencia global inexistente. Las fotografías con atribuciones originales no se redistribuyen dentro del paquete del simulador; no se usan como texturas. JSBSim se instala opcionalmente desde su paquete y conserva sus propias licencias y datos civiles.
+
+## Arquitectura de la evolución 0.3
+
+La evolución añade módulos específicos, sin mezclar el integrador con Three.js:
+
+- `terrain.mjs`: función de elevación, caché e interpolación/normal de contacto.
+- `terrain-rings.mjs`: cinco anillos visuales y enlaces de borde.
+- `physics.mjs`: estado, mandos objetivo/aplicados, contacto tangente, RK4 y telemetría.
+- `input-profile.mjs`: validación, zona muerta y curva puras; `input.mjs` adapta dispositivos.
+- `environment.mjs`: mapas HDR prefiltrados y reserva de cálculo local.
+- `rigid-batches.mjs`: agrupación de render por material, preservando la jerarquía de animación.
+- `renderer.mjs`: cámaras, escenas, partes, calidad y contadores por fotograma completo.
+- `main.mjs`: DOM, estados de uso y ritmo de instrumentación limitado a 20 Hz.
+
+La física conserva paso fijo independiente de requestAnimationFrame. La posición de render interpola estados; las fuerzas no se interpolan ni se calculan a partir de animaciones. La vista estática dibuja bajo demanda. Los diagnósticos distinguen objetivos y estados aplicados, tiempo físico descartado y tiempo de función de render. Se conserva una ruta de mallas normales para equipos sin WEBGL_multi_draw.
+
+El pipeline de activos separa maestro inmutable, nativo evolucionado, derivado GLB completo y copia de distribución comprimida sin pérdida. Los manifiestos de Pages y del paquete registran el commit y SHA-256 de cada archivo entregado. [Resultados y límites](TRANSFORMATION_REPORT.md).

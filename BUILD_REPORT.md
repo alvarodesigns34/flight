@@ -1,3 +1,7 @@
+# Entrega vigente: evolución 0.3
+
+El informe actual de implementación, evidencias, límites y mediciones está en [TRANSFORMATION_REPORT.md](TRANSFORMATION_REPORT.md). El original se conserva; la nueva geometría se entrega en `PROJECT_TOMCAT/evolved/F14A_TOMCAT_EVOLVED.blend`. Este documento conserva a continuación los checkpoints históricos.
+
 # Construcción de la fase de simulación
 
 Fecha: 15-11-2026. Rama: `codex/tomcat-flight-simulator`. Base remota auditada: `a43319cc19591294c537d8e8064a71d0997f84dc`.
