@@ -6,13 +6,15 @@ Simulador educativo local con el modelo artístico del repositorio. Dinámica ge
 
 Requiere **Python 3.10+**, navegador moderno con **WebGL 2** y extracción completa del ZIP si usas el paquete descargable. No requiere Blender, Node, cuenta o conexión a internet para jugar.
 
+Desde la carpeta que contiene `serve.py` (`simulator` en el repositorio o `TOMCAT_FLIGHT_LAB` en el ZIP):
+
 ```sh
-python3 simulator/serve.py
+python3 serve.py
 ```
 
-Desde dentro de la carpeta `simulator`, también: `python3 serve.py`. Windows: `py -3 simulator/serve.py` o `START_WINDOWS.cmd`. macOS/Linux: `sh simulator/START_MAC_LINUX.sh`.
+Windows: `py -3 serve.py` o `START_WINDOWS.cmd`. macOS/Linux: `sh START_MAC_LINUX.sh`. Desde la raíz del repositorio también puedes usar `python3 simulator/serve.py`.
 
-Abre **http://127.0.0.1:5173**. El servidor solo escucha en tu ordenador; Ctrl+C lo detiene. Si el puerto está ocupado: `python3 simulator/serve.py --port 5174`. No abras `index.html` directamente como `file://`: el cargador del modelo requiere HTTP local.
+Abre **http://127.0.0.1:5173**. El servidor solo escucha en tu ordenador; Ctrl+C lo detiene. Si el puerto está ocupado: `python3 serve.py --port 5174`. No abras `index.html` directamente como `file://`: el cargador del modelo requiere HTTP local.
 
 Selecciona un escenario y pulsa **Iniciar vuelo**. Arrastra y usa la rueda en Exterior. Las cámaras Seguimiento y Piloto siguen el avión. Piloto es una vista frontal, sin cabina funcional. La pausa conserva el estado; cambiar escenario o reiniciar lo restablece. Al ocultar la pestaña se pausa automáticamente.
 
